@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@400;600;800&family=Nanum+Pen+Script&display=swap');
+
+:root {
+  --bg-color: #f2dbc0; /* Beige paper color */
+  --text-color: #2b2723;
+  --accent: #be4a2a;
+  --polaroid-bg: #fcfcfc;
+  --tape-color: rgba(255, 255, 255, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+h1, h2, h3, .handwritten {
+  font-family: 'Caveat', cursive;
+  color: var(--text-color);
+}
+
+.scrapbook-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Polaroid Style Frame */
+.polaroid {
+  background: var(--polaroid-bg);
+  padding: 15px 15px 40px 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transform: rotate(-2deg);
+  position: relative;
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px;
+}
+
+.polaroid:nth-child(even) {
+  transform: rotate(3deg);
+}
+
+.polaroid:hover {
+  transform: scale(1.02) rotate(0deg);
+  z-index: 10;
+}
+
+.polaroid img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.polaroid .caption {
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 15px;
+  color: #111;
+}
+
+/* Tape effect */
+.tape {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  background-color: var(--tape-color);
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  opacity: 0.8;
+  border-left: 2px dashed rgba(0,0,0,0.1);
+  border-right: 2px dashed rgba(0,0,0,0.1);
+  z-index: 5;
+}
+
+/* Notebook Paper Style Content */
+.notebook-paper {
+  background: #fffdf8;
+  padding: 40px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  border-left: 2px solid #e7a098; /* red margin line */
+  background-image: linear-gradient(#e5e1da 1px, transparent 1px);
+  background-size: 100% 30px;
+  line-height: 30px;
+  width: 100%;
+  max-width: 600px;
+  margin: 30px auto;
+  border-radius: 2px;
+  position: relative;
+}
+
+/* Buttons */
+.btn-stamp {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  background: transparent;
+  color: var(--accent);
+  border: 3px solid var(--accent);
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+  transition: all 0.2s;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-stamp:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.05) rotate(0deg);
+}
+
+/* Grid for videos */
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Header */
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  align-items: center;
+}
+
+header .logo {
+  font-size: 2.5rem;
+  text-decoration: none;
+  color: var(--text-color);
+  font-family: 'Caveat', cursive;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+}
+
+
