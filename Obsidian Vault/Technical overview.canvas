@@ -1,0 +1,32 @@
+{
+	"nodes":[
+		{"id":"855f4742c6b223ca","x":-112,"y":1704,"width":400,"height":400,"type":"file","file":"Materials/LCD Display (Touchscreen).md"},
+		{"id":"3d7e909504cbc5b6","type":"file","file":"Recording mechanism.md","x":162,"y":-848,"width":400,"height":400},
+		{"id":"f7c86e354935d4ba","type":"text","text":"CSI Camera","x":210,"y":-280,"width":135,"height":60,"color":"3"},
+		{"id":"93a992b4537dd9d6","type":"text","text":"RV1103 development board","x":-333,"y":-200,"width":243,"height":60,"color":"6"},
+		{"id":"7a737ddc9dd56d33","type":"text","text":"USBC Male port","x":-660,"y":20,"width":132,"height":60},
+		{"id":"893924e80fed0a6a","type":"text","text":"LIPO Battery","x":75,"y":160,"width":135,"height":60},
+		{"id":"bc6678419362322c","type":"text","text":"Embedded PCB","x":-332,"y":-448,"width":163,"height":60,"color":"6"},
+		{"id":"b59325d73e1d0bee","type":"text","text":"Record/photo button","x":-381,"y":-580,"width":250,"height":60},
+		{"id":"de9037653a814289","type":"file","file":"GPIO Read Mechanism.md","x":-900,"y":-848,"width":400,"height":400},
+		{"id":"4049116fdccc3ebd","type":"text","text":"Web platform","x":420,"y":1220,"width":155,"height":60,"color":"4"},
+		{"id":"1ff0f83339a863cc","type":"file","file":"Materials/POGO Pin.md","x":-333,"y":280,"width":313,"height":360,"color":"5"},
+		{"id":"289a535e73fa2537","type":"text","text":"Dirt Pile\n","x":-130,"y":860,"width":151,"height":64,"color":"3"},
+		{"id":"f300f5a3bb61e397","x":-333,"y":1120,"width":400,"height":400,"color":"6","type":"file","file":"Materials/ESP32.md"}
+	],
+	"edges":[
+		{"id":"e91b4ef255b28b20","fromNode":"93a992b4537dd9d6","fromSide":"top","toNode":"bc6678419362322c","toSide":"bottom"},
+		{"id":"39249c4f9d102cd6","fromNode":"93a992b4537dd9d6","fromSide":"right","toNode":"f7c86e354935d4ba","toSide":"left","color":"3"},
+		{"id":"dc6dc95aa7c66d5b","fromNode":"93a992b4537dd9d6","fromSide":"left","toNode":"7a737ddc9dd56d33","toSide":"right","color":"5"},
+		{"id":"974a700ac7791ba2","fromNode":"7a737ddc9dd56d33","fromSide":"bottom","toNode":"1ff0f83339a863cc","toSide":"left","color":"5","label":"D+/- pin"},
+		{"id":"a3653f15bceb6a2a","fromNode":"289a535e73fa2537","fromSide":"right","toNode":"4049116fdccc3ebd","toSide":"left","color":"4","label":"USB peripheral\nfrom web"},
+		{"id":"1c54d217e5e4be58","fromNode":"bc6678419362322c","fromSide":"left","toNode":"b59325d73e1d0bee","toSide":"left"},
+		{"id":"156860f194e40874","fromNode":"b59325d73e1d0bee","fromSide":"top","toNode":"de9037653a814289","toSide":"right"},
+		{"id":"abcc38f05e991fb9","fromNode":"f7c86e354935d4ba","fromSide":"top","toNode":"3d7e909504cbc5b6","toSide":"bottom"},
+		{"id":"b848f99f62e82136","fromNode":"1ff0f83339a863cc","fromSide":"right","toNode":"893924e80fed0a6a","toSide":"left","color":"1","label":"Charging"},
+		{"id":"3e6274a3c6037adb","fromNode":"893924e80fed0a6a","fromSide":"right","toNode":"93a992b4537dd9d6","toSide":"right","color":"1","label":"VBUS + GND"},
+		{"id":"26f737356dc45389","fromNode":"289a535e73fa2537","fromSide":"left","toNode":"1ff0f83339a863cc","toSide":"bottom","color":"1","label":"Power (VBUS + GND)"},
+		{"id":"ee8db2beb0be1f5c","fromNode":"1ff0f83339a863cc","fromSide":"bottom","toNode":"289a535e73fa2537","toSide":"top","color":"5","label":"Data (D+/-)"},
+		{"id":"d690ef1d7f63a1a4","fromNode":"289a535e73fa2537","fromSide":"bottom","toNode":"f300f5a3bb61e397","toSide":"top"}
+	]
+}
