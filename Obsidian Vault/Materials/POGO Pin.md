@@ -6,3 +6,4 @@
 | D-      | D- on USBC Male -> POGO -> Dirt pile   |
 | 5V VBUS | Dirt Pile -> POGO -> Battery Regulator |
 | GND     | Dirt Pile -> POGO -> Battery Regulator |
+![[Pasted image 20260603162734.png]]

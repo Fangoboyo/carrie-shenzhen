@@ -6,46 +6,45 @@
       {
         "id": "8d952d246afc5d2d",
         "type": "tabs",
-        "dimension": 55.57011795543905,
+        "dimension": 61.80351906158358,
         "children": [
           {
             "id": "ad92ae7a9d2be98e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Materials/LCD Display (Touchscreen).md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "LCD Display (Touchscreen)"
-            }
-          },
-          {
-            "id": "e636e3a4d142c5fd",
             "type": "leaf",
             "state": {
               "type": "canvas",
               "state": {
                 "file": "Technical overview.canvas",
                 "viewState": {
-                  "x": -76.57320813457329,
-                  "y": 1527.385391670537,
-                  "zoom": -0.9108371195669485
+                  "x": -152.3006329141553,
+                  "y": 521.676740161099,
+                  "zoom": -1.3754725922018216
                 }
               },
               "icon": "lucide-layout-dashboard",
               "title": "Technical overview"
             }
+          },
+          {
+            "id": "d2bdf4d4a25c0568",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Carrie Construction.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Carrie Construction"
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "b268db72c7868b13",
         "type": "tabs",
-        "dimension": 44.42988204456095,
+        "dimension": 38.19648093841642,
         "children": [
           {
             "id": "b59406ddaac7aeac",
@@ -223,26 +222,31 @@
       "bases:Create new base": false
     }
   },
-  "active": "e636e3a4d142c5fd",
+  "active": "b59406ddaac7aeac",
   "lastOpenFiles": [
-    "Materials/LCD Display (Touchscreen).md",
-    "Pasted image 20260603153835.png",
-    "GPIO Read Mechanism.md",
     "Technical overview.canvas",
-    "Recording mechanism.md",
-    "Planning before 6-7.md",
-    "Bill of Materials.md",
-    "Materials/ESP32.md",
-    "Materials/POGO Pin.md",
-    "Materials/POGO pins.md",
     "Carrie Construction.md",
+    "Recording mechanism.md",
+    "Bill of Materials.md",
     "Backend Flow.md",
+    "Materials/Microphone.md",
+    "Pasted image 20260603163029.png",
+    "Materials/POGO Pin.md",
+    "Materials/LCD Display (Touchscreen).md",
+    "Materials/ESP32.md",
+    "Pasted image 20260603162734.png",
+    "Pasted image 20260603162729.png",
+    "Materials/Battery.md",
+    "Materials/images/Pasted image 20260603162429.png",
+    "Planning before 6-7.md",
+    "Materials/images/Pasted image 20260603153835.png",
+    "GPIO Read Mechanism.md",
+    "Materials/POGO pins.md",
     "Materials/images/Pasted image 20260603140039.png",
     "Materials/images",
     "Materials/images/Pasted image 20260603140626.png",
     "create a link.md",
     "Materials",
-    "Untitled.md",
     "Welcome.md",
     "Frontend Flow.md"
   ]
