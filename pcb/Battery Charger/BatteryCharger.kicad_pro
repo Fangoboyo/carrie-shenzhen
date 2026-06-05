@@ -469,7 +469,9 @@
   },
   "libraries": {
     "pinned_footprint_libs": [],
-    "pinned_symbol_libs": []
+    "pinned_symbol_libs": [
+      "FS8205"
+    ]
   },
   "meta": {
     "filename": "BatteryCharger.kicad_pro",
@@ -632,7 +634,7 @@
         "uuid": "1310c6ff-6c5c-4de7-bda7-7aee2898330d"
       }
     ],
-    "used_designators": "R7-8,#FLG2,D3,#PWR7,#PWR13-15",
+    "used_designators": "#PWR1,BT1,D1,U1-2,C5,R7-8,Q1-2",
     "variants": []
   },
   "sheets": [
