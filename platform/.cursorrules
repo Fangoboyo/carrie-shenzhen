@@ -1,0 +1,77 @@
+# AI Coding Agent Memory & Rules File
+
+This file outlines the goals of the project, the premium beige scrapbook design outlines, the technology stack, and the precise "current issue" context. All AI agents working on this repository must read this file first and adhere to these guidelines.
+
+---
+
+## 🚀 1. PROJECT GOALS & FUNCTIONALITY
+The project is a **React + TypeScript landing page and sharing platform** backed by **PocketBase** as the backend.
+
+### Key Features:
+- **Scrapbook Landing Page**: A premium, interactive landing page showcasing shared memories, featuring a custom 3D flipping-page scrapbook book component.
+- **Google OAuth2 Signup/Login**: Auths users via Google with requested `https://www.googleapis.com/auth/youtube.upload` scopes so that the platform can upload videos to YouTube on behalf of the user.
+- **User Profiles**: Logged-in users can view their uploaded YouTube videos, manage their profile, and create "boards".
+- **Memory Boards**: Public/shared spaces where users can pin their polaroid-style videos into a cohesive scrapbook layout.
+
+---
+
+## 🎨 2. THE DESIGN SYSTEM: BEIGE SCRAPBOOK AESTHETIC
+Aesthetics are critical. The design must feel warm, analog, premium, tactile, and highly responsive.
+> [!IMPORTANT]
+> **No Tailwind CSS.** All styles must be built using Vanilla CSS for maximum flexibility and control.
+> **No Generic Colors or Placeholders.** Use curated HSL palettes and dynamic assets generated via image tools.
+
+### Visual Elements:
+- **Paper Textures & Notebook Lines**: Uses radial gradients and repeating linear-gradients to emulate premium notebook pages, high-quality linen textures, and textured covers.
+- **Tape & Stamps**: Semi-transparent, rotated tapes on pictures, organic shadow stamps (`box-shadow`), and tactile hover effects.
+- **Polaroid Frames**: Video cards must be rendered inside highly styled polaroid frames (`.polaroid`) with organic tilts, custom cursors, and drop-shadows.
+- **Interactive 3D Books**: The custom `BookComponent.tsx` uses GSAP to animate a 3D book cover that swings open (`rotateY: -150`) and loops flipping pages infinitely when hovered, presenting text and memories inside.
+- **Harmonious Palette**:
+  - Warm beige paper: `#fbf8f0` / `#faf6eb` / `#f7f2e4`
+  - Rich leather covers: `#4a2f1b` / spine `#2b170c`
+  - Accent / Gold foil: `#d4af37`
+  - Vibrant coral accent: `#be4a2a`
+
+---
+
+## 🛠️ 3. TECH STACK & SYSTEM ARCHITECTURE
+- **Frontend**: React 19, TypeScript, Vite, React Router DOM v7, GSAP.
+- **Backend**: PocketBase v0.27.0 (served locally).
+- **Environment**: Managed using Bun (running package scripts).
+- **Ports & Dev Configuration**:
+  - Frontend: `http://localhost:3000` (Vite dev server)
+  - PocketBase: `http://localhost:8090` (Serving via `pb/pocketbase serve --dir=pb/pb_data`)
+  - Admin Dashboard: `http://localhost:8090/_/`
+
+---
+
+## ⚠️ 4. THE ACTIVE ISSUE: BOOKCOMPONENT PAGE-TURN TIMINGS & SEAMLESS LOOPING
+The Google OAuth2 login flow has been successfully resolved. Our active engineering focus is now on the `BookComponent` animation quality.
+
+### Current Bug / Problem:
+When the scrapbook cover is opened, the continuous page-turn looping animation fails to feel seamless. The timings, delays, and snapbacks are not aligned correctly, causing visible visual glitches (pages clipping or disappearing unexpectedly, or the transition ending abruptly instead of flowing organically).
+
+### Proposed Timing and Depth (Z-index) Keyframe Model:
+To create a truly organic, endless "page-deck carousel" with only two active looping pages (Page 0 and Page 1) and one static page (Page 2), we must implement a symmetric phase offset:
+- **Phase Offset**: Page 1 runs the exact same keyframes as Page 0 but shifted by exactly `0.5` (50%) of the cycle duration.
+- **Keyframes (Symmetric 0.0 to 1.0 Cycle)**:
+  - `0.0` to `0.1`: Page rests on the right.
+  - `0.1` to `0.5`: The Page Turns! Sweeps from `rotateY: 0` to `rotateY: -150`.
+  - `0.5` to `0.8`: Page rests on the left side (fully visible with `opacity: 1` as the new background page, while the other page starts its turn on top).
+  - `0.8` to `0.9`: Page fades out (`opacity: 1 -> 0`).
+  - `0.9` to `0.92`: Page snaps back to the right side invisibly (`rotateY: 0`, `opacity: 0`).
+  - `0.92` to `1.0`: Page fades in on the right (`opacity: 0 -> 1`), ready to loop again.
+
+---
+
+## 📊 5. FEASIBILITY EVALUATION: IS GSAP OR FRAMER-MOTION SUFFICIENT?
+When scaling a scrapbook/interactive website filled with multiple similar 3D book flipping animations, we must evaluate if `framer-motion` or GSAP is the right tool:
+
+### ✅ GSAP (Highly Recommended for Scale)
+1. **Precise Timeline Control**: GSAP's timeline (`gsap.timeline()`) allows absolute, relative, and staggered sequence building without relying on fragile hardcoded timing arrays.
+2. **Superior Performance**: Runs high-frequency calculations extremely efficiently without CPU overhead.
+3. **No 3D Clipping Mismatches**: GSAP provides perfect 3D perspective manipulation, avoiding depth sorting errors on WebKit.
+
+### ❌ Framer Motion (Not Optimal for Complex Timelines)
+1. **Timing Drift**: Framer Motion lacks sequencing timelines, meaning animations with staggers and snapbacks are built with magic `delay` values, which drift and overlap unpredictably.
+2. **High CPU overhead**: High JS runtime interpolation cost when scaling multiple overlapping components.

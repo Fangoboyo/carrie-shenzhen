@@ -1,0 +1,4 @@
+[Amazon](https://www.amazon.com/Blomiky-Rechargeable-Battery-Charger-Amphibious/dp/B08Q45XQKW/ref=sr_1_6?dib=eyJ2IjoiMSJ9.tbPOq3QeK06mkMwfFZx1MDc95PlqTx_4srUSyc2b-5l9-ePiFCnXNnqIMAX4F89nuEroKYLET1xGqcHci9tceCdUhAWXWzbDSXLAQp1pvrQwbwwngubRZdHS8o3FhOkgB1lxnXbqsTkdNh2OcrIS5ulxKxalrdrhomJbmTwN7rDgQLTvSl3fJurFLcco4l7AtoNtgasPNg0i-R39-0nQbrsY6NyJzRQ5Ze4nCMA5Maa308FyFnW9nxJY3nFNnfWuRcqItFvwgdgNLOeHkcbnhxLZwzQXq-UzeWcQ5fzJM7M.HSjVRSXVKzfARWHgoYmpT146BMwjUvI_m59ChmZUXpk&dib_tag=se&keywords=14500+Li-Ion+Cell&qid=1780529029&sr=8-6)
+
+
+![[Pasted image 20260603162429.png]]

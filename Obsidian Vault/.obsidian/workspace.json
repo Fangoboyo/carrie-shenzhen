@@ -1,0 +1,253 @@
+{
+  "main": {
+    "id": "a37ddf41f66f8185",
+    "type": "split",
+    "children": [
+      {
+        "id": "8d952d246afc5d2d",
+        "type": "tabs",
+        "dimension": 61.80351906158358,
+        "children": [
+          {
+            "id": "ad92ae7a9d2be98e",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Technical overview.canvas",
+                "viewState": {
+                  "x": -152.3006329141553,
+                  "y": 521.676740161099,
+                  "zoom": -1.3754725922018216
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Technical overview"
+            }
+          },
+          {
+            "id": "d2bdf4d4a25c0568",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Carrie Construction.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Carrie Construction"
+            }
+          }
+        ]
+      },
+      {
+        "id": "b268db72c7868b13",
+        "type": "tabs",
+        "dimension": 38.19648093841642,
+        "children": [
+          {
+            "id": "b59406ddaac7aeac",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Materials/ESP32.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "ESP32"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7a8cab931f73bbff",
+    "type": "split",
+    "children": [
+      {
+        "id": "90aaa0b7ad6297a9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e72173aca7999b98",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "6167c41352ea3969",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "9c2c61149d0ee446",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "7f42608727ce2220",
+    "type": "split",
+    "children": [
+      {
+        "id": "6a93d4de535f5fbe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b47e46e5a89dddeb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "carrie overview.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for carrie overview"
+            }
+          },
+          {
+            "id": "bee880d73f992857",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "carrie overview.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from carrie overview"
+            }
+          },
+          {
+            "id": "3bb7cf9609166943",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c36545926fa8d80c",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "972156173fb55086",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "carrie overview.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of carrie overview"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "b59406ddaac7aeac",
+  "lastOpenFiles": [
+    "Technical overview.canvas",
+    "Carrie Construction.md",
+    "Recording mechanism.md",
+    "Bill of Materials.md",
+    "Backend Flow.md",
+    "Materials/Microphone.md",
+    "Pasted image 20260603163029.png",
+    "Materials/POGO Pin.md",
+    "Materials/LCD Display (Touchscreen).md",
+    "Materials/ESP32.md",
+    "Pasted image 20260603162734.png",
+    "Pasted image 20260603162729.png",
+    "Materials/Battery.md",
+    "Materials/images/Pasted image 20260603162429.png",
+    "Planning before 6-7.md",
+    "Materials/images/Pasted image 20260603153835.png",
+    "GPIO Read Mechanism.md",
+    "Materials/POGO pins.md",
+    "Materials/images/Pasted image 20260603140039.png",
+    "Materials/images",
+    "Materials/images/Pasted image 20260603140626.png",
+    "create a link.md",
+    "Materials",
+    "Welcome.md",
+    "Frontend Flow.md"
+  ]
+}
