@@ -2337,6 +2337,12 @@
 		(uuid "439b07a8-20e9-4533-ace0-894523c73323")
 	)
 	(junction
+		(at 139.7 40.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "964cb150-2f06-4aa1-9c14-7011e355a7f6")
+	)
+	(junction
 		(at 121.92 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2460,7 +2466,7 @@
 	)
 	(wire
 		(pts
-			(xy 127 40.64) (xy 146.05 40.64)
+			(xy 127 40.64) (xy 139.7 40.64)
 		)
 		(stroke
 			(width 0)
@@ -2517,6 +2523,16 @@
 			(type default)
 		)
 		(uuid "6cd19ac8-d064-408d-9f86-ee92fedf3343")
+	)
+	(wire
+		(pts
+			(xy 139.7 40.64) (xy 146.05 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f8839a6-a58e-4479-8359-51d9993e5a99")
 	)
 	(wire
 		(pts
@@ -3159,7 +3175,7 @@
 				)
 			)
 		)
-		(property "Value" "LED_Dual_AAK"
+		(property "Value" "LED_Dual_KKA"
 			(at 200.5965 73.66 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3607,6 +3623,84 @@
 			(project "Carry"
 				(path "/460b64f1-754e-43cc-bbda-1ad83299f772"
 					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 139.7 40.64 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6cf12683-87da-4879-9d59-0169bd8a9a86")
+		(property "Reference" "#FLG02"
+			(at 139.7 42.545 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 139.7 45.72 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 139.7 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 139.7 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 139.7 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d5bc2a45-83a9-4ac5-ae4c-6206d9ab5bf0")
+		)
+		(instances
+			(project "Carry"
+				(path "/460b64f1-754e-43cc-bbda-1ad83299f772"
+					(reference "#FLG02")
 					(unit 1)
 				)
 			)

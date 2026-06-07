@@ -3159,7 +3159,7 @@
 				)
 			)
 		)
-		(property "Value" "LED_Dual_AAK"
+		(property "Value" "LED_Dual_KKA"
 			(at 200.5965 73.66 0)
 			(show_name no)
 			(do_not_autoplace no)
