@@ -6,37 +6,20 @@
       {
         "id": "8d952d246afc5d2d",
         "type": "tabs",
-        "dimension": 61.80351906158358,
+        "dimension": 65.9090909090909,
         "children": [
           {
             "id": "ad92ae7a9d2be98e",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Technical overview.canvas",
-                "viewState": {
-                  "x": -152.3006329141553,
-                  "y": 521.676740161099,
-                  "zoom": -1.3754725922018216
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Technical overview"
-            }
-          },
-          {
-            "id": "d2bdf4d4a25c0568",
-            "type": "leaf",
-            "state": {
               "type": "markdown",
               "state": {
-                "file": "Carrie Construction.md",
+                "file": "Materials/POGO Pin - Arrived.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Carrie Construction"
+              "title": "POGO Pin - Arrived"
             }
           }
         ]
@@ -44,20 +27,20 @@
       {
         "id": "b268db72c7868b13",
         "type": "tabs",
-        "dimension": 38.19648093841642,
+        "dimension": 34.090909090909086,
         "children": [
           {
-            "id": "b59406ddaac7aeac",
+            "id": "954c6e48e0ef4eca",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Materials/ESP32.md",
+                "file": "Materials/BMS/Battery - Arrived.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ESP32"
+              "title": "Battery - Arrived"
             }
           }
         ]
@@ -222,29 +205,49 @@
       "bases:Create new base": false
     }
   },
-  "active": "b59406ddaac7aeac",
+  "active": "ad92ae7a9d2be98e",
   "lastOpenFiles": [
+    "software/firmware/Display Driver.md",
+    "software/firmware/GPIO Read Mechanism.md",
     "Technical overview.canvas",
-    "Carrie Construction.md",
-    "Recording mechanism.md",
-    "Bill of Materials.md",
-    "Backend Flow.md",
-    "Materials/Microphone.md",
-    "Pasted image 20260603163029.png",
-    "Materials/POGO Pin.md",
-    "Materials/LCD Display (Touchscreen).md",
-    "Materials/ESP32.md",
-    "Pasted image 20260603162734.png",
-    "Pasted image 20260603162729.png",
-    "Materials/Battery.md",
-    "Materials/images/Pasted image 20260603162429.png",
     "Planning before 6-7.md",
-    "Materials/images/Pasted image 20260603153835.png",
-    "GPIO Read Mechanism.md",
+    "Fabrication.md",
+    "Carrie Construction.md",
+    "Bill of Materials.md",
+    "Materials/BMS/Battery - Arrived.md",
+    "Materials/BMS/Battery Management System.canvas",
+    "Materials/BMS/MCP73831.md",
+    "Materials/USBC Male head.md",
+    "Materials/images/Pasted image 20260605001627.png",
+    "Materials/images/Pasted image 20260605000559.png",
+    "Materials/BMS/FS8205A.md",
+    "Materials/BMS/DW01A.md",
+    "Materials/BMS/TP4056.md",
+    "Materials/images/Pasted image 20260604234836.png",
+    "Materials/images/Pasted image 20260604235253.png",
+    "Materials/images/Pasted image 20260604235230.png",
+    "PCBs/Untitled.canvas",
+    "PCBs/Untitled.md",
+    "PCBs",
+    "Untitled.md",
+    "Materials/images/Pasted image 20260604230423.png",
+    "Materials/BMS/Battery Management System.md",
+    "Materials/BMS",
+    "Materials/POGO Pin - Arrived.md",
+    "software/firmware",
+    "software",
+    "software/web platform",
+    "Materials/Microphone - Arrived.md",
+    "Materials/LCD Display (Touchscreen) - Arrived.md",
+    "Materials/ESP32 - Arrived.md",
+    "Materials/images/Pasted image 20260603162729.png",
+    "software/firmware/Recording mechanism.md",
+    "software/web platform/Backend Flow.md",
+    "Materials/images/Pasted image 20260603163029.png",
+    "Materials/images/Pasted image 20260603162734.png",
+    "Materials/images/Pasted image 20260603162429.png",
     "Materials/POGO pins.md",
-    "Materials/images/Pasted image 20260603140039.png",
     "Materials/images",
-    "Materials/images/Pasted image 20260603140626.png",
     "create a link.md",
     "Materials",
     "Welcome.md",

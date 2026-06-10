@@ -4,8 +4,10 @@ import Landing from './pages/Landing';
 import Profile from './pages/Profile';
 import Board from './pages/Board';
 import './styles/scrapbook.css';
+import { pb } from './lib/pocketbase';
 
 function App() {
+  pb.autoCancellation(false);
   return (
     <BrowserRouter>
       <Routes>
