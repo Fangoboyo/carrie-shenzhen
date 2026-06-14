@@ -1,6 +1,6 @@
 [Amazon](https://www.amazon.com/dp/B081CSJV2V?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_2)
 
-[[LCD Display (Touchscreen)]] Takes:
+[[LCD Display (Touchscreen) - Arrived]] Takes:
 
 | ESP Pin | Touchscreen |
 | ------- | ----------- |

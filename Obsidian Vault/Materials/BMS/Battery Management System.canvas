@@ -1,0 +1,9 @@
+{
+	"nodes":[
+		{"id":"c73baa973eec7e47","type":"text","text":"POGO 5V Input","x":-500,"y":-240,"width":167,"height":60},
+		{"id":"85685eca14c5f0ae","x":-180,"y":-380,"width":320,"height":280,"type":"file","file":"Materials/BMS/MCP73831.md"}
+	],
+	"edges":[
+		{"id":"f1324d0afcfba318","fromNode":"c73baa973eec7e47","fromSide":"right","toNode":"85685eca14c5f0ae","toSide":"left","color":"1"}
+	]
+}

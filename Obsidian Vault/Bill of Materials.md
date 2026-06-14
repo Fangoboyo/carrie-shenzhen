@@ -1,7 +1,9 @@
-[[LCD Display (Touchscreen)]]
-[[POGO Pin]]
-[[ESP32]]
-[[Microphone]]
+[[LCD Display (Touchscreen) - Arrived]]
+[[POGO Pin - Arrived]]
+[[ESP32 - Arrived]]
+[[Microphone - Arrived]]
+
+
 
 
 
