@@ -19,8 +19,5 @@ An embedded audio-recordign smart pen sharped like a carrot, featurin a custom p
 
 ## Project Status
 
--[] Inital hardware schematic
--[] PCB
--[]
--[]
--[]
+- [x] Inital hardware schematic
+- [ ] PCB
