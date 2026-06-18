@@ -11,18 +11,23 @@ A personal carry device in the shape of a carrot, Carrie is an interpretation of
 All 4 of the team members of this project are High School seniors. At the end of the year, many of the people who we have spent a majority of our lives with will be leaving to colleges across the world. It's easy to say that you'll keep in touch and commit to sending pictures and videos often of what you do everyday, but it's often a promise that is neglected not from a lack of care, but from the nature of experiencing an event; your first thought isn't always to start recording. With a personal carry device in such a form factor, Carrie serves as an always present, physical reminder of that promise.
 
 
-## Hardware Architecture
+## Hardware Architecture - Carrot
 
 ### Systrem Componets
-* **Main Compute Module:** Luckfox Pico Mini B
+* **Main Compute Module:** Embedded Luckfox Pico Mini B 
+<img width="48%" height="500" alt="luckfox_2d" src="https://github.com/user-attachments/assets/d243de09-778c-4d48-a652-383df001b6e8" />
+<img width="48%" height="500" alt="luckfox_3d" src="https://github.com/user-attachments/assets/f13b5a4d-605d-4a7c-87a0-da64d2e103ab" />
+
+
 * **Audio Input:** SPH
 * **Visual Input**
 * **Status Indicator**
 * **Power Management**
 
-### Electrical Implementation
+## Hardware Architecture pt. 2 - Pot
+* **ESP8266 board**
+<img width="1146" height="562" alt="image" src="https://github.com/user-attachments/assets/a6e20dd5-2655-4d6c-89ee-21d4f95131a6" />
 
----
 
 ## Project Status
 
