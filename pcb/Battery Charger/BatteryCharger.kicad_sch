@@ -404,12 +404,12 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:Battery"
+		(symbol "Connector:TestPoint"
 			(pin_numbers
 				(hide yes)
 			)
 			(pin_names
-				(offset 0)
+				(offset 0.762)
 				(hide yes)
 			)
 			(exclude_from_sim no)
@@ -417,30 +417,28 @@
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "BT"
-				(at 2.54 2.54 0)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 				)
 			)
-			(property "Value" "Battery"
-				(at 2.54 0 0)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 				)
 			)
 			(property "Footprint" ""
-				(at 0 1.524 90)
+				(at 5.08 0 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -451,7 +449,7 @@
 				)
 			)
 			(property "Datasheet" ""
-				(at 0 1.524 90)
+				(at 5.08 0 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -461,7 +459,7 @@
 					)
 				)
 			)
-			(property "Description" "Multiple-cell battery"
+			(property "Description" "test point"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -472,7 +470,7 @@
 					)
 				)
 			)
-			(property "Sim.Device" "V"
+			(property "ki_keywords" "test point tp"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -483,7 +481,7 @@
 					)
 				)
 			)
-			(property "Sim.Type" "DC"
+			(property "ki_fp_filters" "Pin* Test*"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -494,139 +492,12 @@
 					)
 				)
 			)
-			(property "Sim.Pins" "1=+ 2=-"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "batt voltage-source cell"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "Battery_0_1"
-				(rectangle
-					(start -2.286 1.778)
-					(end 2.286 1.524)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
 					(stroke
 						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -2.286 -1.27)
-					(end 2.286 -1.524)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -1.524 1.016)
-					(end 1.524 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -1.524 -2.032)
-					(end 1.524 -2.54)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 1.778) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 0.254)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -0.508) (xy 0 -0.254)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -1.016) (xy 0 -0.762)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 3.048) (xy 1.778 3.048)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 3.556) (xy 1.27 2.54)
-					)
-					(stroke
-						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -634,11 +505,11 @@
 					)
 				)
 			)
-			(symbol "Battery_1_1"
+			(symbol "TestPoint_1_1"
 				(pin passive line
-					(at 0 5.08 270)
+					(at 0 0 90)
 					(length 2.54)
-					(name "+"
+					(name "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -646,24 +517,6 @@
 						)
 					)
 					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 90)
-					(length 2.54)
-					(name "-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2747,46 +2600,121 @@
 			)
 			(embedded_fonts no)
 		)
-	)
-	(text "@\n"
-		(exclude_from_sim no)
-		(at 130.81 84.582 0)
-		(effects
-			(font
-				(size 1.27 1.27)
+		(symbol "power:PWR_FLAG"
+			(power global)
+			(pin_numbers
+				(hide yes)
 			)
-		)
-		(uuid "38b837cf-d094-432b-9975-12cdc8e4eb27")
-	)
-	(text "5 finished"
-		(exclude_from_sim no)
-		(at 129.286 65.532 0)
-		(effects
-			(font
-				(size 1.27 1.27)
+			(pin_names
+				(offset 0)
+				(hide yes)
 			)
-		)
-		(uuid "45aa4b7b-ba52-48ca-afb9-ae61b72ad57d")
-	)
-	(text "uh bat -\n"
-		(exclude_from_sim no)
-		(at 274.574 139.446 0)
-		(effects
-			(font
-				(size 1.27 1.27)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
 			)
-		)
-		(uuid "4bd9122f-e5c6-47ae-8374-276869fb9bf5")
-	)
-	(text "need a hole here\n"
-		(exclude_from_sim no)
-		(at 125.73 68.834 0)
-		(effects
-			(font
-				(size 1.27 1.27)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
 			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
 		)
-		(uuid "565809c5-fb25-4942-a47e-8a48242b534c")
 	)
 	(text "need a hole here\n"
 		(exclude_from_sim no)
@@ -2798,79 +2726,29 @@
 		)
 		(uuid "5be34955-0cdc-44e6-a06a-2c4c54b6a9a3")
 	)
-	(text "need a hole here\n"
+	(text "Boost Converter that changes 3.7V to 5V\n"
 		(exclude_from_sim no)
-		(at 175.26 75.692 0)
+		(at 208.28 144.526 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 		)
-		(uuid "742bff20-c89e-4e95-ac9f-04565b8fede7")
+		(uuid "886f8b62-feca-49fe-8dd1-1bdb939dfaa6")
 	)
-	(text "pin that will lead to VBUS\n"
+	(text "this segment should just output 5v"
 		(exclude_from_sim no)
-		(at 192.786 94.234 0)
+		(at 193.04 91.186 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 		)
-		(uuid "9da2b462-9977-4f52-a7a1-a9071eba8ebb")
+		(uuid "aa862e70-d66b-47da-9426-6c29b535840e")
 	)
-	(text "need a hole here\n"
+	(text "Bat-"
 		(exclude_from_sim no)
-		(at 106.172 126.492 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "9e2a6760-464f-4940-a8d4-f6af5866af4d")
-	)
-	(text "@\n"
-		(exclude_from_sim no)
-		(at 132.588 72.136 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "a4b3dd4a-89e7-475c-a3ad-c35252aa90c3")
-	)
-	(text "need a hole here\n"
-		(exclude_from_sim no)
-		(at 187.198 69.596 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "b0c40994-4771-4c93-95a7-134475fc3ba5")
-	)
-	(text "need a hole here\n"
-		(exclude_from_sim no)
-		(at 189.23 97.79 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "c634a748-1bee-4dd2-9032-618f9acfe7aa")
-	)
-	(text "need a hole here\n"
-		(exclude_from_sim no)
-		(at 105.41 133.858 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "d22b469e-ade8-435e-bf40-971a388c6d35")
-	)
-	(text "Bat -"
-		(exclude_from_sim no)
-		(at 118.618 133.35 0)
+		(at 117.602 133.096 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2878,29 +2756,9 @@
 		)
 		(uuid "d6ca80ff-3948-4fec-81ff-762dc3d5aaad")
 	)
-	(text "need a hole here\n"
-		(exclude_from_sim no)
-		(at 124.46 79.248 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "ee0e27ef-ffec-449c-a6a3-b840517596d6")
-	)
-	(text "@ Pogo+\n\n"
-		(exclude_from_sim no)
-		(at 183.896 68.072 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "efeb6ce4-34ca-4286-a7fc-0efca6d3b9b3")
-	)
 	(text "Bat+\n"
 		(exclude_from_sim no)
-		(at 118.872 127 0)
+		(at 117.094 127.508 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2908,23 +2766,39 @@
 		)
 		(uuid "f85ce394-f409-42f1-96f6-eebe03b9388d")
 	)
-	(junction
-		(at 140.97 92.71)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "161fa5d9-fe48-4098-a34e-865c8b19ed36")
+	(text "Regulates 5V from Pogo and lights up when charging\n"
+		(exclude_from_sim no)
+		(at 114.554 76.454 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "fd39aae0-f7e1-4251-9d67-a070fe13afff")
 	)
 	(junction
-		(at 256.54 146.05)
+		(at 121.92 134.62)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "177c6278-812c-404b-a373-c06c0d98a766")
+		(uuid "130e41bf-77ea-48b4-a268-12525a6e4b89")
 	)
 	(junction
-		(at 149.86 92.71)
+		(at 121.92 124.46)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "21fafb94-97c5-4a61-bf86-539c875832bc")
+		(uuid "17612aa4-bc83-4293-bb18-69cb6b928ef4")
+	)
+	(junction
+		(at 175.26 64.77)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "17dd7963-308f-4ea5-b48c-c01dce149080")
+	)
+	(junction
+		(at 175.26 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1a777ac4-cd11-49fe-a709-a78b48946bea")
 	)
 	(junction
 		(at 165.1 64.77)
@@ -2939,6 +2813,12 @@
 		(uuid "41cf5665-d918-4b50-a3af-835abdd990a1")
 	)
 	(junction
+		(at 142.24 134.62)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "457a6b9f-0ce3-452f-be88-8786229e3060")
+	)
+	(junction
 		(at 246.38 146.05)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2951,10 +2831,22 @@
 		(uuid "48a01e2c-152a-4d7c-9433-83e75a074e50")
 	)
 	(junction
-		(at 121.92 124.46)
+		(at 133.35 124.46)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "491552ec-1f6c-4d38-b28d-6f4ebf0ac32b")
+		(uuid "4f0fa6e7-c8ef-4a86-8615-652695d8d0eb")
+	)
+	(junction
+		(at 142.24 124.46)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5bea249e-2965-4bc8-bee3-c8d66f8871ce")
+	)
+	(junction
+		(at 140.97 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "723a38ba-9fab-4582-8b69-c03a724a0d1f")
 	)
 	(junction
 		(at 133.35 134.62)
@@ -2969,16 +2861,10 @@
 		(uuid "9590d796-b950-44b8-8855-021774bded18")
 	)
 	(junction
-		(at 121.92 134.62)
+		(at 127 82.55)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "9947810d-767c-414b-be5b-3d88a2ac4f35")
-	)
-	(junction
-		(at 133.35 124.46)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9ab70b60-dd4e-47d2-ad01-1efcd988a648")
+		(uuid "99de68cb-9e74-4950-8255-5aa5eb82b2bc")
 	)
 	(junction
 		(at 256.54 119.38)
@@ -2999,16 +2885,40 @@
 		(uuid "b83a3f8d-1af2-4503-9e21-808d5ef79204")
 	)
 	(junction
+		(at 201.93 146.05)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "badf3f2f-a245-4f07-8d8b-e8b4174365f4")
+	)
+	(junction
 		(at 204.47 119.38)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "bc7c85bf-56e1-42de-b4bf-6368eb9399ac")
+		(uuid "c0032136-6d5c-421e-8f91-23abf35bd675")
 	)
 	(junction
-		(at 175.26 92.71)
+		(at 158.75 92.71)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "d39c5a20-5da1-4702-8920-532aae19e896")
+		(uuid "c90c9aa7-19d2-4827-a141-84e8dcec6174")
+	)
+	(junction
+		(at 121.92 116.84)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cb6d8b81-1ed7-4262-b239-eb670344b974")
+	)
+	(junction
+		(at 152.4 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "db4bb084-eb77-4b0f-a29b-7814a4e136eb")
+	)
+	(junction
+		(at 201.93 148.59)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "eb41b813-c841-4284-a0d3-5b9d9394c113")
 	)
 	(junction
 		(at 231.14 146.05)
@@ -3017,26 +2927,8 @@
 		(uuid "ffa27a33-16a2-4da7-94fb-2d497b6e1bae")
 	)
 	(no_connect
-		(at 179.07 99.06)
-		(uuid "2628e91c-e9fc-432d-9d35-32eef87bd1ed")
-	)
-	(no_connect
-		(at 184.15 64.77)
-		(uuid "4b1ec230-739b-42b0-bd26-275e1662caa7")
-	)
-	(no_connect
-		(at 273.05 137.16)
-		(uuid "95542c44-1393-4ccf-b1cb-e8817d872a2f")
-	)
-	(wire
-		(pts
-			(xy 140.97 92.71) (xy 149.86 92.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "06b25cc6-90d6-4ddd-bb6a-a001ee1da788")
+		(at 152.4 151.13)
+		(uuid "eb229f3a-5016-43b2-ba6d-ca1156cecd20")
 	)
 	(wire
 		(pts
@@ -3050,7 +2942,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 46.99) (xy 128.27 46.99)
+			(xy 116.84 62.23) (xy 128.27 62.23)
 		)
 		(stroke
 			(width 0)
@@ -3070,7 +2962,7 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 72.39) (xy 147.32 46.99)
+			(xy 147.32 72.39) (xy 147.32 62.23)
 		)
 		(stroke
 			(width 0)
@@ -3090,27 +2982,17 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 135.89) (xy 273.05 135.89)
+			(xy 175.26 64.77) (xy 184.15 64.77)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1f2b4932-482b-40ba-a978-0a6b1bf09eab")
+		(uuid "1f372825-32a3-486d-bc69-efdfab735c28")
 	)
 	(wire
 		(pts
-			(xy 121.92 99.06) (xy 140.97 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1fea04af-bc75-4ea3-83f9-1e0ea6fe0e3c")
-	)
-	(wire
-		(pts
-			(xy 123.19 82.55) (xy 130.81 82.55)
+			(xy 123.19 82.55) (xy 127 82.55)
 		)
 		(stroke
 			(width 0)
@@ -3127,6 +3009,16 @@
 			(type default)
 		)
 		(uuid "272d37e5-74c9-4b15-a924-913e55275c91")
+	)
+	(wire
+		(pts
+			(xy 158.75 92.71) (xy 165.1 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2bc3c86a-a2a0-435f-97c6-3687a0c90092")
 	)
 	(wire
 		(pts
@@ -3150,7 +3042,7 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 92.71) (xy 175.26 92.71)
+			(xy 172.72 92.71) (xy 175.26 92.71)
 		)
 		(stroke
 			(width 0)
@@ -3170,13 +3062,13 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 107.95) (xy 121.92 99.06)
+			(xy 127 74.93) (xy 127 82.55)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "31ef660b-f06e-4f1d-9a46-a451b87c75eb")
+		(uuid "33e10210-e7be-4c02-9f0b-8fac8cc89e2f")
 	)
 	(wire
 		(pts
@@ -3190,6 +3082,16 @@
 	)
 	(wire
 		(pts
+			(xy 140.97 92.71) (xy 142.24 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "35b74199-439a-41a8-b2f6-f7e5b62b2156")
+	)
+	(wire
+		(pts
 			(xy 166.37 132.08) (xy 166.37 134.62)
 		)
 		(stroke
@@ -3200,7 +3102,7 @@
 	)
 	(wire
 		(pts
-			(xy 135.89 46.99) (xy 147.32 46.99)
+			(xy 135.89 62.23) (xy 147.32 62.23)
 		)
 		(stroke
 			(width 0)
@@ -3220,7 +3122,7 @@
 	)
 	(wire
 		(pts
-			(xy 274.32 130.81) (xy 274.32 107.95)
+			(xy 275.59 130.81) (xy 275.59 110.49)
 		)
 		(stroke
 			(width 0)
@@ -3240,13 +3142,13 @@
 	)
 	(wire
 		(pts
-			(xy 273.05 135.89) (xy 273.05 137.16)
+			(xy 152.4 92.71) (xy 158.75 92.71)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3e6a3155-38c6-422f-980d-7f9a539e9afd")
+		(uuid "3e9c438e-8d1a-47c8-8c69-66c7dd0943be")
 	)
 	(wire
 		(pts
@@ -3260,7 +3162,7 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 119.38) (xy 196.85 119.38)
+			(xy 185.42 119.38) (xy 194.31 119.38)
 		)
 		(stroke
 			(width 0)
@@ -3270,7 +3172,17 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 134.62) (xy 146.05 134.62)
+			(xy 175.26 90.17) (xy 175.26 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "480d109d-830b-4dd8-8169-66fd79fa81db")
+	)
+	(wire
+		(pts
+			(xy 133.35 134.62) (xy 142.24 134.62)
 		)
 		(stroke
 			(width 0)
@@ -3287,6 +3199,26 @@
 			(type default)
 		)
 		(uuid "4e8c085c-332a-41f4-af75-e752d0c37db9")
+	)
+	(wire
+		(pts
+			(xy 201.93 119.38) (xy 204.47 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4fcca322-4554-4645-9809-76eecc772b6d")
+	)
+	(wire
+		(pts
+			(xy 152.4 92.71) (xy 152.4 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5003d639-5e6e-4852-854d-663b95b49349")
 	)
 	(wire
 		(pts
@@ -3320,6 +3252,16 @@
 	)
 	(wire
 		(pts
+			(xy 127 67.31) (xy 135.89 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5979832c-6094-4627-b2e9-3dfc9bb0b7c8")
+	)
+	(wire
+		(pts
 			(xy 185.42 132.08) (xy 173.99 132.08)
 		)
 		(stroke
@@ -3330,17 +3272,7 @@
 	)
 	(wire
 		(pts
-			(xy 256.54 146.05) (xy 266.7 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5d3fc7bc-00f2-41a0-ad72-2f46002de2ad")
-	)
-	(wire
-		(pts
-			(xy 121.92 124.46) (xy 123.19 124.46)
+			(xy 121.92 124.46) (xy 124.46 124.46)
 		)
 		(stroke
 			(width 0)
@@ -3360,7 +3292,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 92.71) (xy 116.84 46.99)
+			(xy 116.84 92.71) (xy 116.84 62.23)
 		)
 		(stroke
 			(width 0)
@@ -3410,7 +3342,7 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 124.46) (xy 146.05 124.46)
+			(xy 133.35 124.46) (xy 142.24 124.46)
 		)
 		(stroke
 			(width 0)
@@ -3450,16 +3382,6 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 92.71) (xy 140.97 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "84ca6094-804e-497a-ba32-c803ca5fd346")
-	)
-	(wire
-		(pts
 			(xy 124.46 92.71) (xy 135.89 92.71)
 		)
 		(stroke
@@ -3490,7 +3412,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 116.84) (xy 121.92 124.46)
+			(xy 121.92 99.06) (xy 121.92 116.84)
 		)
 		(stroke
 			(width 0)
@@ -3500,7 +3422,17 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 92.71) (xy 179.07 92.71)
+			(xy 127 82.55) (xy 130.81 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8beaeff0-c78f-431f-8d30-0b135b76e681")
+	)
+	(wire
+		(pts
+			(xy 175.26 92.71) (xy 205.74 92.71)
 		)
 		(stroke
 			(width 0)
@@ -3510,13 +3442,13 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 92.71) (xy 179.07 99.06)
+			(xy 142.24 134.62) (xy 146.05 134.62)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "8c2482a0-ce98-4141-bd69-c7a93a06af2a")
+		(uuid "8cf0963b-3021-4881-b678-a348017b148c")
 	)
 	(wire
 		(pts
@@ -3560,7 +3492,7 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 130.81) (xy 274.32 130.81)
+			(xy 266.7 130.81) (xy 275.59 130.81)
 		)
 		(stroke
 			(width 0)
@@ -3590,6 +3522,16 @@
 	)
 	(wire
 		(pts
+			(xy 135.89 67.31) (xy 135.89 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a64a2f45-9062-4935-87c5-a31227acbbf5")
+	)
+	(wire
+		(pts
 			(xy 153.67 64.77) (xy 165.1 64.77)
 		)
 		(stroke
@@ -3597,6 +3539,16 @@
 			(type default)
 		)
 		(uuid "a734d4e8-c6f7-485f-9da5-9c232a4567cc")
+	)
+	(wire
+		(pts
+			(xy 152.4 92.71) (xy 149.86 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a84dea31-d99e-4c54-9e9b-dc6faf8ca42b")
 	)
 	(wire
 		(pts
@@ -3640,7 +3592,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 81.28) (xy 175.26 92.71)
+			(xy 175.26 81.28) (xy 175.26 82.55)
 		)
 		(stroke
 			(width 0)
@@ -3650,23 +3602,43 @@
 	)
 	(wire
 		(pts
-			(xy 135.89 64.77) (xy 135.89 60.96)
+			(xy 201.93 148.59) (xy 201.93 152.4)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "ba4cd2b7-bf80-4be2-b692-89cacca87e29")
+		(uuid "b552c41d-7664-4956-b8c7-2fcbc9a4ad6c")
 	)
 	(wire
 		(pts
-			(xy 135.89 60.96) (xy 139.7 60.96)
+			(xy 142.24 124.46) (xy 146.05 124.46)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "c4a7ad92-a598-4e5c-9e8e-7c7f533b6a08")
+		(uuid "bf479fda-3b67-4ea6-b750-8bda2b81ff5e")
+	)
+	(wire
+		(pts
+			(xy 140.97 99.06) (xy 121.92 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c30b62c5-d816-49c5-9f73-b4300b5654e9")
+	)
+	(wire
+		(pts
+			(xy 201.93 146.05) (xy 231.14 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7b03e3a-9afe-48d3-871e-7debf2ffd86d")
 	)
 	(wire
 		(pts
@@ -3690,7 +3662,7 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 146.05) (xy 231.14 146.05)
+			(xy 185.42 146.05) (xy 201.93 146.05)
 		)
 		(stroke
 			(width 0)
@@ -3720,7 +3692,17 @@
 	)
 	(wire
 		(pts
-			(xy 274.32 107.95) (xy 121.92 107.95)
+			(xy 201.93 146.05) (xy 201.93 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d8d0ee52-3ec8-4470-8435-cfb2dfcbfc22")
+	)
+	(wire
+		(pts
+			(xy 275.59 110.49) (xy 152.4 110.49)
 		)
 		(stroke
 			(width 0)
@@ -3750,16 +3732,6 @@
 	)
 	(wire
 		(pts
-			(xy 149.86 92.71) (xy 160.02 92.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "edf70470-a2be-435e-8b48-f1fe8ab2c7a5")
-	)
-	(wire
-		(pts
 			(xy 153.67 81.28) (xy 175.26 81.28)
 		)
 		(stroke
@@ -3780,23 +3752,33 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 135.89) (xy 266.7 146.05)
+			(xy 121.92 116.84) (xy 121.92 124.46)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "efbc76dd-783a-4e19-81bd-223a534b8748")
+		(uuid "efcb9677-a144-41b5-a9f5-70a2125b7b35")
 	)
 	(wire
 		(pts
-			(xy 130.81 124.46) (xy 133.35 124.46)
+			(xy 132.08 124.46) (xy 133.35 124.46)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "f2d4451b-0193-4744-ad1f-fa664d6b0be4")
+	)
+	(wire
+		(pts
+			(xy 140.97 92.71) (xy 140.97 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6beaf8e-b436-49b2-9cb8-c7d1494a2d26")
 	)
 	(wire
 		(pts
@@ -3810,7 +3792,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 64.77) (xy 184.15 64.77)
+			(xy 165.1 64.77) (xy 175.26 64.77)
 		)
 		(stroke
 			(width 0)
@@ -3819,87 +3801,8 @@
 		(uuid "fe8ffabe-fcb3-4849-90e4-0359772afe5b")
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 139.7 60.96 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "02e8ebd1-2316-4351-85ea-ff5dc4af040c")
-		(property "Reference" "#PWR06"
-			(at 139.7 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 142.24 62.2299 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 139.7 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 139.7 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 139.7 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "8b6c1728-a3fe-4aec-9263-e12ff8e937ff")
-		)
-		(instances
-			(project "BatteryCharger"
-				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
-					(reference "#PWR06")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
-		(at 135.89 68.58 0)
+		(at 127 71.12 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3910,29 +3813,29 @@
 		(fields_autoplaced yes)
 		(uuid "08441ae7-8c00-49d7-881b-00d279133126")
 		(property "Reference" "R6"
-			(at 138.43 67.3099 0)
+			(at 129.54 69.8499 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "2k"
-			(at 138.43 69.8499 0)
+			(at 129.54 72.3899 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 134.112 68.58 90)
+			(at 128.778 71.12 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3943,7 +3846,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 135.89 68.58 0)
+			(at 127 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3954,7 +3857,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 135.89 68.58 0)
+			(at 127 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3974,6 +3877,164 @@
 			(project "BatteryCharger"
 				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
 					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 201.93 148.59 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0b090b45-9e0e-4ebc-aa47-d50c5ea43cc1")
+		(property "Reference" "GND1"
+			(at 204.216 151.13 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "B-"
+			(at 207.264 148.59 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 201.93 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 201.93 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 201.93 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4fa91f64-c61d-4198-b572-b59adfb0b69d")
+		)
+		(instances
+			(project "BatteryCharger"
+				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
+					(reference "GND1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:SS14")
+		(at 146.05 92.71 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1272f1c2-65be-42c1-8134-b38de8a536b8")
+		(property "Reference" "D4"
+			(at 146.3675 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SS14"
+			(at 146.3675 88.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMA"
+			(at 146.05 88.265 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/88746/ss12.pdf"
+			(at 146.05 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "40V 1A Schottky Diode, SMA"
+			(at 146.05 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e60b4e60-66ad-417d-aacb-3d6d16cfe18d")
+		)
+		(pin "2"
+			(uuid "e021c050-b53b-4752-b119-8306867944e0")
+		)
+		(instances
+			(project "BatteryCharger"
+				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
+					(reference "D4")
 					(unit 1)
 				)
 			)
@@ -4013,7 +4074,6 @@
 		)
 		(property "Footprint" ""
 			(at 218.44 134.62 0)
-			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4283,7 +4343,7 @@
 	)
 	(symbol
 		(lib_id "Diode:SS14")
-		(at 163.83 92.71 180)
+		(at 168.91 92.71 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4294,7 +4354,7 @@
 		(fields_autoplaced yes)
 		(uuid "33a59333-3b9e-4e57-83f0-36fbe6044441")
 		(property "Reference" "D3"
-			(at 164.1475 86.36 0)
+			(at 169.2275 86.36 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4304,7 +4364,7 @@
 			)
 		)
 		(property "Value" "SS14"
-			(at 164.1475 88.9 0)
+			(at 169.2275 88.9 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4314,7 +4374,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SMA"
-			(at 163.83 88.265 0)
+			(at 168.91 88.265 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4325,7 +4385,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.vishay.com/docs/88746/ss12.pdf"
-			(at 163.83 92.71 0)
+			(at 168.91 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4336,7 +4396,7 @@
 			)
 		)
 		(property "Description" "40V 1A Schottky Diode, SMA"
-			(at 163.83 92.71 0)
+			(at 168.91 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4356,84 +4416,6 @@
 			(project "BatteryCharger"
 				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
 					(reference "D3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 152.4 151.13 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "38cc9f50-53cf-45e9-9129-645a5f86c738")
-		(property "Reference" "#PWR02"
-			(at 152.4 157.48 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 152.4 156.21 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 152.4 151.13 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 152.4 151.13 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 152.4 151.13 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "be4ee466-70e1-4b39-b002-041c8361067b")
-		)
-		(instances
-			(project "BatteryCharger"
-				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
-					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -4520,6 +4502,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 142.24 134.62 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5ce64272-5f0f-45c3-82e5-f1609d5186d6")
+		(property "Reference" "#FLG03"
+			(at 142.24 136.525 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 147.32 138.43 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 142.24 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 142.24 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 142.24 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8c4e4861-7a31-4648-9bb4-4c0653a89989")
+		)
+		(instances
+			(project "BatteryCharger"
+				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
+					(reference "#FLG03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 123.19 82.55 0)
 		(unit 1)
@@ -4593,6 +4653,241 @@
 			(project "BatteryCharger"
 				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
 					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 142.24 124.46 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "79b58353-a4cf-42b3-9f89-d07172156e71")
+		(property "Reference" "#FLG01"
+			(at 142.24 122.555 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 137.16 120.65 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 142.24 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 142.24 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 142.24 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "68826852-8e75-430b-9a29-8936fb611590")
+		)
+		(instances
+			(project "BatteryCharger"
+				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
+					(reference "#FLG01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 201.93 152.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "873bf51b-ac73-4601-baf3-cbfcacf7ab56")
+		(property "Reference" "#PWR02"
+			(at 201.93 158.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 201.93 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 201.93 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 201.93 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 201.93 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0988c844-2ac5-4634-a181-852da14581de")
+		)
+		(instances
+			(project "BatteryCharger"
+				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
+					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 184.15 64.77 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8a457387-0d92-4bb9-bc69-7e91d7877b15")
+		(property "Reference" "Pogo+1"
+			(at 189.23 63.4999 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Pogo+"
+			(at 189.23 66.0399 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 184.15 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 184.15 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 184.15 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "99e7f274-e7f7-4ea3-a278-ce2b5aabe2a2")
+		)
+		(instances
+			(project "BatteryCharger"
+				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
+					(reference "Pogo+1")
 					(unit 1)
 				)
 			)
@@ -4682,7 +4977,7 @@
 	)
 	(symbol
 		(lib_id "Device:L")
-		(at 200.66 119.38 90)
+		(at 198.12 119.38 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4693,7 +4988,7 @@
 		(fields_autoplaced yes)
 		(uuid "90db05a2-983b-4e80-add4-52140d4cca6b")
 		(property "Reference" "L1"
-			(at 200.66 114.3 90)
+			(at 198.12 114.3 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4703,7 +4998,7 @@
 			)
 		)
 		(property "Value" "22"
-			(at 200.66 116.84 90)
+			(at 198.12 116.84 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4713,7 +5008,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 200.66 119.38 0)
+			(at 198.12 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4724,7 +5019,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 200.66 119.38 0)
+			(at 198.12 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4735,7 +5030,7 @@
 			)
 		)
 		(property "Description" "Inductor"
-			(at 200.66 119.38 0)
+			(at 198.12 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4853,121 +5148,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Battery")
-		(at 121.92 129.54 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9db24f02-8266-4c45-a525-c019d3138ec8")
-		(property "Reference" "BT1"
-			(at 125.73 127.6984 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Battery"
-			(at 125.73 130.2384 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 121.92 128.016 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 121.92 128.016 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Multiple-cell battery"
-			(at 121.92 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "V"
-			(at 121.92 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Type" "DC"
-			(at 121.92 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=+ 2=-"
-			(at 121.92 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "fd6ec933-0c69-4873-a7fb-e5ce69bf28e9")
-		)
-		(pin "1"
-			(uuid "7bbd4685-3bd7-4e9f-9528-ccc2c2b40034")
-		)
-		(instances
-			(project "BatteryCharger"
-				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
-					(reference "BT1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 165.1 72.39 0)
 		(unit 1)
@@ -5046,8 +5226,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:LED")
-		(at 132.08 46.99 0)
+		(lib_id "power:PWR_FLAG")
+		(at 175.26 64.77 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5055,10 +5235,10 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a12feebb-10e3-40b4-aa8d-c58e37f27260")
-		(property "Reference" "D1"
-			(at 130.4925 40.64 0)
+		(uuid "9fe45bb7-9049-47cb-8a9b-e2b6934c2155")
+		(property "Reference" "#FLG02"
+			(at 175.26 62.865 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5067,18 +5247,19 @@
 				)
 			)
 		)
-		(property "Value" "LED"
-			(at 130.4925 43.18 0)
+		(property "Value" "PWR_FLAG"
+			(at 170.688 60.706 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
-			(at 132.08 46.99 0)
+			(at 175.26 64.77 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5089,7 +5270,84 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 132.08 46.99 0)
+			(at 175.26 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 175.26 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e74c20a8-1eda-4ba8-bf74-52b823770cb1")
+		)
+		(instances
+			(project "BatteryCharger"
+				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
+					(reference "#FLG02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 132.08 62.23 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a12feebb-10e3-40b4-aa8d-c58e37f27260")
+		(property "Reference" "D1"
+			(at 130.4925 55.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 130.4925 58.42 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 132.08 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 132.08 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5100,7 +5358,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 132.08 46.99 0)
+			(at 132.08 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5111,7 +5369,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 132.08 46.99 0)
+			(at 132.08 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5131,6 +5389,84 @@
 			(project "BatteryCharger"
 				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
 					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 121.92 134.62 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a5b63d70-5d38-45c6-9bc3-ad84571924ec")
+		(property "Reference" "B-1"
+			(at 123.952 131.318 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "B-"
+			(at 123.952 133.096 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 127 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 121.92 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e97a6383-af2b-43b0-935f-a65b64646185")
+		)
+		(instances
+			(project "BatteryCharger"
+				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
+					(reference "B-1")
 					(unit 1)
 				)
 			)
@@ -5301,6 +5637,163 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 205.74 92.71 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cb0a158e-00c1-442f-a717-c7c5c135c8fc")
+		(property "Reference" "VBUS1"
+			(at 210.82 91.4399 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Output 5V"
+			(at 210.82 93.9799 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 205.74 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 205.74 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 205.74 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a04837da-0bf4-433c-9d3b-135a867a5f1d")
+		)
+		(instances
+			(project "BatteryCharger"
+				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
+					(reference "VBUS1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 121.92 124.46 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cb6943a8-f3d6-405b-a61b-93cb8f507a4a")
+		(property "Reference" "B+1"
+			(at 123.444 126.746 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "B+"
+			(at 123.444 128.778 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 116.84 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 116.84 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 121.92 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "962dc481-9f7b-497a-8dfd-91080b8265b1")
+		)
+		(instances
+			(project "BatteryCharger"
+				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
+					(reference "B+1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 199.39 137.16 0)
 		(unit 1)
@@ -5380,7 +5873,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 149.86 96.52 0)
+		(at 158.75 96.52 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5391,7 +5884,7 @@
 		(fields_autoplaced yes)
 		(uuid "d786df10-93e4-482a-bb5c-2d12ee9b619d")
 		(property "Reference" "C3"
-			(at 153.67 95.2499 0)
+			(at 162.56 95.2499 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5402,7 +5895,7 @@
 			)
 		)
 		(property "Value" "4.7"
-			(at 153.67 97.7899 0)
+			(at 162.56 97.7899 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5413,7 +5906,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 150.8252 100.33 0)
+			(at 159.7152 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5424,7 +5917,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 149.86 96.52 0)
+			(at 158.75 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5435,7 +5928,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 149.86 96.52 0)
+			(at 158.75 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5498,7 +5991,7 @@
 		(property "Footprint" ""
 			(at 152.4 146.05 0)
 			(hide yes)
-			(show_name no)
+			(show_name yes)
 			(do_not_autoplace no)
 			(effects
 				(font
@@ -5693,6 +6186,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Diode:SS14")
+		(at 175.26 86.36 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "de527f0b-b513-4c7a-900f-bcd062bf3aa4")
+		(property "Reference" "D5"
+			(at 177.8 85.4074 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "SS14"
+			(at 177.8 87.9474 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMA"
+			(at 179.705 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/88746/ss12.pdf"
+			(at 175.26 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "40V 1A Schottky Diode, SMA"
+			(at 175.26 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c2235e2e-76f3-45a3-ac6f-eee3798d46ee")
+		)
+		(pin "2"
+			(uuid "cc936ef3-65bb-47cf-a2ae-a0daf5e66b2b")
+		)
+		(instances
+			(project "BatteryCharger"
+				(path "/1310c6ff-6c5c-4de7-bda7-7aee2898330d"
+					(reference "D5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Battery_Management:MCP73831-2-OT")
 		(at 138.43 82.55 270)
 		(unit 1)
@@ -5704,7 +6279,7 @@
 		(dnp no)
 		(uuid "e29f5e90-b505-45fb-8526-2255c576b747")
 		(property "Reference" "U3"
-			(at 124.968 73.152 90)
+			(at 142.748 71.374 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5714,7 +6289,7 @@
 			)
 		)
 		(property "Value" "MCP73831"
-			(at 125.222 75.946 90)
+			(at 142.24 73.66 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5864,7 +6439,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 127 124.46 90)
+		(at 128.27 124.46 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5875,7 +6450,7 @@
 		(fields_autoplaced yes)
 		(uuid "f43ffb66-52bf-4c73-b144-7d7bf838976a")
 		(property "Reference" "R8"
-			(at 127 118.11 90)
+			(at 128.27 118.11 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5885,7 +6460,7 @@
 			)
 		)
 		(property "Value" "100"
-			(at 127 120.65 90)
+			(at 128.27 120.65 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5895,7 +6470,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 127 126.238 90)
+			(at 128.27 126.238 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5906,7 +6481,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 127 124.46 0)
+			(at 128.27 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5917,7 +6492,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 127 124.46 0)
+			(at 128.27 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6026,7 +6601,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 149.86 100.33 0)
+		(at 158.75 100.33 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6036,7 +6611,7 @@
 		(dnp no)
 		(uuid "fcf2d778-94c2-44c8-a285-9ac9a161f927")
 		(property "Reference" "#PWR011"
-			(at 149.86 106.68 0)
+			(at 158.75 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6047,7 +6622,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 150.114 105.156 0)
+			(at 159.004 105.156 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6057,7 +6632,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 149.86 100.33 0)
+			(at 158.75 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6068,7 +6643,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 149.86 100.33 0)
+			(at 158.75 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6079,7 +6654,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 149.86 100.33 0)
+			(at 158.75 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
