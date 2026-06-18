@@ -635,7 +635,7 @@
         "uuid": "d8b599cf-9000-48cc-8766-23db3ea4ae91"
       }
     ],
-    "used_designators": "T_DO1,3.3V_LCD1,TBD5,D+_C1,RS1,5V1,D\\-_C1,5V_C1,CS1,D+_Pogo1,D\\-_Pogo1,GROUND1,GROUND_C1,LED1,GROUND_LCD1,SCK1,SDI1,SDO1,U1,T_CLK1,T_DIN1,#PWR1-2",
+    "used_designators": "",
     "variants": []
   },
   "sheets": [
