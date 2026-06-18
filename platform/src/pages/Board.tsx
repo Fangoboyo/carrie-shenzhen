@@ -56,7 +56,7 @@ export default function Board() {
               <iframe 
                 width="100%" 
                 height="100%" 
-                src={`https://www.youtube.com/embed/${vid.youtubeId}`} 
+                src={`https://www.youtube-nocookie.com/embed/${vid.youtubeId}`} 
                 title={vid.title} 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

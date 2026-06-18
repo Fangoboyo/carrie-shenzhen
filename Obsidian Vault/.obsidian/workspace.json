@@ -12,14 +12,17 @@
             "id": "ad92ae7a9d2be98e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Materials/POGO Pin - Arrived.md",
-                "mode": "source",
-                "source": false
+                "file": "Technical overview.canvas",
+                "viewState": {
+                  "x": 220.75825033633967,
+                  "y": -123.28891312414217,
+                  "zoom": -0.9696449470340625
+                }
               },
-              "icon": "lucide-file",
-              "title": "POGO Pin - Arrived"
+              "icon": "lucide-layout-dashboard",
+              "title": "Technical overview"
             }
           }
         ]
@@ -207,10 +210,13 @@
   },
   "active": "ad92ae7a9d2be98e",
   "lastOpenFiles": [
+    "Planning before 6-7.md",
+    "Materials/POGO Pin - Arrived.md",
+    "Materials/Microphone - Arrived.md",
+    "Materials/LCD Display (Touchscreen) - Arrived.md",
     "software/firmware/Display Driver.md",
     "software/firmware/GPIO Read Mechanism.md",
     "Technical overview.canvas",
-    "Planning before 6-7.md",
     "Fabrication.md",
     "Carrie Construction.md",
     "Bill of Materials.md",
@@ -233,12 +239,9 @@
     "Materials/images/Pasted image 20260604230423.png",
     "Materials/BMS/Battery Management System.md",
     "Materials/BMS",
-    "Materials/POGO Pin - Arrived.md",
     "software/firmware",
     "software",
     "software/web platform",
-    "Materials/Microphone - Arrived.md",
-    "Materials/LCD Display (Touchscreen) - Arrived.md",
     "Materials/ESP32 - Arrived.md",
     "Materials/images/Pasted image 20260603162729.png",
     "software/firmware/Recording mechanism.md",

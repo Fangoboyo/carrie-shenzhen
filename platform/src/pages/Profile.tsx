@@ -1,48 +1,51 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BookComponentMarquee } from "../components/BookScroller";
-import { BookComponent } from "../components/BookComponent";
 import { pb } from "../lib/pocketbase";
-import type { PageRecord } from "../types/BookComponentTypes";
-import "../styles/dashboard.css";
-import "../styles/scrapbook.css";
-import {
-  Home,
-  Upload,
-  BookOpen,
-  Settings,
-  Tag,
-  LogOut,
-  Search,
-  Mail,
-  Bell,
-  Play,
-  X,
-  Heart
-} from "lucide-react";
+import type { PageRecord, BookRecord } from "../types/BookComponentTypes";
+
+import { Sidebar }         from "../components/profile/Sidebar";
+import { Topbar }          from "../components/profile/Topbar";
+import { UploadTab }       from "../components/profile/UploadTab";
+import { SelectedBook }    from "../components/profile/SelectedBook";
+import { MemoryShelf }     from "../components/profile/MemoryShelf";
+import { PageListSection } from "../components/profile/PagesList";
+import { VideoModal }      from "../components/profile/VideoModal";
 
 export default function Profile() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"home" | "upload">("home");
   const [pages, setPages] = useState<PageRecord[]>([]);
+  const [books, setBooks] = useState<BookRecord[]>([]);
+  const [selectedBookId, setSelectedBookId] = useState<string | null>(null);
+  const [currentPageIndex, setCurrentPageIndex] = useState<number>(0);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!pb.authStore.isValid) {
-      navigate("/");
-      return;
-    }
+    if (!pb.authStore.isValid) { navigate("/"); return; }
     loadPages();
+    loadBooks();
   }, [navigate]);
+
+  const loadBooks = async () => {
+    try {
+      const records = await pb.collection("books").getFullList<BookRecord>({
+        sort: "-created", requestKey: null,
+      });
+      setBooks(records);
+      if (records.length > 0) setSelectedBookId(records[0].id);
+    } catch (err: any) {
+      if (err.isAbort) return;
+      console.error("Failed to load books", err);
+    }
+  };
 
   const loadPages = async () => {
     try {
       const records = await pb.collection("pages").getFullList<PageRecord>({
-        sort: "book,order",
-        requestKey: null,
+        sort: "book,order", requestKey: null,
       });
       setPages(records);
     } catch (err: any) {
@@ -51,35 +54,51 @@ export default function Profile() {
     }
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  const handleCreateBook = async (payload: {
+    title: string; subtitle: string; coverFile: File | null;
+  }) => {
+    const formData = new FormData();
+    formData.append("title", payload.title);
+    if (payload.subtitle) formData.append("subtitle", payload.subtitle);
+    if (payload.coverFile) formData.append("cover", payload.coverFile);
+    formData.append("owner", pb.authStore.model?.id ?? "");
 
-    const token = localStorage.getItem("youtubeAccessToken");
-    if (!token) {
-      alert("Missing YouTube access token. Please log out and log in again.");
-      return;
-    }
-
+    setIsUploading(true);
+    setUploadProgress("Creating book…");
     try {
-      setIsUploading(true);
-      setUploadProgress("Preparing upload...");
-      console.log("Token: upload started");
+      await pb.collection("books").create(formData);
+      setUploadProgress("Book created!");
+      setTimeout(() => setUploadProgress(""), 2000);
+      loadBooks();
+    } catch (err: any) {
+      console.error(err);
+      throw new Error(err.message || "Failed to create book.");
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const handlePageUpload = async (payload: {
+    videoFile: File; title: string; description: string; bookId: string; order: string;
+  }) => {
+    const token = localStorage.getItem("youtubeAccessToken");
+    if (!token) throw new Error("Missing YouTube access token. Please log out and log in again.");
+
+    setIsUploading(true);
+    try {
+      setUploadProgress("Preparing upload…");
 
       const metadata = {
         snippet: {
-          title: file.name,
-          description: "Uploaded via Scrapbook App",
+          title: payload.title,
+          description: payload.description || "Uploaded via Scrapbook App",
           tags: ["scrapbook"],
           categoryId: "22",
         },
-        status: {
-          privacyStatus: "unlisted",
-        },
+        status: { privacyStatus: "unlisted" },
       };
 
-      setUploadProgress("Initiating YouTube upload session...");
-
+      setUploadProgress("Initiating YouTube upload session…");
       const sessionResponse = await fetch(
         "https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status",
         {
@@ -93,53 +112,41 @@ export default function Profile() {
       );
 
       if (!sessionResponse.ok) {
-        throw new Error(
-          "Failed to initiate YouTube upload session: " +
-            (await sessionResponse.text()),
-        );
+        throw new Error("Failed to initiate YouTube upload session: " + (await sessionResponse.text()));
       }
 
       const uploadUrl = sessionResponse.headers.get("Location");
-      if (!uploadUrl) {
-        throw new Error(
-          "Location header not found in the upload session response.",
-        );
-      }
+      if (!uploadUrl) throw new Error("Location header not found in the upload session response.");
 
-      setUploadProgress("Uploading to YouTube...");
-
+      setUploadProgress("Uploading to YouTube…");
       const uploadResponse = await fetch(uploadUrl, {
         method: "PUT",
-        headers: {
-          "Content-Type": file.type || "video/mp4",
-        },
-        body: file,
+        headers: { "Content-Type": payload.videoFile.type || "video/mp4" },
+        body: payload.videoFile,
       });
 
-      if (!uploadResponse.ok) {
-        throw new Error(
-          "YouTube upload failed: " + (await uploadResponse.text()),
-        );
-      }
+      if (!uploadResponse.ok) throw new Error("YouTube upload failed: " + (await uploadResponse.text()));
 
       const data = await uploadResponse.json();
       const youtubeId = data.id;
 
-      setUploadProgress("Saving to notebook...");
+      setUploadProgress("Saving to notebook…");
+      const pageData: Record<string, any> = {
+        title: payload.title, youtubeId, user: pb.authStore.model?.id,
+      };
+      if (payload.description) pageData.description = payload.description;
+      if (payload.bookId) {
+        pageData.book = payload.bookId;
+        if (payload.order !== "") pageData.order = parseInt(payload.order, 10);
+      }
 
-      await pb.collection("pages").create({
-        title: file.name,
-        youtubeId: youtubeId,
-        user: pb.authStore.model?.id,
-      });
-
+      await pb.collection("pages").create(pageData);
       setUploadProgress("Upload complete!");
       setTimeout(() => setUploadProgress(""), 2000);
       loadPages();
     } catch (err: any) {
       console.error(err);
-      alert(err.message || "Error uploading video.");
-      setUploadProgress("");
+      throw new Error(err.message || "Error uploading video.");
     } finally {
       setIsUploading(false);
     }
@@ -152,280 +159,74 @@ export default function Profile() {
   };
 
   const filteredPages = pages.filter((page) =>
-    page.title.toLowerCase().includes(searchQuery.toLowerCase())
+    page.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
+  const selectedBook = books.find((b) => b.id === selectedBookId) || null;
+
+  // Pages are flat-fetched; filter in-memory per canonical pattern in AI_MEMORY.md
+  const selectedBookPages = pages
+    .filter((p) => p.book === selectedBookId)
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+
   return (
-    <div className="dashboard-viewport">
-      <div className="dashboard-app">
-        {/* --- Navigation Sidebar --- */}
-        <div className="dashboard-sidebar">
-          <div className="sidebar-nav-group">
-            <div className="sidebar-logo" onClick={() => setActiveTab("home")}>
-              S
-            </div>
-            
-            <button
-              className={`sidebar-btn ${activeTab === "home" ? "active" : ""}`}
-              onClick={() => setActiveTab("home")}
-              title="Dashboard"
-            >
-              <Home size={20} />
-            </button>
-            
-            <button
-              className={`sidebar-btn ${activeTab === "upload" ? "active" : ""}`}
-              onClick={() => setActiveTab("upload")}
-              title="Upload Memory"
-            >
-              <Upload size={20} />
-            </button>
-            
-            <button className="sidebar-btn" title="Memories Grid" onClick={() => setActiveTab("home")}>
-              <BookOpen size={20} />
-            </button>
-            
-            <button className="sidebar-btn" title="Categories">
-              <Tag size={20} />
-            </button>
+    /* Viewport: beige grid-dot background */
+    <div className="min-h-screen bg-db-bg-dark bg-grid-dots flex justify-center items-center p-6 box-border">
 
-            <button className="sidebar-btn" title="Settings">
-              <Settings size={20} />
-            </button>
-          </div>
+      {/* App shell */}
+      <div className="w-full max-w-[1280px] h-[860px] bg-db-app-bg border-2 border-db-border rounded-[28px] shadow-[0_15px_35px_rgba(43,39,35,0.15),0_5px_15px_rgba(43,39,35,0.1)] flex overflow-hidden relative">
 
-          <button
-            className="sidebar-btn sidebar-btn-bottom"
-            onClick={logout}
-            title="Log Out"
-          >
-            <LogOut size={20} />
-          </button>
-        </div>
+        <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} onLogout={logout} />
 
-        {/* --- Main Area --- */}
-        <div className="dashboard-main">
-          {/* Topbar */}
-          <div className="dashboard-topbar">
-            <div className="topbar-logo">SCRAPBOOK2D</div>
-            
-            <div className="topbar-search-container">
-              <Search size={18} className="topbar-search-icon" />
-              <input
-                type="text"
-                placeholder="Search for memories, titles..."
-                className="topbar-search-input"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <Topbar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            userEmail={pb.authStore.model?.email}
+            userName={pb.authStore.model?.name}
+          />
 
-            <div className="topbar-actions">
-              <button className="topbar-icon-btn" title="Messages">
-                <Mail size={18} />
-              </button>
-              <button className="topbar-icon-btn" title="Notifications">
-                <Bell size={18} />
-              </button>
-              <div className="topbar-avatar" title={pb.authStore.model?.email}>
-                {pb.authStore.model?.name?.slice(0, 2).toUpperCase() || 
-                 pb.authStore.model?.email?.slice(0, 2).toUpperCase() || 
-                 "US"}
-              </div>
-            </div>
-          </div>
-
-          {/* Tab Content */}
           {activeTab === "upload" ? (
-            <div className="upload-tab-container">
-              <div className="upload-paper-wrapper">
-                <div className="notebook-paper">
-                  <h2 style={{ marginTop: 0 }}>Add New Memories</h2>
-                  <p>Welcome, {pb.authStore.model?.name || pb.authStore.model?.email}!</p>
-                  <p>
-                    Select a video file to upload directly to YouTube. Once completed, 
-                    the moment will be automatically cataloged and linked as a playable page.
-                  </p>
-
-                  <div
-                    style={{
-                      marginTop: "40px",
-                      padding: "40px 20px",
-                      border: "2px dashed var(--accent)",
-                      borderRadius: "12px",
-                      textAlign: "center",
-                      backgroundColor: "rgba(190, 74, 42, 0.03)"
-                    }}
-                  >
-                    <label
-                      className="btn-stamp"
-                      style={{ cursor: isUploading ? "not-allowed" : "pointer" }}
-                    >
-                      {isUploading ? uploadProgress : "Choose Video to Upload"}
-                      <input
-                        type="file"
-                        accept="video/*"
-                        style={{ display: "none" }}
-                        onChange={handleFileUpload}
-                        disabled={isUploading}
-                      />
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <UploadTab
+              books={books}
+              isUploading={isUploading}
+              uploadProgress={uploadProgress}
+              onCreateBook={handleCreateBook}
+              onPageUpload={handlePageUpload}
+              userEmail={pb.authStore.model?.email}
+              userName={pb.authStore.model?.name}
+            />
           ) : (
-            <div className="dashboard-content-body">
-              {/* Left Column: Featured Player */}
-              <div className="dashboard-player-column">
-                <div className="player-book-container">
-                  {/* Render the original BookComponent with hover animation */}
-                  <BookComponent />
-                </div>
+            /* Content body: player + right column */
+            <div className="flex-1 flex p-6 gap-6 overflow-hidden">
+              <SelectedBook
+                book={selectedBook}
+                pages={selectedBookPages}
+                currentPageIndex={currentPageIndex}
+                onPageChange={setCurrentPageIndex}
+              />
 
-                <div className="player-book-info">
-                  <div className="player-title-row">
-                    <h2 className="player-book-title" style={{ fontSize: "1.8rem" }}>
-                      Featured Album
-                    </h2>
-                    <div className="player-favorites-badge">
-                      <Heart size={14} fill="var(--db-accent-color)" stroke="var(--db-accent-color)" />
-                      <span>{12 + (pages.length * 3)}</span>
-                    </div>
-                  </div>
-                  <div className="player-book-subtitle" style={{ fontSize: "0.75rem", padding: "2px 6px" }}>
-                    Hover book to flip pages
-                  </div>
-
-                  {/* Waveform Progress Visualizer */}
-                  <div className="player-progress-section" style={{ marginTop: "8px", marginBottom: "12px" }}>
-                    <span className="progress-time">01:00</span>
-                    <div className="player-waveform-container">
-                      {Array.from({ length: 24 }).map((_, idx) => {
-                        const isActive = idx < 12;
-                        const heights = [16, 24, 32, 28, 20, 24, 28, 16, 20, 32, 24, 28, 16, 20, 32, 28, 24, 20, 16, 24, 32, 28, 20, 24];
-                        const height = heights[idx % heights.length];
-                        return (
-                          <div
-                            key={idx}
-                            className={`waveform-bar ${isActive ? "active" : ""}`}
-                            style={{ height: `${height}px` }}
-                          />
-                        );
-                      })}
-                    </div>
-                    <span className="progress-time">03:35</span>
-                  </div>
-
-                  {/* Visual info showing instructions */}
-                  <div style={{ fontSize: "0.85rem", color: "var(--db-text-secondary)", textAlign: "center", fontStyle: "italic" }}>
-                    Hover book to watch it swing open and turn pages!
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column: Library & Playlist */}
-              <div className="dashboard-content-column">
-                {/* Book Carousel Section using original BookComponentMarquee */}
-                <div className="categories-shelf-container" style={{ maxHeight: "290px", overflow: "hidden" }}>
-                  <div className="shelf-title-row">
-                    <h3 className="shelf-title">Memory Shelf</h3>
-                  </div>
-                  
-                  <div style={{ marginTop: "-20px" }}>
-                    <BookComponentMarquee />
-                  </div>
-                </div>
-
-                {/* Playlist section */}
-                <div className="playlist-section-container">
-                  <h3 className="playlist-section-title">
-                    Favorite Memories ({filteredPages.length})
-                  </h3>
-
-                  <div className="playlist-items-list scrollbar-hide">
-                    {filteredPages.map((page, idx) => (
-                      <div
-                        key={page.id}
-                        className="playlist-item-card"
-                        onClick={() => setPlayingVideoId(page.youtubeId)}
-                      >
-                        <div className="playlist-item-left">
-                          <div className="playlist-item-thumb">
-                            <img
-                              src={`https://img.youtube.com/vi/${page.youtubeId}/0.jpg`}
-                              alt={page.title}
-                              onError={(e) => {
-                                (e.target as HTMLElement).style.display = "none";
-                              }}
-                            />
-                            <BookOpen size={16} style={{ color: "var(--db-text-secondary)" }} />
-                          </div>
-                          
-                          <div className="playlist-item-details">
-                            <span className="playlist-item-title">{page.title}</span>
-                            <span className="playlist-item-desc">
-                              Page {idx + 1} • Linked to YouTube
-                            </span>
-                          </div>
-                        </div>
-
-                        <button
-                          className="playlist-item-play-btn"
-                          title="Play Moment"
-                        >
-                          <Play size={14} fill="currentColor" style={{ marginLeft: "1px" }} />
-                        </button>
-                      </div>
-                    ))}
-
-                    {filteredPages.length === 0 && (
-                      <div
-                        style={{
-                          textAlign: "center",
-                          padding: "40px",
-                          color: "var(--db-text-secondary)",
-                          fontFamily: "'Caveat', cursive",
-                          fontSize: "1.4rem",
-                        }}
-                      >
-                        No active moments found...
-                      </div>
-                    )}
-                  </div>
-                </div>
+              <div className="flex-1 flex flex-col gap-6 overflow-hidden">
+                <MemoryShelf
+                  books={books}
+                  pages={pages}
+                  selectedBookId={selectedBookId}
+                  onBookClick={(bookId) => {
+                    setSelectedBookId(bookId);
+                    setCurrentPageIndex(0);
+                  }}
+                />
+                <PageListSection
+                  filteredPages={filteredPages}
+                  onPlay={setPlayingVideoId}
+                />
               </div>
             </div>
           )}
         </div>
       </div>
 
-      {/* --- Video Modal Player Overlay --- */}
-      {playingVideoId && (
-        <div className="modal-backdrop" onClick={() => setPlayingVideoId(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={() => setPlayingVideoId(null)}>
-              <X size={16} />
-            </button>
-            <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
-              <iframe
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  border: "none",
-                }}
-                src={`https://www.youtube.com/embed/${playingVideoId}?autoplay=1`}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      )}
+      <VideoModal playingVideoId={playingVideoId} onClose={() => setPlayingVideoId(null)} />
     </div>
   );
 }

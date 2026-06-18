@@ -21,6 +21,8 @@ export interface PageRecord {
   id: string;
   title: string;
   youtubeId: string;
+  /** Optional description for this memory page. */
+  description?: string;
   user: string;
   /** ID of the parent book this page belongs to. */
   book?: string;
@@ -34,10 +36,11 @@ export interface PageRecord {
 // BookComponent UI Types
 // ---------------------------------------------------------------------------
 
-/** A single page rendered inside the 3D book component. */
-export interface BookPageData {
+/** Props representing a single page's content and thumbnail. */
+export interface PageComponentProps {
   title: string;
-  content: string;
+  content?: string;
+  thumbnailUrl?: string;
 }
 
 /** Props for the 3D BookComponent. */
@@ -46,7 +49,7 @@ export interface BookComponentProps {
   subtitle?: string;
   /** Full resolved URL for the cover image (from pb.files.getUrl). */
   coverUrl?: string;
-  pages?: BookPageData[];
+  pages?: PageComponentProps[];
   coverColor?: string;
   accentColor?: string;
   onClick?: () => void;

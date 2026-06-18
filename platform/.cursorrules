@@ -18,7 +18,8 @@ The project is a **React + TypeScript landing page and sharing platform** backed
 ## 🎨 2. THE DESIGN SYSTEM: BEIGE SCRAPBOOK AESTHETIC
 Aesthetics are critical. The design must feel warm, analog, premium, tactile, and highly responsive.
 > [!IMPORTANT]
-> **No Tailwind CSS.** All styles must be built using Vanilla CSS for maximum flexibility and control.
+> **Tailwind CSS v4** is now the styling layer (installed via `@tailwindcss/vite`). Custom design tokens live in `@theme` inside `src/index.css`.
+> **Exceptions**: GSAP 3D book structural styles → `src/styles/book3d.css`. CSS keyframe animations (marquee, spin) → `src/styles/animations.css`.
 > **No Generic Colors or Placeholders.** Use curated HSL palettes and dynamic assets generated via image tools.
 
 ### Visual Elements:
@@ -45,33 +46,47 @@ Aesthetics are critical. The design must feel warm, analog, premium, tactile, an
 
 ---
 
-## ⚠️ 4. THE ACTIVE ISSUE: BOOKCOMPONENT PAGE-TURN TIMINGS & SEAMLESS LOOPING
-The Google OAuth2 login flow has been successfully resolved. Our active engineering focus is now on the `BookComponent` animation quality.
+## ⚠️ 4. THE ACTIVE ISSUE: DATA STRUCTURE — PAGES RETRIEVAL
 
-### Current Bug / Problem:
-When the scrapbook cover is opened, the continuous page-turn looping animation fails to feel seamless. The timings, delays, and snapbacks are not aligned correctly, causing visible visual glitches (pages clipping or disappearing unexpectedly, or the transition ending abruptly instead of flowing organically).
+### Problem
+PocketBase does **not** back-point `Books` to `Pages`. `BookRecord` has no `pages` field. The relation is **forward-only**: each `PageRecord` has an optional `book` field (the parent book ID). Accessing `book.pages` in any component is always wrong — it will be `undefined`.
 
-### Proposed Timing and Depth (Z-index) Keyframe Model:
-To create a truly organic, endless "page-deck carousel" with only two active looping pages (Page 0 and Page 1) and one static page (Page 2), we must implement a symmetric phase offset:
-- **Phase Offset**: Page 1 runs the exact same keyframes as Page 0 but shifted by exactly `0.5` (50%) of the cycle duration.
-- **Keyframes (Symmetric 0.0 to 1.0 Cycle)**:
-  - `0.0` to `0.1`: Page rests on the right.
-  - `0.1` to `0.5`: The Page Turns! Sweeps from `rotateY: 0` to `rotateY: -150`.
-  - `0.5` to `0.8`: Page rests on the left side (fully visible with `opacity: 1` as the new background page, while the other page starts its turn on top).
-  - `0.8` to `0.9`: Page fades out (`opacity: 1 -> 0`).
-  - `0.9` to `0.92`: Page snaps back to the right side invisibly (`rotateY: 0`, `opacity: 0`).
-  - `0.92` to `1.0`: Page fades in on the right (`opacity: 0 -> 1`), ready to loop again.
+### Canonical Pattern: Lift & Filter in `Profile.tsx`
+`Profile.tsx` is the **single data-fetching owner**. It already loads all pages via `loadPages()`. The correct approach is:
 
----
+1. Derive `selectedBookPages` in `Profile.tsx` by filtering the in-memory `pages` array.
+2. Pass the filtered, sorted array **down as a prop** to `SelectedBook` — never fetch inside `SelectedBook`.
 
-## 📊 5. FEASIBILITY EVALUATION: IS GSAP OR FRAMER-MOTION SUFFICIENT?
-When scaling a scrapbook/interactive website filled with multiple similar 3D book flipping animations, we must evaluate if `framer-motion` or GSAP is the right tool:
+```ts
+// In Profile.tsx
+const selectedBookPages = pages
+  .filter((p) => p.book === selectedBookId)
+  .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+```
 
-### ✅ GSAP (Highly Recommended for Scale)
-1. **Precise Timeline Control**: GSAP's timeline (`gsap.timeline()`) allows absolute, relative, and staggered sequence building without relying on fragile hardcoded timing arrays.
-2. **Superior Performance**: Runs high-frequency calculations extremely efficiently without CPU overhead.
-3. **No 3D Clipping Mismatches**: GSAP provides perfect 3D perspective manipulation, avoiding depth sorting errors on WebKit.
+```tsx
+// Call site
+<SelectedBook
+  book={selectedBook}
+  pages={selectedBookPages}
+  currentPageIndex={currentPageIndex}
+  onPageChange={setCurrentPageIndex}
+/>
+```
 
-### ❌ Framer Motion (Not Optimal for Complex Timelines)
-1. **Timing Drift**: Framer Motion lacks sequencing timelines, meaning animations with staggers and snapbacks are built with magic `delay` values, which drift and overlap unpredictably.
-2. **High CPU overhead**: High JS runtime interpolation cost when scaling multiple overlapping components.
+### SelectedBook Props Contract
+```tsx
+interface SelectedBookProps {
+  book: BookRecord | null;
+  pages: PageRecord[];          // pre-filtered & sorted by Profile.tsx
+  currentPageIndex: number;
+  onPageChange: (index: number) => void;
+}
+```
+
+### When to Use a Per-Book Fetch Instead
+Only reach for a filtered fetch if page counts across all books grow very large (hundreds+). In that case:
+```ts
+pb.collection('pages').getFullList({ filter: `book="${bookId}"`, sort: 'order' })
+```
+Trigger this inside a `useEffect` watching `selectedBookId` change.

@@ -1,0 +1,85 @@
+import React from "react";
+import type { PageRecord } from "../../types/BookComponentTypes";
+
+interface MemoryComponentProps {
+  page?: PageRecord | null;
+  pageRefs?: React.RefObject<Array<HTMLDivElement | null>>;
+  contentRefs?: React.RefObject<Array<HTMLDivElement | null>>;
+}
+
+export const MemoryComponent: React.FC<MemoryComponentProps> = ({ page }) => {
+  if (!page) {
+    return (
+      <div className="w-[300px] h-[380px] relative p-4 box-border flex flex-col items-center justify-center gap-1.5 text-center bg-white/25 border-[1.5px] border-dashed border-db-border rounded-[10px] flex-shrink-0">
+        {/* Corner tapes */}
+        <div className="absolute top-2 left-2 w-14 h-3.5 bg-[rgba(230,215,190,0.5)] border-x border-dashed border-black/7 shadow-sm pointer-events-none -rotate-[20deg]" />
+        <div className="absolute top-2 right-2 w-14 h-3.5 bg-[rgba(230,215,190,0.5)] border-x border-dashed border-black/7 shadow-sm pointer-events-none rotate-[20deg]" />
+        <span className="text-[2.4rem] opacity-35">📷</span>
+        <p className="m-0 font-hand text-[1.5rem] text-db-muted">
+          No memory selected.
+        </p>
+        <p className="m-0 text-[0.9rem] opacity-65 text-db-muted">
+          Pick a book from the shelf!
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-[300px] h-[380px] relative p-4 box-border flex flex-col flex-shrink-0">
+      {/* Top centre tape */}
+      <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 -rotate-[2deg] w-[72px] h-5 bg-[rgba(230,215,190,0.55)] border-x border-dashed border-black/8 shadow-sm z-[6] pointer-events-none" />
+      {/* Corner tapes */}
+      <div className="absolute top-1.5 left-1 w-[54px] h-4 bg-[rgba(230,215,190,0.55)] border-x border-dashed border-black/8 shadow-sm z-[6] pointer-events-none -rotate-[38deg] origin-left" />
+      <div className="absolute top-1.5 right-1 w-[54px] h-4 bg-[rgba(230,215,190,0.55)] border-x border-dashed border-black/8 shadow-sm z-[6] pointer-events-none rotate-[38deg] origin-right" />
+
+      {/* Polaroid frame */}
+      <div className="bg-[#fffdf8] rounded-[4px] px-2.5 pt-2.5 pb-5 flex flex-col h-full box-border shadow-[0_4px_10px_rgba(0,0,0,0.13),0_1px_3px_rgba(0,0,0,0.08),inset_0_0_0_1px_rgba(0,0,0,0.04)] relative">
+        {/* Sticker badge */}
+        <div className="absolute -top-2.5 -right-2.5 w-7 h-7 bg-db-accent text-white rounded-full flex items-center justify-center text-[0.75rem] font-bold shadow-[0_2px_6px_rgba(190,74,42,0.35)] z-[7] rotate-[15deg] pointer-events-none">
+          ✦
+        </div>
+
+        {/* Video / photo area */}
+        <div className="flex-1 bg-[#111] rounded-[3px] overflow-hidden flex items-center justify-center relative min-h-[180px] border border-black/12">
+          {page.youtubeId ? (
+            <iframe
+              className="absolute top-0 left-0 w-full h-full border-none"
+              src={`https://www.youtube.com/embed/${page.youtubeId}?rel=0&modestbranding=1`}
+              title={page.title}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <div className="flex flex-col items-center gap-1.5 text-[#666] text-[0.8rem] italic">
+              <span className="text-[1.8rem] opacity-50">🎞️</span>
+              <span>No video yet</span>
+            </div>
+          )}
+        </div>
+
+        {/* Handwritten caption */}
+        <div className="mt-3 text-center min-h-[40px] flex flex-col items-center justify-center gap-0.5 px-1">
+          <h3 className="m-0 font-hand text-[1.6rem] text-[#3d2a1b] leading-tight break-words">
+            {page.title}
+          </h3>
+          {page.description && (
+            <p className="m-0 font-script text-[0.95rem] text-db-muted leading-snug opacity-85">
+              {page.description}
+            </p>
+          )}
+        </div>
+
+        {/* Corner peel */}
+        <div
+          className="absolute bottom-3 right-3 w-[18px] h-[18px] pointer-events-none z-[4]"
+          style={{
+            background:
+              "linear-gradient(135deg, transparent 50%, rgba(190,74,42,0.18) 50%)",
+          }}
+        />
+      </div>
+    </div>
+  );
+};

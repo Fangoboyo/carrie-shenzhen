@@ -1,9 +1,9 @@
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Profile from './pages/Profile';
 import Board from './pages/Board';
-import './styles/scrapbook.css';
+import './index.css';
+import './styles/animations.css';
 import { pb } from './lib/pocketbase';
 
 function App() {

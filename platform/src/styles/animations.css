@@ -1,0 +1,151 @@
+/* ============================================================
+   animations.css — CSS Keyframes & Marquee Animation Classes
+   ⚠️  Kept as vanilla CSS because @keyframes and the
+       --marquee-speed custom property cannot be expressed
+       cleanly as Tailwind utilities.
+   ============================================================ */
+
+/* ── Marquee scroll container ───────────────────────────── */
+.marquee-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 50px 0;
+  margin: -30px 0;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  overflow: visible;
+  display: flex;
+  gap: 75px;
+  width: max-content;
+  animation: scrollMarquee var(--marquee-speed, 40s) linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+.marquee-item:hover {
+  z-index: 50;
+  isolation: auto;
+}
+
+@keyframes scrollMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Spinner ────────────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-upload {
+  animation: spin 0.8s linear infinite;
+}
+
+/* ── Flash slide-in ─────────────────────────────────────── */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-slide-in {
+  animation: fadeSlideIn 0.3s ease;
+}
+
+/* ── Scroller showcase box (shared by BookScroller) ──────── */
+.scroller-showcase-box {
+  border-radius: 24px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Book Shelf Scroller Styling ─────────────────────────── */
+.book-shelf-scroller {
+  /* Warm recessed backdrop that blends into the notebook theme */
+  background: #fffdf8;
+  background-image: 
+    /* Repeating linear gradient for shiplap/wood backing grooves */
+    repeating-linear-gradient(
+      to bottom,
+      rgba(214, 174, 137, 0.08) 0px,
+      rgba(214, 174, 137, 0.08) 1.5px,
+      transparent 1.5px,
+      transparent 45px
+    ),
+    /* Soft shadow gradients for depth */
+    linear-gradient(to bottom, rgba(43, 39, 35, 0.05) 0%, rgba(43, 39, 35, 0) 15%),
+    linear-gradient(to top, rgba(43, 39, 35, 0.07) 0%, rgba(43, 39, 35, 0) 20%);
+  border: 1.5px solid var(--color-db-border);
+  box-shadow: 
+    inset 0 10px 20px rgba(43, 39, 35, 0.06),
+    inset 0 -10px 20px rgba(43, 39, 35, 0.04),
+    0 8px 24px rgba(43, 39, 35, 0.04);
+}
+
+/* ── 3D Circular Carousel for Books ─────────────────────── */
+.carousel-container {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  perspective-origin: 50% 30%; /* Looking slightly down on the shelf */
+  overflow: visible; /* Let books float/scale out on hover */
+}
+
+.carousel-track {
+  width: 260px;
+  height: 360px;
+  position: absolute;
+  transform-style: preserve-3d;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-item {
+  position: absolute;
+  width: 260px;
+  height: 360px;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+/* Depth-of-field effect when an item in the carousel is hovered */
+.carousel-track.has-hovered-item .carousel-item:not(.is-hovered) {
+  filter: brightness(0.65) blur(2px);
+  opacity: 0.7;
+}
+
+/* ── Selected Book Styling ──────────────────────────────── */
+.carousel-item.is-selected .book-cover {
+  border-color: #ffd700 !important;
+  box-shadow: 
+    0 0 20px rgba(212, 175, 55, 0.8),
+    inset 0 0 15px rgba(212, 175, 55, 0.4) !important;
+}
+
+.carousel-item.is-selected .scrapbook-book {
+  box-shadow:
+    0 8px 25px rgba(212, 175, 55, 0.45),
+    0 4px 10px rgba(0,0,0,0.3),
+    inset 3px 0 6px rgba(0,0,0,0.4) !important;
+}
