@@ -1,6 +1,6 @@
 import React from "react";
 import { Heart, ChevronLeft, ChevronRight } from "lucide-react";
-import { MemoryComponent } from "../book/MemoryComponent";
+import { MemoryScroller } from "./MemoryScroller";
 import type { BookRecord, PageRecord } from "../../types/BookComponentTypes";
 
 interface SelectedBookProps {
@@ -55,17 +55,8 @@ export const SelectedBook: React.FC<SelectedBookProps> = ({
   return (
     <div className={CONTAINER_CLASSES}>
       {/* Memory card marquee / showcase */}
-      <div className="scroller-showcase-box flex-1 w-full">
-        <div className="marquee-wrapper">
-          <div
-            className="marquee-track"
-            style={{ "--marquee-speed": "5s" } as React.CSSProperties}
-          >
-            {pages.map((page) => (
-              <MemoryComponent key={page.id} page={page} />
-            ))}
-          </div>
-        </div>
+      <div className="scroller-showcase-box flex-1 w-full flex items-center justify-center min-h-[400px]">
+        <MemoryScroller pages={pages} />
       </div>
 
       {/* Book info */}

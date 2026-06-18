@@ -1,13 +1,22 @@
 import React from "react";
+import { Play, X } from "lucide-react";
 import type { PageRecord } from "../../types/BookComponentTypes";
 
 interface MemoryComponentProps {
   page?: PageRecord | null;
   pageRefs?: React.RefObject<Array<HTMLDivElement | null>>;
   contentRefs?: React.RefObject<Array<HTMLDivElement | null>>;
+  isExpanded?: boolean;
+  onPlayClick?: () => void;
+  onCloseClick?: () => void;
 }
 
-export const MemoryComponent: React.FC<MemoryComponentProps> = ({ page }) => {
+export const MemoryComponent: React.FC<MemoryComponentProps> = ({
+  page,
+  isExpanded = false,
+  onPlayClick,
+  onCloseClick,
+}) => {
   if (!page) {
     return (
       <div className="w-[300px] h-[380px] relative p-4 box-border flex flex-col items-center justify-center gap-1.5 text-center bg-white/25 border-[1.5px] border-dashed border-db-border rounded-[10px] flex-shrink-0">
@@ -26,7 +35,7 @@ export const MemoryComponent: React.FC<MemoryComponentProps> = ({ page }) => {
   }
 
   return (
-    <div className="w-[300px] h-[380px] relative p-4 box-border flex flex-col flex-shrink-0">
+    <div className={`w-[300px] h-[380px] relative p-4 box-border flex flex-col flex-shrink-0 transition-all duration-300 ${isExpanded ? "scale-105" : ""}`}>
       {/* Top centre tape */}
       <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 -rotate-[2deg] w-[72px] h-5 bg-[rgba(230,215,190,0.55)] border-x border-dashed border-black/8 shadow-sm z-[6] pointer-events-none" />
       {/* Corner tapes */}
@@ -41,16 +50,52 @@ export const MemoryComponent: React.FC<MemoryComponentProps> = ({ page }) => {
         </div>
 
         {/* Video / photo area */}
-        <div className="flex-1 bg-[#111] rounded-[3px] overflow-hidden flex items-center justify-center relative min-h-[180px] border border-black/12">
+        <div className="flex-1 bg-[#111] rounded-[3px] overflow-hidden flex items-center justify-center relative min-h-[180px] border border-black/12 group">
           {page.youtubeId ? (
-            <iframe
-              className="absolute top-0 left-0 w-full h-full border-none"
-              src={`https://www.youtube.com/embed/${page.youtubeId}?rel=0&modestbranding=1`}
-              title={page.title}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+            isExpanded ? (
+              <>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full border-none"
+                  src={`https://www.youtube.com/embed/${page.youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+                  title={page.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+                {/* Close Button overlay */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (onCloseClick) onCloseClick();
+                  }}
+                  className="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center border border-white/20 transition-all cursor-pointer z-50 hover:scale-105"
+                  title="Close Video"
+                >
+                  <X size={16} />
+                </button>
+              </>
+            ) : (
+              <div 
+                className="w-full h-full cursor-pointer relative"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (onPlayClick) onPlayClick();
+                }}
+              >
+                <img
+                  src={`https://img.youtube.com/vi/${page.youtubeId}/0.jpg`}
+                  alt={page.title}
+                  className="w-full h-full object-cover"
+                />
+                {/* Dark overlay on hover */}
+                <div className="absolute inset-0 bg-black/25 opacity-40 group-hover:opacity-60 transition-opacity duration-200" />
+                
+                {/* Play Button Icon */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-db-accent/90 text-white flex items-center justify-center shadow-lg border border-white/20 group-hover:bg-db-accent group-hover:scale-110 transition-all duration-300">
+                  <Play size={20} fill="currentColor" className="ml-1 text-white" />
+                </div>
+              </div>
+            )
           ) : (
             <div className="flex flex-col items-center gap-1.5 text-[#666] text-[0.8rem] italic">
               <span className="text-[1.8rem] opacity-50">🎞️</span>

@@ -15,18 +15,25 @@ All 4 of the team members of this project are High School seniors. At the end of
 
 ### Systrem Componets
 * **Main Compute Module:** Embedded Luckfox Pico Mini B 
-<img width="48%" height="500" alt="luckfox_2d" src="https://github.com/user-attachments/assets/d243de09-778c-4d48-a652-383df001b6e8" />
-<img width="48%" height="500" alt="luckfox_3d" src="https://github.com/user-attachments/assets/f13b5a4d-605d-4a7c-87a0-da64d2e103ab" />
+
+| Luckfox Pico Mini B (2D) | Luckfox Pico Mini B (3D) |
+| :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/d243de09-778c-4d48-a652-383df001b6e8" alt="luckfox_2d" width="100%" /> | <img src="https://github.com/user-attachments/assets/f13b5a4d-605d-4a7c-87a0-da64d2e103ab" alt="luckfox_3d" width="100%" /> |
 
 
 * **Audio Input:** SPH
+
+
 * **Visual Input**
 * **Status Indicator**
 * **Power Management**
 
 ## Hardware Architecture pt. 2 - Pot
 * **ESP8266 board**
-<img width="1146" height="562" alt="image" src="https://github.com/user-attachments/assets/a6e20dd5-2655-4d6c-89ee-21d4f95131a6" />
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a6e20dd5-2655-4d6c-89ee-21d4f95131a6" alt="ESP8266 Board schematic" width="80%" />
+</p>
 
 
 ## Project Status
