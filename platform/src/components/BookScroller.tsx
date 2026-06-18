@@ -33,6 +33,7 @@ interface BookWithPages extends BookRecord {
   pagesData: PageComponentProps[];
   coverColor: string;
   accentColor: string;
+  virtualIndex: number;
 }
 
 interface BookComponentMarqueeProps {
@@ -50,12 +51,17 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
 }) => {
   const navigate = useNavigate();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [autoHoveredIndex, setAutoHoveredIndex] = useState<number | null>(null);
 
+  const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const bookElementsRef = useRef<(HTMLDivElement | null)[]>([]);
+
   const tweenRef = useRef<gsap.core.Tween | null>(null);
   const activeTweenRef = useRef<gsap.core.Tween | null>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const rotationRef = useRef(0);
+  const autoHoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const translationRef = useRef(0);
+  const lastPausedIndexRef = useRef<number | null>(null);
 
   // Synchronously map books and pages from props
   const displayBooks = React.useMemo<BookWithPages[]>(() => {
@@ -85,190 +91,285 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
       };
     });
 
-    // Repeat books to form a full circle with at least 6 books
-    let repeated = [...resolved];
-    if (resolved.length > 0) {
-      while (repeated.length < 6) {
-        repeated = [...repeated, ...resolved];
-      }
+    if (resolved.length === 0) return [];
+
+    const M = resolved.length;
+    const padCount = Math.max(6, M); // Pad at least 6 books on each side for safety
+    const list: BookWithPages[] = [];
+
+    // Populate list from index -padCount to M + padCount
+    for (let idx = -padCount; idx < M + padCount; idx++) {
+      const originalIndex = ((idx % M) + M) % M;
+      list.push({
+        ...resolved[originalIndex],
+        virtualIndex: idx,
+      });
     }
-    return repeated;
+    return list;
   }, [inputBooks, inputPages]);
 
-  const N = displayBooks.length;
-  const theta = N > 0 ? 360 / N : 0;
-  
-  // Calculate dynamic radius based on the number of books in the circle
-  const radius =
-    N > 0
-      ? Math.max(240, Math.round(260 / (2 * Math.tan(Math.PI / N)) + 70))
-      : 300;
+  const resolvedBooksCount = inputBooks.length;
+  const loopWidth = resolvedBooksCount * 320;
 
-  const handleBookClick = (id: string) => {
-    if (onBookClick) onBookClick(id);
-    else navigate(`/board/${id}`);
+  // Keep the size of the elements ref array synced with books count
+  useEffect(() => {
+    bookElementsRef.current = bookElementsRef.current.slice(0, displayBooks.length);
+  }, [displayBooks]);
+
+  // Update book scales, Z translation, rotations, and z-indices based on position relative to center
+  const updateBookPositions = () => {
+    const track = trackRef.current;
+    const container = containerRef.current;
+    if (!track || !container) return;
+
+    const x = gsap.getProperty(track, "x") as number || 0;
+    translationRef.current = x;
+
+    const containerWidth = container.clientWidth;
+    const containerCenter = containerWidth / 2;
+
+    bookElementsRef.current.forEach((el, idx) => {
+      if (!el) return;
+
+      const book = displayBooks[idx];
+      if (!book) return;
+
+      const vIdx = book.virtualIndex;
+
+      // Visual center of book idx relative to container
+      const bookCenterInContainer = containerCenter + x + vIdx * 320;
+
+      // Distance from container center
+      const distance = Math.abs(containerCenter - bookCenterInContainer);
+      const maxDistance = containerWidth / 1.5;
+      const factor = Math.max(0, 1 - distance / maxDistance);
+
+      // Scale: 1.0 to 1.25
+      const scale = 1 + factor * 0.25;
+      // translateZ: 0 to 120px
+      const translateZ = factor * 120;
+      // rotateY facing the center
+      const direction = bookCenterInContainer < containerCenter ? 1 : -1;
+      const maxRotateY = 20;
+      const rotateY = direction * (1 - factor) * maxRotateY;
+
+      // zIndex: center is on top
+      const zIndex = Math.round(factor * 100);
+
+      el.style.transform = `translate3d(0, 0, ${translateZ}px) scale(${scale}) rotateY(${rotateY}deg)`;
+      el.style.zIndex = `${zIndex}`;
+    });
   };
 
-  // Helper to resume the infinite marquee rotation
-  const resumeAutoRotation = () => {
-    if (!trackRef.current) return;
+  // Helper to resume the infinite marquee scroll
+  const resumeAutoScroll = () => {
+    if (!trackRef.current || resolvedBooksCount === 0) return;
+
+    if (resolvedBooksCount === 1) {
+      // Just center and open the only book, no scrolling needed
+      gsap.set(trackRef.current, { x: 0 });
+      translationRef.current = 0;
+      updateBookPositions();
+      setAutoHoveredIndex(0);
+      return;
+    }
 
     if (activeTweenRef.current) activeTweenRef.current.kill();
     if (tweenRef.current) tweenRef.current.kill();
 
-    const currentAngle = rotationRef.current;
+    const currentX = translationRef.current;
+    const speed = 40; // pixels per second
+    const remainingDistance = Math.abs(-loopWidth - currentX);
 
     tweenRef.current = gsap.to(trackRef.current, {
-      rotateY: currentAngle + 360,
-      duration: 35,
-      repeat: -1,
+      x: -loopWidth,
+      duration: remainingDistance / speed,
       ease: "none",
       onUpdate: () => {
-        rotationRef.current = gsap.getProperty(
-          trackRef.current,
-          "rotateY",
-        ) as number;
-      },
-    });
-  };
-
-  // Helper to rotate the shelf to center a specific book index
-  const rotateToBook = (index: number) => {
-    if (!trackRef.current || N === 0) return;
-
-    const targetBaseAngle = -index * theta; // angle to center this index at the front
-
-    // Find the nearest equivalent angle to avoid long wraps
-    const currentAngle = rotationRef.current;
-    const k = Math.round((currentAngle - targetBaseAngle) / 360);
-    const targetAngle = targetBaseAngle + 360 * k;
-
-    // Pause infinite spin
-    if (tweenRef.current) tweenRef.current.pause();
-
-    // Kill any active transition tween
-    if (activeTweenRef.current) activeTweenRef.current.kill();
-
-    // Clear any pending timeout
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-
-    activeTweenRef.current = gsap.to(trackRef.current, {
-      rotateY: targetAngle,
-      duration: 1.25,
-      ease: "power2.out",
-      onUpdate: () => {
-        rotationRef.current = gsap.getProperty(
-          trackRef.current,
-          "rotateY",
-        ) as number;
+        const x = gsap.getProperty(trackRef.current, "x") as number;
+        translationRef.current = x;
+        updateBookPositions();
+        checkAutoHover(x);
       },
       onComplete: () => {
-        // Resume rotation after 3.5 seconds if the user is not hovering
-        timeoutRef.current = setTimeout(() => {
-          if (hoveredIndex === null) {
-            resumeAutoRotation();
-          }
-        }, 3500);
+        // Reset x to 0 and loop again
+        gsap.set(trackRef.current, { x: 0 });
+        translationRef.current = 0;
+        lastPausedIndexRef.current = null;
+        resumeAutoScroll();
       },
     });
   };
 
-  // 1. Setup infinite spin initially when N changes
-  useEffect(() => {
-    if (!trackRef.current || N === 0) return;
+  // Monitor positions and pause/hover a book when it reaches the middle
+  const checkAutoHover = (x: number) => {
+    if (hoveredIndex !== null) return; // Don't auto-hover if user is manually hovering
+    if (autoHoveredIndex !== null) return; // Already in a pause/open state
 
-    // If there is no active transition running, start/restart the infinite marquee
-    if (!activeTweenRef.current) {
-      resumeAutoRotation();
+    const container = containerRef.current;
+    if (!container) return;
+    const containerWidth = container.clientWidth;
+    const containerCenter = containerWidth / 2;
+
+    for (let i = 0; i < displayBooks.length; i++) {
+      const book = displayBooks[i];
+      const vIdx = book.virtualIndex;
+      const bookCenter = containerCenter + x + vIdx * 320;
+      const distance = Math.abs(containerCenter - bookCenter);
+
+      if (distance < 15 && lastPausedIndexRef.current !== vIdx) {
+        triggerAutoHover(vIdx);
+        break;
+      }
     }
+  };
+
+  const triggerAutoHover = (vIdx: number) => {
+    if (tweenRef.current) tweenRef.current.pause();
+    if (activeTweenRef.current) activeTweenRef.current.kill();
+    if (autoHoverTimeoutRef.current) clearTimeout(autoHoverTimeoutRef.current);
+
+    lastPausedIndexRef.current = vIdx;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    const targetX = -vIdx * 320;
+
+    setAutoHoveredIndex(vIdx);
+
+    activeTweenRef.current = gsap.to(trackRef.current, {
+      x: targetX,
+      duration: 0.8,
+      ease: "power2.out",
+      onUpdate: () => {
+        translationRef.current = gsap.getProperty(trackRef.current, "x") as number;
+        updateBookPositions();
+      },
+      onComplete: () => {
+        // Keep the book open for 4 seconds, then close it and resume
+        autoHoverTimeoutRef.current = setTimeout(() => {
+          setAutoHoveredIndex(null);
+
+          // Wait for the close animation to complete (approx 1.2s) before resuming scroll
+          autoHoverTimeoutRef.current = setTimeout(() => {
+            lastPausedIndexRef.current = null;
+            resumeAutoScroll();
+          }, 1200);
+        }, 4000);
+      },
+    });
+  };
+
+  // Setup scroll event listener and resize updates
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || displayBooks.length === 0) return;
+
+    const handleResize = () => {
+      updateBookPositions();
+    };
+    window.addEventListener("resize", handleResize);
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateBookPositions();
+    });
+    resizeObserver.observe(container);
 
     return () => {
+      window.removeEventListener("resize", handleResize);
+      resizeObserver.disconnect();
+    };
+  }, [displayBooks]);
+
+  // Setup initial scroll marquee state and trigger hover on the first/selected book
+  useEffect(() => {
+    if (!trackRef.current || displayBooks.length === 0) return;
+
+    const initialBook = selectedBookId
+      ? displayBooks.find((b) => b.id === selectedBookId && b.virtualIndex >= 0)
+      : null;
+    const targetVirtualIndex = initialBook ? initialBook.virtualIndex : 0;
+
+    // Position track instantly at start to prevent layout flash/jump
+    gsap.set(trackRef.current, { x: -targetVirtualIndex * 320 });
+    translationRef.current = -targetVirtualIndex * 320;
+    updateBookPositions();
+
+    const timer = setTimeout(() => {
+      triggerAutoHover(targetVirtualIndex);
+    }, 150);
+
+    return () => {
+      clearTimeout(timer);
       if (tweenRef.current) tweenRef.current.kill();
     };
-  }, [N]);
+  }, [displayBooks]);
 
-  // 2. Center and pause on the selected book when selectedBookId changes
+  // Center and auto-hover selected book on change
   useEffect(() => {
-    if (!selectedBookId || N === 0) return;
-    if (hoveredIndex !== null) return; // don't override active user manual hover
+    if (!selectedBookId || displayBooks.length === 0) return;
+    if (hoveredIndex !== null) return; // Don't override active user manual hover
 
-    // Find all indices of the selected book in the repeated array
     const matchingIndices: number[] = [];
-    displayBooks.forEach((book, idx) => {
+    displayBooks.forEach((book) => {
       if (book.id === selectedBookId) {
-        matchingIndices.push(idx);
+        matchingIndices.push(book.virtualIndex);
       }
     });
 
     if (matchingIndices.length === 0) return;
 
-    // Choose the index closest to the current rotation
     let bestIndex = matchingIndices[0];
     let minDifference = Infinity;
-    const currentAngle = rotationRef.current;
+    const currentX = translationRef.current;
 
-    matchingIndices.forEach((idx) => {
-      const targetBaseAngle = -idx * theta;
-      const k = Math.round((currentAngle - targetBaseAngle) / 360);
-      const targetAngle = targetBaseAngle + 360 * k;
-      const difference = Math.abs(currentAngle - targetAngle);
+    matchingIndices.forEach((vIdx) => {
+      const targetBaseX = -vIdx * 320;
+      const k = Math.round((currentX - targetBaseX) / loopWidth);
+      const targetX = targetBaseX + k * loopWidth;
+      const difference = Math.abs(currentX - targetX);
       if (difference < minDifference) {
         minDifference = difference;
-        bestIndex = idx;
+        bestIndex = vIdx;
       }
     });
 
-    rotateToBook(bestIndex);
-  }, [selectedBookId, N]);
+    triggerAutoHover(bestIndex);
+  }, [selectedBookId, displayBooks]);
 
   // Cleanup on unmount
   useEffect(() => {
     return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (autoHoverTimeoutRef.current) clearTimeout(autoHoverTimeoutRef.current);
       if (activeTweenRef.current) activeTweenRef.current.kill();
       if (tweenRef.current) tweenRef.current.kill();
     };
   }, []);
 
-  const handleBookHoverStart = (index: number) => {
+  const handleBookHoverStart = (vIdx: number) => {
     if (!trackRef.current) return;
 
-    const netAngle = index * theta + rotationRef.current;
-    const radians = (netAngle * Math.PI) / 180;
+    setHoveredIndex(vIdx);
+    setAutoHoveredIndex(null); // Clear auto hover if user takes manual control
 
-    // Math.cos(radians) > 0 means front side, < 0 means back side
-    const isAtBackOfShelf = Math.cos(radians) < 0;
-    if (isAtBackOfShelf) {
-      console.log("Hovered from the back of the shelf (facing away)");
-      return;
-    }
-
-    setHoveredIndex(index);
-
-    // Pause infinite spin
     if (tweenRef.current) tweenRef.current.pause();
-
-    // Kill transition tween & clear timeout
     if (activeTweenRef.current) activeTweenRef.current.kill();
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    if (autoHoverTimeoutRef.current) clearTimeout(autoHoverTimeoutRef.current);
 
-    const targetBaseAngle = -index * theta; // angle to center this index at the front
-
-    // Find the nearest equivalent angle to avoid long wraps
-    const currentAngle = rotationRef.current;
-    const k = Math.round((currentAngle - targetBaseAngle) / 360);
-    const targetAngle = targetBaseAngle + 360 * k;
+    const targetBaseX = -vIdx * 320;
+    const currentX = translationRef.current;
+    const k = Math.round((currentX - targetBaseX) / loopWidth);
+    const targetX = targetBaseX + k * loopWidth;
 
     activeTweenRef.current = gsap.to(trackRef.current, {
-      rotateY: targetAngle,
+      x: targetX,
       duration: 1.25,
       ease: "power2.out",
       overwrite: "auto",
       onUpdate: () => {
-        rotationRef.current = gsap.getProperty(
-          trackRef.current,
-          "rotateY",
-        ) as number;
+        translationRef.current = gsap.getProperty(trackRef.current, "x") as number;
+        updateBookPositions();
       },
     });
   };
@@ -278,7 +379,20 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
     if (hoveredIndex === null) return;
 
     setHoveredIndex(null);
-    resumeAutoRotation();
+
+    if (autoHoverTimeoutRef.current) clearTimeout(autoHoverTimeoutRef.current);
+    autoHoverTimeoutRef.current = setTimeout(() => {
+      resumeAutoScroll();
+    }, 1000);
+  };
+
+  const handleBookClick = (id: string, vIdx: number) => {
+    if (autoHoveredIndex === vIdx || hoveredIndex === vIdx) {
+      if (onBookClick) onBookClick(id);
+      else navigate(`/board/${id}`);
+    } else {
+      triggerAutoHover(vIdx);
+    }
   };
 
   const placeholder = (message: string) => (
@@ -291,22 +405,33 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
 
   return (
     <div className="scroller-showcase-box book-shelf-scroller flex items-center justify-center min-h-[500px]">
-      <div className="carousel-container">
+      <div ref={containerRef} className="carousel-container">
         <div
           ref={trackRef}
-          className={`carousel-track ${hoveredIndex !== null ? "has-hovered-item" : ""}`}
+          className={`carousel-track ${
+            hoveredIndex !== null || autoHoveredIndex !== null ? "has-hovered-item" : ""
+          }`}
         >
           {displayBooks.map((book, idx) => {
-            const isItemHovered = hoveredIndex === idx;
+            const isItemHovered = hoveredIndex === book.virtualIndex;
+            const isAutoHovered = autoHoveredIndex === book.virtualIndex;
             const isSelected = book.id === selectedBookId;
+            const isBookOpen = isItemHovered || isAutoHovered;
+
             return (
               <div
-                key={`${book.id}-${idx}`}
-                className={`carousel-item ${isItemHovered ? "is-hovered" : ""} ${isSelected ? "is-selected" : ""}`}
-                style={{
-                  transform: `rotateY(${idx * theta}deg) translateZ(${radius}px)`,
+                key={`${book.id}-${book.virtualIndex}`}
+                ref={(el) => {
+                  bookElementsRef.current[idx] = el;
                 }}
-                onMouseEnter={() => handleBookHoverStart(idx)}
+                className={`carousel-item ${isItemHovered ? "is-hovered" : ""} ${
+                  isSelected ? "is-selected" : ""
+                }`}
+                style={{
+                  position: "absolute",
+                  left: `${book.virtualIndex * 320}px`,
+                }}
+                onMouseEnter={() => handleBookHoverStart(book.virtualIndex)}
                 onMouseLeave={handleBookHoverEnd}
               >
                 <BookComponent
@@ -316,7 +441,8 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
                   pages={book.pagesData}
                   coverColor={book.coverColor}
                   accentColor={book.accentColor}
-                  onClick={() => handleBookClick(book.id)}
+                  onClick={() => handleBookClick(book.id, book.virtualIndex)}
+                  isOpen={isBookOpen}
                 />
               </div>
             );

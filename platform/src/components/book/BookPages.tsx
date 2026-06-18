@@ -31,7 +31,6 @@ export const BookPages: React.FC<BookPagesProps> = ({
         >
           <div>
             <h1>{page.title}</h1>
-            <p>{page.content}</p>
             <img src={page.thumbnailUrl} alt={page.title || "Page thumbnail"} />
           </div>
         </div>

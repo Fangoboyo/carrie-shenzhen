@@ -16,9 +16,9 @@
               "state": {
                 "file": "Technical overview.canvas",
                 "viewState": {
-                  "x": 220.75825033633967,
-                  "y": -123.28891312414217,
-                  "zoom": -0.9696449470340625
+                  "x": -520.0197366018616,
+                  "y": -163.59339090160518,
+                  "zoom": -0.7349062603532661
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -210,16 +210,16 @@
   },
   "active": "ad92ae7a9d2be98e",
   "lastOpenFiles": [
+    "Materials/LCD Display (Touchscreen) - Arrived.md",
+    "Bill of Materials.md",
+    "Technical overview.canvas",
     "Planning before 6-7.md",
     "Materials/POGO Pin - Arrived.md",
     "Materials/Microphone - Arrived.md",
-    "Materials/LCD Display (Touchscreen) - Arrived.md",
     "software/firmware/Display Driver.md",
     "software/firmware/GPIO Read Mechanism.md",
-    "Technical overview.canvas",
     "Fabrication.md",
     "Carrie Construction.md",
-    "Bill of Materials.md",
     "Materials/BMS/Battery - Arrived.md",
     "Materials/BMS/Battery Management System.canvas",
     "Materials/BMS/MCP73831.md",

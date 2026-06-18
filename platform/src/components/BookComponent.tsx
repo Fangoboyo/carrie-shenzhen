@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import "../styles/book3d.css";
 
 import type {
@@ -21,6 +21,7 @@ export const BookComponent: React.FC<BookComponentProps> = ({
   coverColor,
   accentColor,
   onClick,
+  isOpen = false,
 }) => {
   const displayTitle = title;
   const displaySubtitle = subtitle;
@@ -41,6 +42,15 @@ export const BookComponent: React.FC<BookComponentProps> = ({
     pageRefs,
     contentRefs,
   });
+
+  // Programmatically trigger hover states when auto-hovered
+  useEffect(() => {
+    if (isOpen) {
+      handleHoverStart();
+    } else {
+      handleHoverEnd();
+    }
+  }, [isOpen, handleHoverStart, handleHoverEnd]);
 
   const bookStyle = {
     "--book-cover-color": coverColor,
