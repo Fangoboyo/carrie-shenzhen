@@ -128,605 +128,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector:USB_C_Plug_USB2.0"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "P"
-				(at -10.16 19.05 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "USB_C_Plug_USB2.0"
-				(at 12.7 19.05 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify right)
-				)
-			)
-			(property "Footprint" ""
-				(at 3.81 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
-				(at 3.81 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "USB 2.0-only Type-C Plug connector"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "usb universal serial bus type-C USB2.0"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "USB*C*Plug*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "USB_C_Plug_USB2.0_0_0"
-				(rectangle
-					(start -0.254 -17.78)
-					(end 0.254 -16.764)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 15.494)
-					(end 9.144 14.986)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 10.414)
-					(end 9.144 9.906)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 7.874)
-					(end 9.144 7.366)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 2.794)
-					(end 9.144 2.286)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 -2.286)
-					(end 9.144 -2.794)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "USB_C_Plug_USB2.0_0_1"
-				(rectangle
-					(start -10.16 17.78)
-					(end 10.16 -17.78)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(polyline
-					(pts
-						(xy -8.89 -3.81) (xy -8.89 3.81)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -7.62 -3.81)
-					(end -6.35 3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(arc
-					(start -7.62 3.81)
-					(mid -6.985 4.4423)
-					(end -6.35 3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -7.62 3.81)
-					(mid -6.985 4.4423)
-					(end -6.35 3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(arc
-					(start -8.89 3.81)
-					(mid -6.985 5.7067)
-					(end -5.08 3.81)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -5.08 -3.81)
-					(mid -6.985 -5.7067)
-					(end -8.89 -3.81)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -6.35 -3.81)
-					(mid -6.985 -4.4423)
-					(end -7.62 -3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -6.35 -3.81)
-					(mid -6.985 -4.4423)
-					(end -7.62 -3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -5.08 3.81) (xy -5.08 -3.81)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center -2.54 1.143)
-					(radius 0.635)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 4.318) (xy 0 6.858) (xy 1.27 4.318) (xy -1.27 4.318)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -2.032) (xy 2.54 0.508) (xy 2.54 1.778)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -3.302) (xy -2.54 -0.762) (xy -2.54 0.508)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -5.842) (xy 0 4.318)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 -5.842)
-					(radius 1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start 1.905 1.778)
-					(end 3.175 3.048)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-			)
-			(symbol "USB_C_Plug_USB2.0_1_1"
-				(pin passive line
-					(at 0 -22.86 90)
-					(length 5.08)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 15.24 15.24 180)
-					(length 5.08)
-					(name "VBUS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 10.16 180)
-					(length 5.08)
-					(name "CC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -2.54 180)
-					(length 5.08)
-					(name "D+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 2.54 180)
-					(length 5.08)
-					(name "D-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 15.24 15.24 180)
-					(length 5.08)
-					(hide yes)
-					(name "VBUS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -22.86 90)
-					(length 5.08)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -22.86 90)
-					(length 5.08)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 15.24 15.24 180)
-					(length 5.08)
-					(hide yes)
-					(name "VBUS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 7.62 180)
-					(length 5.08)
-					(name "VCONN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 15.24 15.24 180)
-					(length 5.08)
-					(hide yes)
-					(name "VBUS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -22.86 90)
-					(length 5.08)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 -22.86 90)
-					(length 5.08)
-					(name "SHIELD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "SH"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "esp8266:ESP8266"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -810,7 +211,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -828,7 +229,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -846,7 +247,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -864,7 +265,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -882,7 +283,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -900,7 +301,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -918,7 +319,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_7"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -936,7 +337,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -954,7 +355,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_9"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -972,7 +373,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_10"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -990,7 +391,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_11"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1008,7 +409,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_12"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1026,7 +427,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_13"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1044,7 +445,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_14"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1062,7 +463,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J1_15"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1080,7 +481,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1098,7 +499,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1116,7 +517,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1134,7 +535,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1152,7 +553,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1170,7 +571,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1188,7 +589,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_7"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1206,7 +607,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1224,7 +625,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_9"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1242,7 +643,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_10"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1260,7 +661,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_11"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1278,7 +679,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_12"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1296,7 +697,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_13"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1314,7 +715,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_14"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1332,7 +733,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "J2_15"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1345,108 +746,96 @@
 		)
 	)
 	(junction
-		(at 158.75 100.33)
+		(at 105.41 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0328f7b2-c95b-4c2a-9d5a-5e5622f7ff45")
+	)
+	(junction
+		(at 106.68 101.6)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0d5aef6b-b2a0-4975-bbd8-0c548fdd003e")
 	)
-	(junction
-		(at 157.48 90.17)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f37d3d99-9092-4d6d-b751-607bb6c5ffc1")
-	)
 	(no_connect
-		(at 200.66 106.68)
+		(at 151.13 91.44)
 		(uuid "084341ad-86fe-44cb-9a4e-270b82371fb1")
 	)
 	(no_connect
-		(at 200.66 109.22)
+		(at 151.13 93.98)
 		(uuid "24b8d81f-72c1-43e9-af78-58758c15d966")
 	)
 	(no_connect
-		(at 200.66 91.44)
+		(at 151.13 76.2)
 		(uuid "30b21c0b-f2a1-40f1-ba34-099b54ae73b4")
 	)
 	(no_connect
-		(at 200.66 114.3)
+		(at 151.13 99.06)
 		(uuid "3736f218-3071-4334-a743-5e747fda1511")
 	)
 	(no_connect
-		(at 200.66 83.82)
+		(at 151.13 68.58)
 		(uuid "3c4453e5-2335-4db5-a469-c17671d559c0")
 	)
 	(no_connect
-		(at 220.98 109.22)
-		(uuid "6028bab5-23de-4423-b9eb-7c3a8471b6f9")
-	)
-	(no_connect
-		(at 220.98 111.76)
+		(at 171.45 96.52)
 		(uuid "62951d95-1cfb-4fa4-b7ee-375e142cd5d4")
 	)
 	(no_connect
-		(at 200.66 104.14)
-		(uuid "6aa8c171-bb0e-460b-abbe-df70d4e80147")
-	)
-	(no_connect
-		(at 220.98 104.14)
-		(uuid "73b52936-94ea-4648-830c-7353c853285b")
-	)
-	(no_connect
-		(at 200.66 99.06)
+		(at 151.13 83.82)
 		(uuid "7ee6f127-b748-4e23-a65a-48ff39248264")
 	)
 	(no_connect
-		(at 132.08 100.33)
-		(uuid "7fb57064-5c41-4a65-b8e0-d88c8e7ae6bf")
-	)
-	(no_connect
-		(at 200.66 93.98)
+		(at 151.13 78.74)
 		(uuid "876a28d5-c4c0-4fc4-ad52-bbef10b67c1f")
 	)
 	(no_connect
-		(at 200.66 86.36)
+		(at 151.13 71.12)
 		(uuid "946abd0e-be75-4531-b6c8-58ae5beb17e2")
 	)
 	(no_connect
-		(at 200.66 88.9)
+		(at 151.13 73.66)
 		(uuid "9d375c65-ca9a-4690-b59e-0bbc3315303e")
 	)
 	(no_connect
-		(at 220.98 116.84)
+		(at 171.45 101.6)
 		(uuid "a8cd8675-8c20-4378-86bb-c9f4c9d68e64")
 	)
 	(no_connect
-		(at 220.98 101.6)
-		(uuid "bc3c3c18-05ae-489e-becd-52384c0c877b")
-	)
-	(no_connect
-		(at 154.94 67.31)
-		(uuid "cc48c369-5de6-44ef-86ea-e21dd95c446e")
-	)
-	(no_connect
-		(at 154.94 69.85)
-		(uuid "ccfe52b1-3be8-4ae3-9330-775408cc297b")
-	)
-	(no_connect
-		(at 220.98 119.38)
+		(at 171.45 104.14)
 		(uuid "d0900264-363e-445d-8197-615da548acc9")
 	)
 	(no_connect
-		(at 220.98 114.3)
+		(at 171.45 99.06)
 		(uuid "e59caa93-95d0-4d4e-824c-f5086084c620")
 	)
 	(no_connect
-		(at 200.66 111.76)
+		(at 151.13 96.52)
 		(uuid "edfb4116-8056-4a59-a4b3-0fe9621b0197")
-	)
-	(no_connect
-		(at 220.98 106.68)
-		(uuid "ffb5552e-fae2-42bd-8a06-01e8ee55d244")
 	)
 	(wire
 		(pts
-			(xy 194.31 101.6) (xy 200.66 101.6)
+			(xy 144.78 88.9) (xy 151.13 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01d9cbd6-28d6-4af9-a45b-51ba6f894ec8")
+	)
+	(wire
+		(pts
+			(xy 171.45 81.28) (xy 177.8 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "040d2959-bf70-4b88-a1f9-cf182a844602")
+	)
+	(wire
+		(pts
+			(xy 144.78 86.36) (xy 151.13 86.36)
 		)
 		(stroke
 			(width 0)
@@ -1456,17 +845,17 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 80.01) (xy 175.26 80.01)
+			(xy 124.46 104.14) (xy 124.46 110.49)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "0bd1a862-be19-491f-a571-80cac7cdf838")
+		(uuid "0dd4afb7-a5c6-4e98-98c0-07901cd2ff0c")
 	)
 	(wire
 		(pts
-			(xy 231.14 86.36) (xy 220.98 86.36)
+			(xy 171.45 71.12) (xy 185.42 71.12)
 		)
 		(stroke
 			(width 0)
@@ -1476,27 +865,17 @@
 	)
 	(wire
 		(pts
-			(xy 234.95 58.42) (xy 234.95 83.82)
+			(xy 81.28 110.49) (xy 105.41 110.49)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "2123aea2-7cbd-42e4-aece-05c1a9ff320d")
+		(uuid "23ba5824-11b3-4f54-9da5-1036ea0c9853")
 	)
 	(wire
 		(pts
-			(xy 175.26 80.01) (xy 175.26 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2265e243-32b9-48bc-a06b-9d474bc0b0e5")
-	)
-	(wire
-		(pts
-			(xy 195.58 96.52) (xy 200.66 96.52)
+			(xy 144.78 81.28) (xy 151.13 81.28)
 		)
 		(stroke
 			(width 0)
@@ -1506,37 +885,17 @@
 	)
 	(wire
 		(pts
-			(xy 184.15 90.17) (xy 184.15 119.38)
+			(xy 171.45 91.44) (xy 177.8 91.44)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3290bca2-8cf2-4800-90bf-e2951e024b3b")
+		(uuid "40a33945-5940-4dc6-841a-f4f48cf439a2")
 	)
 	(wire
 		(pts
-			(xy 170.18 116.84) (xy 200.66 116.84)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3f69d21b-d035-406e-a5db-a61da529be30")
-	)
-	(wire
-		(pts
-			(xy 154.94 62.23) (xy 157.48 62.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4471b3a6-cca5-445f-9791-b288a70cc6ab")
-	)
-	(wire
-		(pts
-			(xy 220.98 88.9) (xy 232.41 88.9)
+			(xy 171.45 73.66) (xy 185.42 73.66)
 		)
 		(stroke
 			(width 0)
@@ -1546,77 +905,47 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 74.93) (xy 190.5 58.42)
+			(xy 171.45 93.98) (xy 177.8 93.98)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4ddbb047-241b-4022-b6ae-bfbfa2462b45")
+		(uuid "517a4843-0601-4438-9497-8b18daa279bb")
 	)
 	(wire
 		(pts
-			(xy 157.48 90.17) (xy 184.15 90.17)
+			(xy 105.41 110.49) (xy 105.41 111.76)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "518bcd2b-6bb1-4963-82b8-28562520a016")
+		(uuid "5242dd79-4f23-4a9e-922a-5586037e6477")
 	)
 	(wire
 		(pts
-			(xy 247.65 91.44) (xy 247.65 57.15)
+			(xy 171.45 88.9) (xy 177.8 88.9)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "624c6eff-3fde-4154-a05a-781840021f1a")
+		(uuid "606730b1-f43e-4f71-b913-26ae5873969f")
 	)
 	(wire
 		(pts
-			(xy 231.14 57.15) (xy 231.14 86.36)
+			(xy 171.45 86.36) (xy 177.8 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "6d28b91b-b72a-4789-a4e6-e9c94e55e985")
+		(uuid "668b96c0-e5f6-4a40-b756-61f6066611b1")
 	)
 	(wire
 		(pts
-			(xy 184.15 119.38) (xy 200.66 119.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "93590cc1-e852-470e-92d6-529212c6ad15")
-	)
-	(wire
-		(pts
-			(xy 175.26 57.15) (xy 231.14 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9ee26815-04a9-4d51-af5b-3b4921b13341")
-	)
-	(wire
-		(pts
-			(xy 190.5 58.42) (xy 234.95 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a1a3cee5-2af3-46e5-92c8-c1be0268a633")
-	)
-	(wire
-		(pts
-			(xy 234.95 83.82) (xy 220.98 83.82)
+			(xy 171.45 68.58) (xy 185.42 68.58)
 		)
 		(stroke
 			(width 0)
@@ -1626,37 +955,17 @@
 	)
 	(wire
 		(pts
-			(xy 170.18 100.33) (xy 170.18 116.84)
+			(xy 171.45 83.82) (xy 177.8 83.82)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a8adeca8-492e-4985-803d-2a01fa69b2d9")
+		(uuid "b8731359-2ef7-492d-b082-4ffe3148d16b")
 	)
 	(wire
 		(pts
-			(xy 232.41 88.9) (xy 232.41 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b492c3d0-ca15-4730-908f-925dcd8dd51a")
-	)
-	(wire
-		(pts
-			(xy 154.94 74.93) (xy 190.5 74.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c879b28b-e791-4885-9d50-f3cf56f3a35c")
-	)
-	(wire
-		(pts
-			(xy 158.75 100.33) (xy 170.18 100.33)
+			(xy 106.68 101.6) (xy 151.13 101.6)
 		)
 		(stroke
 			(width 0)
@@ -1666,17 +975,17 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 90.17) (xy 157.48 91.44)
+			(xy 171.45 78.74) (xy 177.8 78.74)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e07e8741-2c28-4dd5-8daf-14b2584642fa")
+		(uuid "d080c5f0-cb0d-4fb1-82d6-63b9acce2125")
 	)
 	(wire
 		(pts
-			(xy 220.98 91.44) (xy 247.65 91.44)
+			(xy 171.45 76.2) (xy 185.42 76.2)
 		)
 		(stroke
 			(width 0)
@@ -1686,17 +995,27 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 62.23) (xy 157.48 90.17)
+			(xy 124.46 104.14) (xy 151.13 104.14)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f3cbd65d-1ac8-4329-a7b8-d84db3ead132")
+		(uuid "efd34f38-e938-44ed-918a-4b37d1ae3a9c")
 	)
 	(wire
 		(pts
-			(xy 139.7 100.33) (xy 158.75 100.33)
+			(xy 81.28 110.49) (xy 81.28 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1df8ce9-b0ed-47ff-9493-6152f0e77821")
+	)
+	(wire
+		(pts
+			(xy 87.63 101.6) (xy 106.68 101.6)
 		)
 		(stroke
 			(width 0)
@@ -1704,9 +1023,19 @@
 		)
 		(uuid "f964df7e-86cb-4c02-8553-1464f58ec431")
 	)
+	(wire
+		(pts
+			(xy 124.46 110.49) (xy 105.41 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ffae5ce0-ae04-4377-b28c-45ac96db234c")
+	)
 	(symbol
 		(lib_id "esp8266:ESP8266")
-		(at 210.82 100.33 0)
+		(at 161.29 85.09 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1717,7 +1046,7 @@
 		(fields_autoplaced yes)
 		(uuid "072f2f99-0f33-496e-bdec-1f05a3097ba1")
 		(property "Reference" "U1"
-			(at 210.82 78.74 0)
+			(at 161.29 63.5 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1727,7 +1056,7 @@
 			)
 		)
 		(property "Value" ""
-			(at 210.82 100.33 0)
+			(at 161.29 85.09 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1737,7 +1066,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 210.82 100.33 0)
+			(at 161.29 85.09 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1748,7 +1077,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 210.82 100.33 0)
+			(at 161.29 85.09 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1759,7 +1088,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 210.82 100.33 0)
+			(at 161.29 85.09 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1769,94 +1098,94 @@
 				)
 			)
 		)
-		(pin ""
+		(pin "J2_9"
 			(uuid "e0cec196-2054-4ea9-baa2-7c3b07122c82")
 		)
-		(pin ""
+		(pin "J1_15"
 			(uuid "ef320e93-0314-4fde-a5e0-636fbec2cdf6")
 		)
-		(pin ""
+		(pin "J1_14"
 			(uuid "42de392b-ab02-422d-9d23-3bf1f9477b7f")
 		)
-		(pin ""
+		(pin "J2_10"
 			(uuid "18f4f5be-415b-42d8-bc9c-6ad4334a0020")
 		)
-		(pin ""
+		(pin "J2_13"
 			(uuid "4bc9b90e-8645-4f4c-ba3a-c6aa5e4cd84a")
 		)
-		(pin ""
+		(pin "J2_7"
 			(uuid "ecb79e40-5e39-401e-aa5b-44e80c5dfb98")
 		)
-		(pin ""
+		(pin "J2_14"
 			(uuid "5286fabc-6e4f-4a4c-9667-b87b54c8a60b")
 		)
-		(pin ""
+		(pin "J1_4"
 			(uuid "08faeabe-5d38-4b9f-a82e-4259abae49c0")
 		)
-		(pin ""
+		(pin "J1_3"
 			(uuid "f39e027c-6602-4cf6-918a-43f225d171e2")
 		)
-		(pin ""
+		(pin "J1_2"
 			(uuid "bdadf741-9bb5-43a9-a8f8-f2b932227885")
 		)
-		(pin ""
+		(pin "J1_1"
 			(uuid "723edd5d-738e-4a1c-87e7-c4e921860c9b")
 		)
-		(pin ""
+		(pin "J1_5"
 			(uuid "82397a96-a90b-4c54-b601-885871521551")
 		)
-		(pin ""
+		(pin "J1_6"
 			(uuid "d250749d-7872-4604-ac9c-a2021c1871c7")
 		)
-		(pin ""
+		(pin "J2_11"
 			(uuid "b14ff343-078e-4d59-acb0-07202c7eccc5")
 		)
-		(pin ""
+		(pin "J2_4"
 			(uuid "3c009d63-4e30-41d7-a276-54d8263a75a7")
 		)
-		(pin ""
+		(pin "J2_8"
 			(uuid "fc92f4d3-f74e-4256-9585-ae4a05255225")
 		)
-		(pin ""
+		(pin "J1_7"
 			(uuid "6723a71e-b2d6-466a-b380-3fd22966b362")
 		)
-		(pin ""
+		(pin "J1_9"
 			(uuid "78f6bce3-f460-46b0-877e-741ff6841ada")
 		)
-		(pin ""
+		(pin "J2_2"
 			(uuid "70d1073c-adac-41e4-91c8-2e4d6a6f3e99")
 		)
-		(pin ""
+		(pin "J1_10"
 			(uuid "c3be7c18-0e69-452b-ac8f-0b4145662291")
 		)
-		(pin ""
+		(pin "J2_1"
 			(uuid "6ae48452-2b7f-449f-8017-50bbabceb4f1")
 		)
-		(pin ""
+		(pin "J1_13"
 			(uuid "df23f47c-b1bd-4c17-b6fb-3078596dea78")
 		)
-		(pin ""
+		(pin "J2_15"
 			(uuid "9602152b-bfd1-428a-bd4e-ce0cbb79c383")
 		)
-		(pin ""
+		(pin "J2_3"
 			(uuid "06256a3e-68de-4789-a07f-ba03fbf6b731")
 		)
-		(pin ""
+		(pin "J1_11"
 			(uuid "d4c2dbc7-60af-460f-93e2-f813bec01106")
 		)
-		(pin ""
+		(pin "J2_5"
 			(uuid "0e28dd9b-1842-4fd6-837d-1e41be72e7fc")
 		)
-		(pin ""
+		(pin "J2_6"
 			(uuid "9d4fba43-1389-4874-adab-c4d2cf33e68c")
 		)
-		(pin ""
+		(pin "J1_8"
 			(uuid "9e6502d3-d640-42a9-b98d-dd3367a13579")
 		)
-		(pin ""
+		(pin "J1_12"
 			(uuid "06a766f5-320a-46e3-8a47-b30b95be6d74")
 		)
-		(pin ""
+		(pin "J2_12"
 			(uuid "fafe0cc7-f23b-4f61-82f4-44d170754d85")
 		)
 		(instances
@@ -1870,7 +1199,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 158.75 100.33 180)
+		(at 106.68 101.6 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1878,10 +1207,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "1726d33f-ab31-40c3-8b70-88074ce3225d")
-		(property "Reference" "GROUND"
-			(at 161.29 102.3619 0)
+		(property "Reference" "GROUND1"
+			(at 108.712 103.886 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1891,8 +1219,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "TestPoint"
-			(at 161.29 104.9019 0)
+		(property "Value" "GND from Pogo"
+			(at 99.314 107.95 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1902,8 +1230,8 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
-			(at 153.67 100.33 0)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 101.6 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1914,7 +1242,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 153.67 100.33 0)
+			(at 101.6 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1925,7 +1253,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 158.75 100.33 0)
+			(at 106.68 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1941,7 +1269,7 @@
 		(instances
 			(project "dirt"
 				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
-					(reference "GROUND")
+					(reference "GROUND1")
 					(unit 1)
 				)
 			)
@@ -1949,7 +1277,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 247.65 57.15 0)
+		(at 185.42 76.2 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1957,10 +1285,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "36eb446d-c0a6-47bd-acd1-b05fc870998e")
-		(property "Reference" "D-"
-			(at 250.19 52.5779 0)
+		(property "Reference" "D-_C1"
+			(at 190.754 76.2 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1970,8 +1297,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TestPoint"
-			(at 250.19 55.1179 0)
+		(property "Value" "D- FROM USB C"
+			(at 201.422 75.946 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1981,8 +1308,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 252.73 57.15 0)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 185.42 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1993,7 +1320,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 252.73 57.15 0)
+			(at 185.42 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2004,7 +1331,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 247.65 57.15 0)
+			(at 185.42 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2020,7 +1347,7 @@
 		(instances
 			(project "dirt"
 				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
-					(reference "D-")
+					(reference "D-_C1")
 					(unit 1)
 				)
 			)
@@ -2028,7 +1355,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 194.31 101.6 90)
+		(at 177.8 83.82 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2036,29 +1363,31 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "514926c4-2d54-4dcf-91ef-a4050b8bccd3")
-		(property "Reference" "T_DIN"
-			(at 191.516 103.886 90)
+		(uuid "45cbda06-fb19-4e58-97b6-f173d8c9c980")
+		(property "Reference" "GROUND_LCD1"
+			(at 196.85 83.82 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
-		(property "Value" "TestPoint"
-			(at 191.008 99.06 90)
+		(property "Value" "GND to LCD"
+			(at 211.328 84.074 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
-		(property "Footprint" ""
-			(at 194.31 96.52 0)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 177.8 88.9 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2069,7 +1398,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 194.31 96.52 0)
+			(at 177.8 88.9 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2080,7 +1409,83 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 194.31 101.6 0)
+			(at 177.8 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1fe195d0-c2b0-496b-a259-90f6f845cffa")
+		)
+		(instances
+			(project "dirt"
+				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
+					(reference "GROUND_LCD1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 144.78 86.36 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "514926c4-2d54-4dcf-91ef-a4050b8bccd3")
+		(property "Reference" "T_DIN1"
+			(at 135.636 86.36 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 126.746 86.106 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 144.78 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 144.78 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 144.78 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2096,120 +1501,7 @@
 		(instances
 			(project "dirt"
 				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
-					(reference "T_DIN")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:USB_C_Plug_USB2.0")
-		(at 139.7 77.47 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9463fc92-56db-4fb8-bbe7-a58ecc7bcfa1")
-		(property "Reference" "P1"
-			(at 139.7 54.61 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "USB_C_Plug_USB2.0"
-			(at 139.7 57.15 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 143.51 77.47 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
-			(at 143.51 77.47 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "USB 2.0-only Type-C Plug connector"
-			(at 139.7 77.47 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "B12"
-			(uuid "3fb51cf6-ea3b-48dc-91b5-88ef3469c3b0")
-		)
-		(pin "B1"
-			(uuid "efa0f16a-30da-45ec-8b60-7a392e72ef07")
-		)
-		(pin "A4"
-			(uuid "68c835c2-c8fe-4623-885c-0ef155981dd2")
-		)
-		(pin "A1"
-			(uuid "40fb5f72-d842-4392-834c-5c23ec28b7e4")
-		)
-		(pin "SH"
-			(uuid "fc9d1e6c-a55f-42ff-9ccf-055e7c3e400f")
-		)
-		(pin "A12"
-			(uuid "49ba2540-cba2-4b31-a046-e4759d8aa155")
-		)
-		(pin "B4"
-			(uuid "581dbd21-f58d-4be2-b2cf-ab98d2c0c056")
-		)
-		(pin "A5"
-			(uuid "12da3faa-0b0e-45c9-b29f-a26d989cd661")
-		)
-		(pin "A7"
-			(uuid "348ad18a-5962-4416-901a-e366907d4861")
-		)
-		(pin "A9"
-			(uuid "ac16788f-fb64-4019-8dc0-b4551c5f7581")
-		)
-		(pin "B5"
-			(uuid "ab7191fb-d8fd-405d-b7a6-ac1c915de229")
-		)
-		(pin "A6"
-			(uuid "fb0972b6-156a-4add-8a3e-5105d9bfeb33")
-		)
-		(pin "B9"
-			(uuid "ed4b5748-7b07-4eb4-aec9-d9248f952313")
-		)
-		(instances
-			(project "dirt"
-				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
-					(reference "P1")
+					(reference "T_DIN1")
 					(unit 1)
 				)
 			)
@@ -2217,7 +1509,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 157.48 91.44 180)
+		(at 177.8 86.36 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2225,32 +1517,29 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c9d12ed0-dd34-43a3-9e4e-1e5b5d1d4088")
-		(property "Reference" "5V"
-			(at 160.02 93.4719 0)
+		(uuid "567155a5-6cdc-44d9-9c0e-24a31eb7dd17")
+		(property "Reference" "TBD1"
+			(at 185.42 86.36 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 160.02 96.0119 0)
+			(at 193.04 86.36 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
-			(at 152.4 91.44 0)
+			(at 177.8 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2261,7 +1550,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 152.4 91.44 0)
+			(at 177.8 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2272,7 +1561,703 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 157.48 91.44 0)
+			(at 177.8 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "226307aa-7883-4b39-88d3-ff37dbe28f44")
+		)
+		(instances
+			(project "dirt"
+				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
+					(reference "TBD1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 185.42 68.58 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5a073a37-6c8d-47d5-b614-76756139ff01")
+		(property "Reference" "D+_Pogo1"
+			(at 190.754 68.58 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "D+ FROM Pogo"
+			(at 201.93 68.58 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 185.42 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 185.42 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 185.42 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "92d623c3-fdfd-4ec0-8815-5d1baba0cff7")
+		)
+		(instances
+			(project "dirt"
+				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
+					(reference "D+_Pogo1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 185.42 71.12 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5fba3444-3d0e-4a31-bbac-6fd34f5c26f3")
+		(property "Reference" "D-_Pogo1"
+			(at 190.754 71.12 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "D- FROM Pogo"
+			(at 201.676 71.12 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 185.42 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 185.42 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 185.42 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c21cdf62-53a7-45ad-a29d-5af70d2635f5")
+		)
+		(instances
+			(project "dirt"
+				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
+					(reference "D-_Pogo1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 177.8 81.28 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6481393c-a304-40b4-9327-c52c5a0bc045")
+		(property "Reference" "3.3V_LCD1"
+			(at 193.294 81.28 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "3.3V Output to LCD"
+			(at 213.868 81.28 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 177.8 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 177.8 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "52feeaec-7920-445f-bc1d-95a4b35ba90b")
+		)
+		(instances
+			(project "dirt"
+				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
+					(reference "3.3V_LCD1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 177.8 88.9 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7fc5ddfa-c92b-4d46-b214-761b77216a19")
+		(property "Reference" "TBD2"
+			(at 185.42 88.9 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 193.04 88.9 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 177.8 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 177.8 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "43875401-44a6-4492-936f-b9ed79a4b416")
+		)
+		(instances
+			(project "dirt"
+				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
+					(reference "TBD2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 177.8 78.74 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a3258c73-361f-4751-a0ce-ebc8660f81b0")
+		(property "Reference" "TBD5"
+			(at 185.42 78.74 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 193.294 78.74 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 177.8 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 177.8 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7643775a-db76-40f8-82a9-2ac6f84cc6a9")
+		)
+		(instances
+			(project "dirt"
+				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
+					(reference "TBD5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 87.63 101.6 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a820afbe-57b6-4c8f-af9e-f34cd1efa2c9")
+		(property "Reference" "GROUND_C1"
+			(at 90.678 103.886 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "GND from USB C"
+			(at 80.264 107.95 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 82.55 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 82.55 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 87.63 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3ae64f6e-d671-4367-b628-e8b2eb17aea0")
+		)
+		(instances
+			(project "dirt"
+				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
+					(reference "GROUND_C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 177.8 93.98 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b8ef43dd-1ef5-4443-81e8-4815346997b7")
+		(property "Reference" "TBD4"
+			(at 185.42 93.98 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 193.04 93.98 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 177.8 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 177.8 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2e704cd5-7ddd-4fcd-ab7f-4dec60c82cce")
+		)
+		(instances
+			(project "dirt"
+				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
+					(reference "TBD4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 81.28 111.76 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "bdb9cc70-4b01-4783-8287-7d0a3e6e9706")
+		(property "Reference" "5V_C1"
+			(at 83.82 113.7919 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "5V Input USB C"
+			(at 73.406 117.602 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 76.2 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 76.2 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 81.28 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a2b381a6-6fb1-49f7-942f-17e58df8481c")
+		)
+		(instances
+			(project "dirt"
+				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
+					(reference "5V_C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 105.41 111.76 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c9d12ed0-dd34-43a3-9e4e-1e5b5d1d4088")
+		(property "Reference" "5V1"
+			(at 107.95 113.7919 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "5V Output from Pogo"
+			(at 97.536 117.602 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 100.33 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 100.33 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 105.41 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2288,7 +2273,7 @@
 		(instances
 			(project "dirt"
 				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
-					(reference "5V")
+					(reference "5V1")
 					(unit 1)
 				)
 			)
@@ -2296,7 +2281,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 195.58 96.52 90)
+		(at 144.78 81.28 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2305,8 +2290,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "cf654c26-8bdc-4bc7-afdb-0e6bc3713c9a")
-		(property "Reference" "T_DO"
-			(at 192.278 91.694 90)
+		(property "Reference" "T_DO1"
+			(at 135.382 81.28 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2316,7 +2301,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 192.278 93.98 90)
+			(at 126.746 81.28 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2325,8 +2310,8 @@
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 195.58 91.44 0)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 144.78 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2337,7 +2322,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 195.58 91.44 0)
+			(at 144.78 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2348,7 +2333,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 195.58 96.52 0)
+			(at 144.78 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2364,7 +2349,7 @@
 		(instances
 			(project "dirt"
 				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
-					(reference "T_DO")
+					(reference "T_DO1")
 					(unit 1)
 				)
 			)
@@ -2372,7 +2357,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 232.41 57.15 0)
+		(at 177.8 91.44 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2380,32 +2365,29 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e46f9347-8f40-4d1a-a506-f79e498f1631")
-		(property "Reference" "D+"
-			(at 234.95 52.5779 0)
+		(uuid "cfcba3cb-e7c1-46eb-afd3-13340cf2b8aa")
+		(property "Reference" "TBD3"
+			(at 185.42 91.44 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 234.95 55.1179 0)
+			(at 193.04 91.44 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
-			(at 237.49 57.15 0)
+			(at 177.8 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2416,7 +2398,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 237.49 57.15 0)
+			(at 177.8 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2427,7 +2409,85 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 232.41 57.15 0)
+			(at 177.8 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f348a951-29b1-487f-bb83-08b51c5fd190")
+		)
+		(instances
+			(project "dirt"
+				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
+					(reference "TBD3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 185.42 73.66 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e46f9347-8f40-4d1a-a506-f79e498f1631")
+		(property "Reference" "D+_C1"
+			(at 190.754 73.66 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "D+ FROM USB C"
+			(at 201.422 73.406 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 185.42 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 185.42 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 185.42 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2443,7 +2503,83 @@
 		(instances
 			(project "dirt"
 				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
-					(reference "D+")
+					(reference "D+_C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 144.78 88.9 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "efe165cc-5cb9-4768-8948-61557d176383")
+		(property "Reference" "T_CLK1"
+			(at 135.89 88.9 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 126.746 88.9 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
+			(at 144.78 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 144.78 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 144.78 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "73167af2-b3f4-4baf-a30e-3d1815e51014")
+		)
+		(instances
+			(project "dirt"
+				(path "/d8b599cf-9000-48cc-8766-23db3ea4ae91"
+					(reference "T_CLK1")
 					(unit 1)
 				)
 			)
