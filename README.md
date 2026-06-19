@@ -12,30 +12,34 @@ All 4 of the team members of this project are High School seniors. At the end of
 
 
 ## Hardware Architecture - Carrot
-
-### System Components
-* **Main Compute Module:** Embedded Luckfox Pico Mini B 
+### **Main Compute Module:** Embedded Luckfox Pico Mini B 
 
 | Luckfox Pico Mini B (2D) | Luckfox Pico Mini B (3D) |
 | :---: | :---: |
 | <img src="https://github.com/user-attachments/assets/d243de09-778c-4d48-a652-383df001b6e8" alt="luckfox_2d" width="100%" /> | <img src="https://github.com/user-attachments/assets/f13b5a4d-605d-4a7c-87a0-da64d2e103ab" alt="luckfox_3d" width="100%" /> |
 
 
-* **Audio Input:** SPH0655
+### **Input:** Audio & Video
+| Microphone | CSI Camera |
+| :---: | :---: |
+| <img width="95%" alt="image" src="https://github.com/user-attachments/assets/de1b7129-3cad-43c9-9911-14325515e6ea" /> | <img width="597" height="666" alt="image" src="https://github.com/user-attachments/assets/9b011255-0841-4a2e-993e-1930c3bdcae8" /> |
 
-* **Visual Input:** SC3336 3MP
-* **Status Indicator:** SunLED XZVGMDK53W-9
-* **Power Management:** MCP73831T-2A
-* **Display:** ILI9341 
+### **Power Management:** MCP73831T-2A
+| Controller | 2d | 3D |
+| :---: | :---: | :---: |
+| <img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/b539b5b1-740c-4f56-924c-8e0773f1a657" /> | <img width="1125" height="730" alt="image" src="https://github.com/user-attachments/assets/92c5daeb-05d5-4548-9375-149a480fa49f" /> | <img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/c2de3cf3-b8d9-475a-b32b-ba6da2ebc751" /> |
+
+### **Display:** ILI9341 
+<img width="80%" alt="image" src="https://github.com/user-attachments/assets/f399143a-ea69-4029-b35b-0bed4a2ec6be" />
+
+### **Status Indicator:** SunLED XZVGMDK53W-9
+  <img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/75f52bc2-a386-4882-b86c-cb7c24f693c7" />
 
 ## Hardware Architecture pt. 2 - Pot
-* **ESP8266 board**
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/a6e20dd5-2655-4d6c-89ee-21d4f95131a6" alt="ESP8266 Board schematic" width="80%" />
-</p>
-
-
+### **Embedded ESP8266 board**
+| 3D Model | 2D Design |
+| :---: | :---: |
+| <img width="1234" height="915" alt="image" src="https://github.com/user-attachments/assets/c73300b8-7550-4fc7-a2e0-ddb6dc06ee2d" /> | <img width="1165" height="915" alt="esp8266_2nd" src="https://github.com/user-attachments/assets/1359f316-cbce-4f08-98aa-600b92aa06ad" /> |
 ## Project Status
 
 - [x] Initial hardware schematic
