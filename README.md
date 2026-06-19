@@ -19,7 +19,7 @@ Comparatively, our pot firmware for the ESP8266 in our [Display](display/display
 
 
 ### **WEBSITE**
-My (Esean) **pride and joy** of this project, the website that could display the results of our carrot pen while taking a USB payload from the pot/holster, the [platform](platform) folder hosts the website that displays the uploaded videos in a "scrapbook" ish feel while keeping a clean and modern UI mentality. <img width="2284" height="1488" alt="image" src="https://github.com/user-attachments/assets/b4aa056f-c928-4af2-94ae-6bbb59a2d7f5" />
+My (Esean) **pride and joy** of this project, the website that could display the results of our carrot pen while taking a USB payload from the pot/holster, the [platform](platform) folder hosts the website that displays the uploaded videos in a "scrapbook" ish feel while keeping a clean and modern UI mentality. The backend is just a pocketbase server that can be thrown onto any dedicated server and the and the frontend is written in react. <img width="2284" height="1488" alt="image" src="https://github.com/user-attachments/assets/b4aa056f-c928-4af2-94ae-6bbb59a2d7f5" />
 
 ## Hardware Architecture - Carrot
 ### **Main Compute Module:** Embedded Luckfox Pico Mini B 
