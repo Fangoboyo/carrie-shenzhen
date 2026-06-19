@@ -22,6 +22,7 @@ export const BookComponent: React.FC<BookComponentProps> = ({
   accentColor,
   onClick,
   isOpen = false,
+  disableHover = false,
 }) => {
   const displayTitle = title;
   const displaySubtitle = subtitle;
@@ -62,8 +63,8 @@ export const BookComponent: React.FC<BookComponentProps> = ({
       ref={bookRef}
       className="scrapbook-book"
       style={{ ...bookStyle, transformStyle: "preserve-3d", perspective: 1000 }}
-      onMouseEnter={handleHoverStart}
-      onMouseLeave={handleHoverEnd}
+      onMouseEnter={disableHover ? undefined : handleHoverStart}
+      onMouseLeave={disableHover ? undefined : handleHoverEnd}
       onClick={onClick}
     >
       <BookRibbon ribbonRef={ribbonRef} />

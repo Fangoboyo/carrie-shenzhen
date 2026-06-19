@@ -54,4 +54,5 @@ export interface BookComponentProps {
   accentColor?: string;
   onClick?: () => void;
   isOpen?: boolean;
+  disableHover?: boolean;
 }

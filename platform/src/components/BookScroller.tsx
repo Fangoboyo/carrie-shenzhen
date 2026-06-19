@@ -50,8 +50,8 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
   onBookClick,
 }) => {
   const navigate = useNavigate();
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [autoHoveredIndex, setAutoHoveredIndex] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -62,6 +62,11 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
   const autoHoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const translationRef = useRef(0);
   const lastPausedIndexRef = useRef<number | null>(null);
+
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const startTranslationRef = useRef(0);
+  const hasDraggedRef = useRef(false);
 
   // Synchronously map books and pages from props
   const displayBooks = React.useMemo<BookWithPages[]>(() => {
@@ -163,14 +168,14 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
 
   // Helper to resume the infinite marquee scroll
   const resumeAutoScroll = () => {
-    if (!trackRef.current || resolvedBooksCount === 0) return;
+    if (!trackRef.current || resolvedBooksCount === 0 || isDraggingRef.current) return;
 
     if (resolvedBooksCount === 1) {
       // Just center and open the only book, no scrolling needed
       gsap.set(trackRef.current, { x: 0 });
       translationRef.current = 0;
       updateBookPositions();
-      setAutoHoveredIndex(0);
+      setActiveIndex(0);
       return;
     }
 
@@ -203,8 +208,8 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
 
   // Monitor positions and pause/hover a book when it reaches the middle
   const checkAutoHover = (x: number) => {
-    if (hoveredIndex !== null) return; // Don't auto-hover if user is manually hovering
-    if (autoHoveredIndex !== null) return; // Already in a pause/open state
+    if (isDraggingRef.current) return; // Don't auto-hover while dragging
+    if (activeIndex !== null) return; // Already in a pause/open state
 
     const container = containerRef.current;
     if (!container) return;
@@ -236,7 +241,7 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
 
     const targetX = -vIdx * 320;
 
-    setAutoHoveredIndex(vIdx);
+    setActiveIndex(vIdx);
 
     activeTweenRef.current = gsap.to(trackRef.current, {
       x: targetX,
@@ -249,7 +254,7 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
       onComplete: () => {
         // Keep the book open for 4 seconds, then close it and resume
         autoHoverTimeoutRef.current = setTimeout(() => {
-          setAutoHoveredIndex(null);
+          setActiveIndex(null);
 
           // Wait for the close animation to complete (approx 1.2s) before resuming scroll
           autoHoverTimeoutRef.current = setTimeout(() => {
@@ -259,6 +264,109 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
         }, 4000);
       },
     });
+  };
+
+  const scheduleAutoScrollResume = () => {
+    if (autoHoverTimeoutRef.current) clearTimeout(autoHoverTimeoutRef.current);
+    autoHoverTimeoutRef.current = setTimeout(() => {
+      setActiveIndex(null);
+
+      // Wait for the close animation to complete (approx 1.2s) before resuming scroll
+      autoHoverTimeoutRef.current = setTimeout(() => {
+        lastPausedIndexRef.current = null;
+        resumeAutoScroll();
+      }, 1200);
+    }, 4000);
+  };
+
+  const snapToNearestBook = () => {
+    if (!trackRef.current || resolvedBooksCount === 0) return;
+
+    const currentX = translationRef.current;
+    const closestVIdx = Math.round(-currentX / 320);
+    const targetX = -closestVIdx * 320;
+
+    if (activeTweenRef.current) activeTweenRef.current.kill();
+    if (tweenRef.current) tweenRef.current.kill();
+
+    activeTweenRef.current = gsap.to(trackRef.current, {
+      x: targetX,
+      duration: 0.5,
+      ease: "power2.out",
+      onUpdate: () => {
+        translationRef.current = gsap.getProperty(trackRef.current, "x") as number;
+        updateBookPositions();
+      },
+      onComplete: () => {
+        setActiveIndex(closestVIdx);
+        lastPausedIndexRef.current = closestVIdx;
+        scheduleAutoScrollResume();
+      },
+    });
+  };
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.button !== 0 && e.pointerType === "mouse") return;
+
+    isDraggingRef.current = true;
+    setIsDragging(true);
+    hasDraggedRef.current = false;
+    startXRef.current = e.clientX;
+    startTranslationRef.current = translationRef.current;
+
+    // Pause animations immediately
+    if (tweenRef.current) tweenRef.current.pause();
+    if (activeTweenRef.current) activeTweenRef.current.kill();
+    if (autoHoverTimeoutRef.current) {
+      clearTimeout(autoHoverTimeoutRef.current);
+      autoHoverTimeoutRef.current = null;
+    }
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current) return;
+
+    const deltaX = e.clientX - startXRef.current;
+    if (Math.abs(deltaX) > 5 && !hasDraggedRef.current) {
+      hasDraggedRef.current = true;
+      e.currentTarget.setPointerCapture(e.pointerId);
+    }
+
+    if (hasDraggedRef.current) {
+      let targetX = startTranslationRef.current + deltaX;
+
+      if (resolvedBooksCount > 1) {
+        if (targetX > 0) {
+          targetX -= loopWidth;
+          startXRef.current += loopWidth;
+          startTranslationRef.current -= loopWidth;
+        } else if (targetX < -loopWidth) {
+          targetX += loopWidth;
+          startXRef.current -= loopWidth;
+          startTranslationRef.current += loopWidth;
+        }
+      }
+
+      if (trackRef.current) {
+        gsap.set(trackRef.current, { x: targetX });
+      }
+      translationRef.current = targetX;
+      updateBookPositions();
+    }
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    setIsDragging(false);
+
+    if (hasDraggedRef.current) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+      snapToNearestBook();
+    } else {
+      // Just a click, let's snap anyway to be safe or resume auto scroll
+      snapToNearestBook();
+    }
   };
 
   // Setup scroll event listener and resize updates
@@ -297,7 +405,9 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
     updateBookPositions();
 
     const timer = setTimeout(() => {
-      triggerAutoHover(targetVirtualIndex);
+      setActiveIndex(targetVirtualIndex);
+      lastPausedIndexRef.current = targetVirtualIndex;
+      scheduleAutoScrollResume();
     }, 150);
 
     return () => {
@@ -309,7 +419,7 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
   // Center and auto-hover selected book on change
   useEffect(() => {
     if (!selectedBookId || displayBooks.length === 0) return;
-    if (hoveredIndex !== null) return; // Don't override active user manual hover
+    if (isDraggingRef.current) return;
 
     const matchingIndices: number[] = [];
     displayBooks.forEach((book) => {
@@ -347,51 +457,30 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
     };
   }, []);
 
-  const handleBookHoverStart = (vIdx: number) => {
-    if (!trackRef.current) return;
-
-    setHoveredIndex(vIdx);
-    setAutoHoveredIndex(null); // Clear auto hover if user takes manual control
-
-    if (tweenRef.current) tweenRef.current.pause();
-    if (activeTweenRef.current) activeTweenRef.current.kill();
-    if (autoHoverTimeoutRef.current) clearTimeout(autoHoverTimeoutRef.current);
-
-    const targetBaseX = -vIdx * 320;
-    const currentX = translationRef.current;
-    const k = Math.round((currentX - targetBaseX) / loopWidth);
-    const targetX = targetBaseX + k * loopWidth;
-
-    activeTweenRef.current = gsap.to(trackRef.current, {
-      x: targetX,
-      duration: 1.25,
-      ease: "power2.out",
-      overwrite: "auto",
-      onUpdate: () => {
-        translationRef.current = gsap.getProperty(trackRef.current, "x") as number;
-        updateBookPositions();
-      },
-    });
-  };
-
-  const handleBookHoverEnd = () => {
-    if (!trackRef.current) return;
-    if (hoveredIndex === null) return;
-
-    setHoveredIndex(null);
-
-    if (autoHoverTimeoutRef.current) clearTimeout(autoHoverTimeoutRef.current);
-    autoHoverTimeoutRef.current = setTimeout(() => {
-      resumeAutoScroll();
-    }, 1000);
-  };
-
   const handleBookClick = (id: string, vIdx: number) => {
-    if (autoHoveredIndex === vIdx || hoveredIndex === vIdx) {
+    if (activeIndex === vIdx) {
       if (onBookClick) onBookClick(id);
       else navigate(`/board/${id}`);
     } else {
-      triggerAutoHover(vIdx);
+      setActiveIndex(vIdx);
+      lastPausedIndexRef.current = vIdx;
+
+      if (tweenRef.current) tweenRef.current.pause();
+      if (activeTweenRef.current) activeTweenRef.current.kill();
+      if (autoHoverTimeoutRef.current) clearTimeout(autoHoverTimeoutRef.current);
+
+      activeTweenRef.current = gsap.to(trackRef.current, {
+        x: -vIdx * 320,
+        duration: 0.6,
+        ease: "power2.out",
+        onUpdate: () => {
+          translationRef.current = gsap.getProperty(trackRef.current, "x") as number;
+          updateBookPositions();
+        },
+        onComplete: () => {
+          scheduleAutoScrollResume();
+        },
+      });
     }
   };
 
@@ -405,18 +494,23 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
 
   return (
     <div className="scroller-showcase-box book-shelf-scroller flex items-center justify-center min-h-[500px]">
-      <div ref={containerRef} className="carousel-container">
+      <div
+        ref={containerRef}
+        className={`carousel-container ${isDragging ? "dragging" : ""}`}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+      >
         <div
           ref={trackRef}
           className={`carousel-track ${
-            hoveredIndex !== null || autoHoveredIndex !== null ? "has-hovered-item" : ""
+            activeIndex !== null ? "has-active-item" : ""
           }`}
         >
           {displayBooks.map((book, idx) => {
-            const isItemHovered = hoveredIndex === book.virtualIndex;
-            const isAutoHovered = autoHoveredIndex === book.virtualIndex;
+            const isBookOpen = activeIndex === book.virtualIndex;
             const isSelected = book.id === selectedBookId;
-            const isBookOpen = isItemHovered || isAutoHovered;
 
             return (
               <div
@@ -424,15 +518,13 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
                 ref={(el) => {
                   bookElementsRef.current[idx] = el;
                 }}
-                className={`carousel-item ${isItemHovered ? "is-hovered" : ""} ${
+                className={`carousel-item ${isBookOpen ? "is-active" : ""} ${
                   isSelected ? "is-selected" : ""
                 }`}
                 style={{
                   position: "absolute",
                   left: `${book.virtualIndex * 320}px`,
                 }}
-                onMouseEnter={() => handleBookHoverStart(book.virtualIndex)}
-                onMouseLeave={handleBookHoverEnd}
               >
                 <BookComponent
                   title={book.title}
@@ -443,6 +535,7 @@ export const BookComponentMarquee: React.FC<BookComponentMarqueeProps> = ({
                   accentColor={book.accentColor}
                   onClick={() => handleBookClick(book.id, book.virtualIndex)}
                   isOpen={isBookOpen}
+                  disableHover={true}
                 />
               </div>
             );

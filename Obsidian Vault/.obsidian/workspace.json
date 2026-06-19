@@ -16,9 +16,9 @@
               "state": {
                 "file": "Technical overview.canvas",
                 "viewState": {
-                  "x": -708.6392107156349,
-                  "y": -1152.181302578263,
-                  "zoom": -0.7349062603532661
+                  "x": 668.1642890368394,
+                  "y": 1803.27299682635,
+                  "zoom": -1.1684625583335624
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -208,16 +208,16 @@
       "bases:Create new base": false
     }
   },
-  "active": "ad92ae7a9d2be98e",
+  "active": "954c6e48e0ef4eca",
   "lastOpenFiles": [
+    "Technical overview.canvas",
+    "software/firmware/GPIO Read Mechanism.md",
     "Materials/LCD Display (Touchscreen) - Arrived.md",
     "Bill of Materials.md",
-    "Technical overview.canvas",
     "Planning before 6-7.md",
     "Materials/POGO Pin - Arrived.md",
     "Materials/Microphone - Arrived.md",
     "software/firmware/Display Driver.md",
-    "software/firmware/GPIO Read Mechanism.md",
     "Fabrication.md",
     "Carrie Construction.md",
     "Materials/BMS/Battery - Arrived.md",
