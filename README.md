@@ -6,14 +6,20 @@ An embedded audio-recording smart pen shaped like a carrot, featuring a custom p
 
 ## Project Overview
 
-A personal carry device in the shape of a carrot, Carrie is an interpretation of the carrot pen used by Judy Hopps in Zootopia. It's built with a microphone and a camera, integrated into the tiny form factor of a pen, and powered by an embedded Linux microcontroller (Luckfox Pico Mini B) on a custom PCB. With the click of a button, Carrie records 1080p footage at 30 FPS with audio. Then, simply take off the cap and plug the pen into the pot docking station to transfer your video files to a host computer and charge Carrie's battery.
+A personal carry device in the shape of a carrot, Carrie is an interpretation of the carrot pen used by Judy Hopps in Zootopia. It's built with a microphone and a camera, integrated into the tiny form factor of a pen, and powered by an embedded Linux microcontroller (Luckfox Pico Mini B) on a custom PCB. With the click of a button, Carrie records 1080p footage at 30 FPS with audio, making sure you never forget to record those memorable moments. Then, simply take off the cap and plug the pen into the pot docking station to transfer your video files to a host computer and charge Carrie's battery.
 
 ### Web Platform Dashboard
-The frontend dashboard is built with React, presenting recorded videos in a responsive, modern "scrapbook" layout. A PocketBase backend running on Bun handles session data and pipes incoming video streams directly to the Google Drive API.
+The website displays uploaded videos in a clean and modern "scrapbook" style feed. The frontend dashboard is built with React, and a PocketBase backend running on Bun handles session data and pipes incoming video streams directly to the Google Drive API.
 
 <img width="800" style="max-width: 100%; height: auto;" alt="Web Platform Dashboard Mockup" src="https://github.com/user-attachments/assets/b4aa056f-c928-4af2-94ae-6bbb59a2d7f5" />
 
 *Figure 1: React-based web dashboard displaying scrapbook video feeds synced from the carrot pen.*
+
+---
+
+## Why?
+
+All 4 of the team members of this project are High School seniors. At the end of the year, many of the people who we have spent a majority of our lives with will be leaving to colleges across the world. It's easy to say that you'll keep in touch and commit to sending pictures and videos often of what you do everyday, but it's often a promise that is neglected not from a lack of care, but from the nature of experiencing an event; your first thought isn't always to start recording. With a personal carry device in such a form factor, Carrie serves as an always present, physical reminder of that promise. In this way, it helps old friends reconnect and stay connected.
 
 ---
 
