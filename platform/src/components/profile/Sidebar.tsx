@@ -51,8 +51,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <NavBtn tab="home"   icon={<Home size={20} />}     title="Dashboard" />
         <NavBtn tab="upload" icon={<Upload size={20} />}   title="Upload Memory" />
         <NavBtn tab="home"   icon={<BookOpen size={20} />} title="Memories Grid" />
-        <NavBtn             icon={<Tag size={20} />}      title="Categories" />
-        <NavBtn             icon={<Settings size={20} />} title="Settings" />
       </div>
 
       <button

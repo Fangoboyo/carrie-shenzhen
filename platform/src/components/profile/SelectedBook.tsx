@@ -1,5 +1,5 @@
 import React from "react";
-import { Heart, ChevronLeft, ChevronRight } from "lucide-react";
+import { Heart } from "lucide-react";
 import { MemoryScroller } from "./MemoryScroller";
 import type { BookRecord, PageRecord } from "../../types/BookComponentTypes";
 
@@ -10,7 +10,6 @@ interface SelectedBookProps {
   onPageChange: (index: number) => void;
 }
 
-// Extract long/repeated utility classes into clean constants
 const CONTAINER_CLASSES = [
   "w-[44%]",
   "bg-white/35",
@@ -23,18 +22,6 @@ const CONTAINER_CLASSES = [
   "flex-shrink-0"
 ].join(" ");
 
-const NAV_BUTTON_CLASSES = [
-  "w-10 h-10",
-  "rounded-full",
-  "border-[1.5px] border-db-border",
-  "bg-db-card",
-  "text-db-text",
-  "cursor-pointer",
-  "flex items-center justify-center",
-  "transition-all duration-200",
-  "hover:border-db-text hover:shadow-sm"
-].join(" ");
-
 export const SelectedBook: React.FC<SelectedBookProps> = ({
   book,
   pages,
@@ -43,20 +30,15 @@ export const SelectedBook: React.FC<SelectedBookProps> = ({
 }) => {
   const pagesCount = pages.length;
 
-  const handlePrev = () => onPageChange(Math.max(0, currentPageIndex - 1));
-  const handleNext = () =>
-    onPageChange(Math.min(pagesCount - 1, currentPageIndex + 1));
-
-  const heights = [
-    16, 24, 32, 28, 20, 24, 28, 16, 20, 32, 24, 28, 16, 20, 32, 28, 24, 20, 16,
-    24, 32, 28, 20, 24,
-  ];
-
   return (
     <div className={CONTAINER_CLASSES}>
       {/* Memory card marquee / showcase */}
       <div className="scroller-showcase-box flex-1 w-full flex items-center justify-center min-h-[400px]">
-        <MemoryScroller pages={pages} />
+        <MemoryScroller
+          pages={pages}
+          currentPageIndex={currentPageIndex}
+          onPageChange={onPageChange}
+        />
       </div>
 
       {/* Book info */}
@@ -80,69 +62,6 @@ export const SelectedBook: React.FC<SelectedBookProps> = ({
         <div className="font-sans text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-db-muted bg-black/5 inline-block px-1.5 py-0.5 rounded mb-4">
           {book?.subtitle || "Select a book below to begin"}
         </div>
-
-        {/* Waveform progress scrubber */}
-        <div className="w-full flex items-center gap-3 mt-2 mb-3">
-          <span className="text-[0.85rem] font-bold text-db-muted font-mono min-w-[45px]">
-            {pagesCount > 0 ? `P. ${currentPageIndex + 1}` : "P. 0"}
-          </span>
-
-          <div className="flex-1 h-9 flex items-center justify-between gap-[3px]">
-            {Array.from({ length: 24 }).map((_, idx) => {
-              const targetPageIdx =
-                pagesCount > 0 ? Math.floor((idx / 24) * pagesCount) : 0;
-              const isActive =
-                pagesCount > 0 && targetPageIdx <= currentPageIndex;
-              const h = heights[idx % heights.length];
-              return (
-                <div
-                  key={idx}
-                  className={`flex-1 rounded-sm transition-all duration-200 ${isActive ? "bg-db-text" : "bg-black/10"}`}
-                  style={{
-                    height: `${h}px`,
-                    cursor: pagesCount > 0 ? "pointer" : "default",
-                    opacity: pagesCount > 0 ? 1 : 0.3,
-                  }}
-                  onClick={() => pagesCount > 0 && onPageChange(targetPageIdx)}
-                  title={
-                    pagesCount > 0
-                      ? `Go to Page ${targetPageIdx + 1}`
-                      : undefined
-                  }
-                />
-              );
-            })}
-          </div>
-
-          <span className="text-[0.85rem] font-bold text-db-muted font-mono min-w-[45px] text-right">
-            {pagesCount > 0 ? `Total ${pagesCount}` : "P. 0"}
-          </span>
-        </div>
-
-        {/* Prev / Next buttons */}
-        {pagesCount > 1 && (
-          <div className="flex justify-center gap-6 mt-2 mb-2">
-            <button
-              onClick={handlePrev}
-              className={NAV_BUTTON_CLASSES}
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              onClick={handleNext}
-              className={NAV_BUTTON_CLASSES}
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
-        )}
-
-        {/* Hint */}
-        <p className="text-[0.85rem] text-db-muted text-center italic mt-2">
-          {pagesCount > 0
-            ? "Click the waveform bars to scrub through pages!"
-            : "No pages available in this memory book."}
-        </p>
       </div>
     </div>
   );

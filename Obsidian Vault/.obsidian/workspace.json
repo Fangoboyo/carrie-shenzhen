@@ -16,8 +16,8 @@
               "state": {
                 "file": "Technical overview.canvas",
                 "viewState": {
-                  "x": 668.1642890368394,
-                  "y": 1803.27299682635,
+                  "x": -502.44847283901674,
+                  "y": -577.6697456318659,
                   "zoom": -1.1684625583335624
                 }
               },
@@ -103,7 +103,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 236.5
   },
   "right": {
     "id": "7f42608727ce2220",
@@ -208,9 +208,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "954c6e48e0ef4eca",
+  "active": "e72173aca7999b98",
   "lastOpenFiles": [
     "Technical overview.canvas",
+    "Materials/BMS/Battery - Arrived.md",
     "software/firmware/GPIO Read Mechanism.md",
     "Materials/LCD Display (Touchscreen) - Arrived.md",
     "Bill of Materials.md",
@@ -220,7 +221,6 @@
     "software/firmware/Display Driver.md",
     "Fabrication.md",
     "Carrie Construction.md",
-    "Materials/BMS/Battery - Arrived.md",
     "Materials/BMS/Battery Management System.canvas",
     "Materials/BMS/MCP73831.md",
     "Materials/USBC Male head.md",

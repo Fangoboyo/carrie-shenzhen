@@ -9,11 +9,18 @@ interface PageWithVirtualIndex extends PageRecord {
 
 interface MemoryScrollerProps {
   pages: PageRecord[];
+  currentPageIndex?: number;
+  onPageChange?: (index: number) => void;
 }
 
-export const MemoryScroller: React.FC<MemoryScrollerProps> = ({ pages }) => {
+export const MemoryScroller: React.FC<MemoryScrollerProps> = ({
+  pages,
+  currentPageIndex,
+  onPageChange,
+}) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activePlayIndex, setActivePlayIndex] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -24,6 +31,11 @@ export const MemoryScroller: React.FC<MemoryScrollerProps> = ({ pages }) => {
   const autoHoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const translationRef = useRef(0);
   const lastPausedIndexRef = useRef<number | null>(null);
+
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const startTranslationRef = useRef(0);
+  const hasDraggedRef = useRef(false);
 
   // Synchronously map pages to a padded list for infinite wrapping
   const displayPages = React.useMemo<PageWithVirtualIndex[]>(() => {
@@ -102,7 +114,7 @@ export const MemoryScroller: React.FC<MemoryScrollerProps> = ({ pages }) => {
 
   // Helper to resume the infinite marquee scroll
   const resumeAutoScroll = () => {
-    if (!trackRef.current || resolvedPagesCount === 0) return;
+    if (!trackRef.current || resolvedPagesCount === 0 || isDraggingRef.current) return;
 
     if (resolvedPagesCount === 1) {
       gsap.set(trackRef.current, { x: 0 });
@@ -179,6 +191,38 @@ export const MemoryScroller: React.FC<MemoryScrollerProps> = ({ pages }) => {
     };
   }, [pages]);
 
+  // Sync to currentPageIndex updates from the outside (shortest path animation)
+  useEffect(() => {
+    if (currentPageIndex === undefined || resolvedPagesCount === 0 || isDraggingRef.current) return;
+
+    const currentX = translationRef.current;
+    const currentVirtualIdx = Math.round(-currentX / 340);
+    const diff = ((currentPageIndex - (currentVirtualIdx % resolvedPagesCount)) % resolvedPagesCount + resolvedPagesCount) % resolvedPagesCount;
+    
+    let bestVIdx = currentVirtualIdx + diff;
+    if (diff > resolvedPagesCount / 2) {
+      bestVIdx -= resolvedPagesCount;
+    } else if (diff < -resolvedPagesCount / 2) {
+      bestVIdx += resolvedPagesCount;
+    }
+
+    const targetX = -bestVIdx * 340;
+    if (targetX !== translationRef.current) {
+      if (activeTweenRef.current) activeTweenRef.current.kill();
+      if (tweenRef.current) tweenRef.current.kill();
+
+      activeTweenRef.current = gsap.to(trackRef.current, {
+        x: targetX,
+        duration: 0.6,
+        ease: "power2.out",
+        onUpdate: () => {
+          translationRef.current = gsap.getProperty(trackRef.current, "x") as number;
+          updateCardPositions();
+        },
+      });
+    }
+  }, [currentPageIndex, resolvedPagesCount]);
+
   // Cleanup on unmount
   useEffect(() => {
     return () => {
@@ -189,9 +233,8 @@ export const MemoryScroller: React.FC<MemoryScrollerProps> = ({ pages }) => {
   }, []);
 
   const handleCardHoverStart = (vIdx: number) => {
-    // If a card is active/expanded, we do not pause or overwrite on normal hovers
     if (activePlayIndex !== null) return;
-    if (!trackRef.current) return;
+    if (!trackRef.current || isDraggingRef.current) return;
 
     setHoveredIndex(vIdx);
 
@@ -217,7 +260,7 @@ export const MemoryScroller: React.FC<MemoryScrollerProps> = ({ pages }) => {
 
   const handleCardHoverEnd = () => {
     if (activePlayIndex !== null) return;
-    if (!trackRef.current) return;
+    if (!trackRef.current || isDraggingRef.current) return;
 
     setHoveredIndex(null);
 
@@ -227,12 +270,120 @@ export const MemoryScroller: React.FC<MemoryScrollerProps> = ({ pages }) => {
     }, 1000);
   };
 
+  const scheduleAutoScrollResume = () => {
+    if (autoHoverTimeoutRef.current) clearTimeout(autoHoverTimeoutRef.current);
+    autoHoverTimeoutRef.current = setTimeout(() => {
+      setHoveredIndex(null);
+      autoHoverTimeoutRef.current = setTimeout(() => {
+        lastPausedIndexRef.current = null;
+        resumeAutoScroll();
+      }, 1200);
+    }, 4000);
+  };
+
+  const snapToNearestCard = () => {
+    if (!trackRef.current || resolvedPagesCount === 0) return;
+
+    const currentX = translationRef.current;
+    const closestVIdx = Math.round(-currentX / 340);
+    const targetX = -closestVIdx * 340;
+
+    if (activeTweenRef.current) activeTweenRef.current.kill();
+    if (tweenRef.current) tweenRef.current.kill();
+
+    activeTweenRef.current = gsap.to(trackRef.current, {
+      x: targetX,
+      duration: 0.5,
+      ease: "power2.out",
+      onUpdate: () => {
+        translationRef.current = gsap.getProperty(trackRef.current, "x") as number;
+        updateCardPositions();
+      },
+      onComplete: () => {
+        setHoveredIndex(closestVIdx);
+        lastPausedIndexRef.current = closestVIdx;
+        const originalIndex = ((closestVIdx % resolvedPagesCount) + resolvedPagesCount) % resolvedPagesCount;
+        if (onPageChange) {
+          onPageChange(originalIndex);
+        }
+        scheduleAutoScrollResume();
+      },
+    });
+  };
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.button !== 0 && e.pointerType === "mouse") return;
+    if (resolvedPagesCount <= 1) return;
+
+    isDraggingRef.current = true;
+    setIsDragging(true);
+    hasDraggedRef.current = false;
+    startXRef.current = e.clientX;
+    startTranslationRef.current = translationRef.current;
+
+    // Pause animations immediately
+    if (tweenRef.current) tweenRef.current.pause();
+    if (activeTweenRef.current) activeTweenRef.current.kill();
+    if (autoHoverTimeoutRef.current) {
+      clearTimeout(autoHoverTimeoutRef.current);
+      autoHoverTimeoutRef.current = null;
+    }
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current) return;
+
+    const deltaX = e.clientX - startXRef.current;
+    if (Math.abs(deltaX) > 5 && !hasDraggedRef.current) {
+      hasDraggedRef.current = true;
+      e.currentTarget.setPointerCapture(e.pointerId);
+    }
+
+    if (hasDraggedRef.current) {
+      let targetX = startTranslationRef.current + deltaX;
+
+      if (resolvedPagesCount > 1) {
+        if (targetX > 0) {
+          targetX -= loopWidth;
+          startXRef.current += loopWidth;
+          startTranslationRef.current -= loopWidth;
+        } else if (targetX < -loopWidth) {
+          targetX += loopWidth;
+          startXRef.current -= loopWidth;
+          startTranslationRef.current += loopWidth;
+        }
+      }
+
+      if (trackRef.current) {
+        gsap.set(trackRef.current, { x: targetX });
+      }
+      translationRef.current = targetX;
+      updateCardPositions();
+    }
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    setIsDragging(false);
+
+    if (hasDraggedRef.current) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+      snapToNearestCard();
+    } else {
+      snapToNearestCard();
+    }
+  };
+
   const handlePlayClick = (vIdx: number) => {
     if (!trackRef.current) return;
 
     if (tweenRef.current) tweenRef.current.pause();
     if (activeTweenRef.current) activeTweenRef.current.kill();
-    if (autoHoverTimeoutRef.current) clearTimeout(autoHoverTimeoutRef.current);
+    if (autoHoverTimeoutRef.current) {
+      clearTimeout(autoHoverTimeoutRef.current);
+      autoHoverTimeoutRef.current = null;
+    }
 
     const targetBaseX = -vIdx * 340;
     const currentX = translationRef.current;
@@ -241,6 +392,11 @@ export const MemoryScroller: React.FC<MemoryScrollerProps> = ({ pages }) => {
 
     setActivePlayIndex(vIdx);
     setHoveredIndex(vIdx);
+
+    const originalIndex = ((vIdx % resolvedPagesCount) + resolvedPagesCount) % resolvedPagesCount;
+    if (onPageChange) {
+      onPageChange(originalIndex);
+    }
 
     activeTweenRef.current = gsap.to(trackRef.current, {
       x: targetX,
@@ -273,7 +429,14 @@ export const MemoryScroller: React.FC<MemoryScrollerProps> = ({ pages }) => {
 
   return (
     <div className="carousel-container overflow-visible w-full h-[400px]">
-      <div ref={containerRef} className="carousel-container w-full h-full">
+      <div
+        ref={containerRef}
+        className={`carousel-container w-full h-full ${isDragging ? "dragging" : ""}`}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+      >
         <div
           ref={trackRef}
           className={`carousel-track ${

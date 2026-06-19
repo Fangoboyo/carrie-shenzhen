@@ -12,16 +12,17 @@ All 4 of the team members of this project are High School seniors. At the end of
 
 
 ## Hardware Architecture - Carrot
-
-### System Components
-* **Main Compute Module:** Embedded Luckfox Pico Mini B 
+### **Main Compute Module:** Embedded Luckfox Pico Mini B 
 
 | Luckfox Pico Mini B (2D) | Luckfox Pico Mini B (3D) |
 | :---: | :---: |
 | <img src="https://github.com/user-attachments/assets/d243de09-778c-4d48-a652-383df001b6e8" alt="luckfox_2d" width="100%" /> | <img src="https://github.com/user-attachments/assets/f13b5a4d-605d-4a7c-87a0-da64d2e103ab" alt="luckfox_3d" width="100%" /> |
 
 
-* **Audio Input:** SPH0655
+### **Audio Input:** SPH0655
+
+<img width="766" height="708" alt="image" src="https://github.com/user-attachments/assets/de1b7129-3cad-43c9-9911-14325515e6ea" />
+
 
 * **Visual Input:** SC3336 3MP
 * **Status Indicator:** SunLED XZVGMDK53W-9

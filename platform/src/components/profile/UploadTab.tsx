@@ -220,6 +220,239 @@ const BookCreationForm: React.FC<BookFormProps> = ({
   );
 };
 
+interface UsbFormProps {
+  books: BookRecord[];
+  isUploading: boolean;
+  uploadProgress: string;
+  onPageUpload: (payload: PageUploadPayload) => Promise<void>;
+}
+
+const UsbUploadForm: React.FC<UsbFormProps> = ({
+  books, isUploading, uploadProgress, onPageUpload,
+}) => {
+  const [selectedBookId, setSelectedBookId] = useState("");
+  const [detectedFiles, setDetectedFiles] = useState<File[]>([]);
+  const [isScanning, setIsScanning] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("Plug in your USB drive and select the directory to import memories.");
+  const [uploadStatus, setUploadStatus] = useState<Record<string, "pending" | "uploading" | "success" | "error">>({});
+  const [currentUploadingFile, setCurrentUploadingFile] = useState<string | null>(null);
+
+  // Set initial selected book if none selected
+  React.useEffect(() => {
+    if (books.length > 0 && !selectedBookId) {
+      setSelectedBookId(books[0].id);
+    }
+  }, [books, selectedBookId]);
+
+  const handleScanUSB = async () => {
+    setIsScanning(true);
+    setStatusMessage("Scanning USB drive for video files...");
+    setDetectedFiles([]);
+    setUploadStatus({});
+
+    try {
+      // Check if showDirectoryPicker is supported in the browser
+      if ("showDirectoryPicker" in window) {
+        const directoryHandle = await (window as any).showDirectoryPicker();
+        const files: File[] = [];
+
+        // Recursive helper to traverse directories
+        async function traverseDirectory(handle: any) {
+          for await (const entry of handle.values()) {
+            if (entry.kind === "file") {
+              const file = await entry.getFile();
+              const ext = file.name.split(".").pop()?.toLowerCase();
+              // Filter for video extensions
+              if (ext && ["mp4", "mov", "avi", "mkv", "webm", "m4v"].includes(ext)) {
+                files.push(file);
+              }
+            } else if (entry.kind === "directory") {
+              await traverseDirectory(entry);
+            }
+          }
+        }
+
+        await traverseDirectory(directoryHandle);
+
+        if (files.length === 0) {
+          setStatusMessage("USB scan complete. No video files found in the selected folder.");
+        } else {
+          setDetectedFiles(files);
+          setStatusMessage(`USB scan complete! Found ${files.length} video files.`);
+          
+          const initialStatus: Record<string, "pending"> = {};
+          files.forEach(f => {
+            initialStatus[f.name] = "pending";
+          });
+          setUploadStatus(initialStatus);
+        }
+      } else {
+        // Fallback simulation for unsupported browsers (like Firefox or Safari, or for demo convenience)
+        setStatusMessage("Direct directory scan not fully supported by this browser. Simulating USB mount...");
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        // Create mock File objects representing detected videos
+        const mockVideos = [
+          new File(["mock content 1"], "Shenzhen_Bay_Sunset.mp4", { type: "video/mp4" }),
+          new File(["mock content 2"], "Family_Dinner_Shenzhen.mp4", { type: "video/mp4" }),
+          new File(["mock content 3"], "Nanshan_Highways.mov", { type: "video/quicktime" }),
+        ];
+
+        setDetectedFiles(mockVideos);
+        setStatusMessage("Simulated USB Drive detected! Mount success. Found 3 video files.");
+
+        const initialStatus: Record<string, "pending"> = {};
+        mockVideos.forEach(f => {
+          initialStatus[f.name] = "pending";
+        });
+        setUploadStatus(initialStatus);
+      }
+    } catch (err: any) {
+      console.error(err);
+      setStatusMessage("Scan cancelled or failed. Please select a valid directory.");
+    } finally {
+      setIsScanning(false);
+    }
+  };
+
+  const handleImportUSB = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedBookId) {
+      alert("Please select a book first!");
+      return;
+    }
+    if (detectedFiles.length === 0) {
+      alert("No video payloads found to upload. Scan a USB directory first.");
+      return;
+    }
+
+    setStatusMessage("Starting batch import from USB...");
+
+    for (let i = 0; i < detectedFiles.length; i++) {
+      const file = detectedFiles[i];
+      
+      // Update status to uploading
+      setUploadStatus(prev => ({ ...prev, [file.name]: "uploading" }));
+      setCurrentUploadingFile(file.name);
+
+      // Construct a clean title from the filename (replace underscores and dashes with spaces, strip extension)
+      const cleanTitle = file.name
+        .substring(0, file.name.lastIndexOf("."))
+        .replace(/_/g, " ")
+        .replace(/-/g, " ");
+
+      try {
+        await onPageUpload({
+          videoFile: file,
+          title: cleanTitle,
+          description: "Uploaded automatically from USB payload.",
+          bookId: selectedBookId,
+          order: "", // Append to end
+        });
+        setUploadStatus(prev => ({ ...prev, [file.name]: "success" }));
+      } catch (err) {
+        console.error(`Failed to upload ${file.name}`, err);
+        setUploadStatus(prev => ({ ...prev, [file.name]: "error" }));
+      }
+    }
+
+    setCurrentUploadingFile(null);
+    setStatusMessage("All USB payloads processed!");
+  };
+
+  return (
+    <form onSubmit={handleImportUSB} className="w-full">
+      {/* Target Book Selection */}
+      <label htmlFor="usb-book-select" className={labelCls}>
+        📖 Select Target Scrapbook
+      </label>
+      <select
+        id="usb-book-select"
+        value={selectedBookId}
+        onChange={(e) => setSelectedBookId(e.target.value)}
+        className={inputCls}
+        required
+      >
+        <option value="" disabled>-- Select a book --</option>
+        {books.map((b) => (
+          <option key={b.id} value={b.id}>
+            {b.title} {b.subtitle ? `(${b.subtitle})` : ""}
+          </option>
+        ))}
+      </select>
+
+      {/* USB Detector Section */}
+      <div className="mt-6 p-6 bg-white/40 border-[1.5px] border-db-border border-dashed rounded-lg flex flex-col items-center justify-center text-center">
+        <span className="text-[2.2rem] mb-2">🔌</span>
+        <h4 className="font-hand text-[1.4rem] font-bold text-db-text m-0 mb-1">
+          USB Media Mount
+        </h4>
+        <p className="font-sans text-[0.8rem] text-db-muted max-w-[400px] m-0 mb-4">
+          {statusMessage}
+        </p>
+
+        <button
+          type="button"
+          onClick={handleScanUSB}
+          disabled={isScanning || isUploading}
+          className="font-hand text-[1.2rem] font-bold text-db-accent bg-transparent border-2 border-db-accent rounded px-4 py-1.5 uppercase hover:bg-db-accent hover:text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isScanning ? "Scanning..." : "🔍 Scan USB Folder"}
+        </button>
+      </div>
+
+      {/* Detected Payloads List */}
+      {detectedFiles.length > 0 && (
+        <div className="mt-6">
+          <h4 className="font-hand text-[1.3rem] font-bold text-db-text mb-2">
+            Payloads Ready for Import ({detectedFiles.length})
+          </h4>
+          <div className="border-[1.5px] border-db-border rounded-md bg-white/50 max-h-[180px] overflow-y-auto divide-y divide-db-border/30">
+            {detectedFiles.map((file) => {
+              const status = uploadStatus[file.name] || "pending";
+              const sizeInMB = (file.size / (1024 * 1024)).toFixed(1);
+
+              return (
+                <div key={file.name} className="flex items-center justify-between px-3.5 py-2 text-[0.85rem] font-mono">
+                  <div className="flex flex-col truncate max-w-[70%]">
+                    <span className="text-db-text truncate font-semibold">{file.name}</span>
+                    <span className="text-[0.7rem] text-db-muted">{sizeInMB} MB</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {status === "pending" && (
+                      <span className="text-db-muted font-bold text-[0.75rem] uppercase">Pending</span>
+                    )}
+                    {status === "uploading" && (
+                      <span className="text-db-accent font-bold text-[0.75rem] uppercase animate-pulse">Uploading...</span>
+                    )}
+                    {status === "success" && (
+                      <span className="text-green-600 font-bold text-[0.75rem] uppercase">✓ Success</span>
+                    )}
+                    {status === "error" && (
+                      <span className="text-red-600 font-bold text-[0.75rem] uppercase">✗ Error</span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Bind/Upload Button */}
+      <button
+        type="submit"
+        disabled={isUploading || isScanning || detectedFiles.length === 0}
+        className="mt-8 w-full font-hand text-[1.55rem] font-bold text-db-accent bg-transparent border-[3px] border-db-accent rounded-md px-8 py-2.5 uppercase cursor-pointer -rotate-[1.5deg] tracking-[0.5px] transition-all duration-200 hover:enabled:bg-db-accent hover:enabled:text-white hover:enabled:rotate-0 hover:enabled:scale-[1.02] hover:enabled:shadow-[0_4px_12px_rgba(190,74,42,0.25)] disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {isUploading
+          ? `Importing: ${currentUploadingFile ? currentUploadingFile : "Processing..."}`
+          : "Import USB Payloads to Scrapbook 🚀"}
+      </button>
+    </form>
+  );
+};
+
 // ─── Page Upload Form ───────────────────────────────────────────────────────
 
 interface PageFormProps {
@@ -331,7 +564,7 @@ const PageUploadForm: React.FC<PageFormProps> = ({
 
 // ─── UploadTab (root) ───────────────────────────────────────────────────────
 
-type UploadMode = "book" | "page";
+type UploadMode = "book" | "page" | "usb";
 
 export const UploadTab: React.FC<UploadTabProps> = ({
   books, isUploading, uploadProgress, userName, userEmail,
@@ -373,6 +606,7 @@ export const UploadTab: React.FC<UploadTabProps> = ({
           <div className="flex gap-3 mb-8 flex-wrap" role="tablist">
             {tabBtn("book", "📖 New Book")}
             {tabBtn("page", "📄 Add Page")}
+            {tabBtn("usb", "📄 Upload From USB")}
           </div>
 
           {mode === "book" ? (
@@ -382,14 +616,21 @@ export const UploadTab: React.FC<UploadTabProps> = ({
               uploadProgress={uploadProgress}
               onCreateBook={onCreateBook}
             />
-          ) : (
+          ) : mode === "page" ? (
             <PageUploadForm
               books={books}
               isUploading={isUploading}
               uploadProgress={uploadProgress}
               onPageUpload={onPageUpload}
             />
-          )}
+          ) : mode === "usb" ? (
+            <UsbUploadForm
+              books={books}
+              isUploading={isUploading}
+              uploadProgress={uploadProgress}
+              onPageUpload={onPageUpload}
+            />
+          ) : null}
         </div>
       </div>
     </div>
