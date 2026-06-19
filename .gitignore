@@ -111,3 +111,17 @@ dist
 
 # TernJS port file
 .tern-port
+
+# KiCad backups, symbols, and autosaves
+*-backups/
+*.bak
+_autosave-*
+*.kicad_pcb-bak
+*.kicad_sch-bak
+.history/
+
+# CAD and zip backups
+*Copy*
+*.zip
+*.f3z-bak
+

@@ -1,0 +1,259 @@
+{
+  "main": {
+    "id": "a37ddf41f66f8185",
+    "type": "split",
+    "children": [
+      {
+        "id": "8d952d246afc5d2d",
+        "type": "tabs",
+        "dimension": 65.9090909090909,
+        "children": [
+          {
+            "id": "ad92ae7a9d2be98e",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Technical overview.canvas",
+                "viewState": {
+                  "x": 550.9831115652248,
+                  "y": 197.0445145162194,
+                  "zoom": -1.1684625583335624
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Technical overview"
+            }
+          }
+        ]
+      },
+      {
+        "id": "b268db72c7868b13",
+        "type": "tabs",
+        "dimension": 34.090909090909086,
+        "children": [
+          {
+            "id": "954c6e48e0ef4eca",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Materials/BMS/Battery - Arrived.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Battery - Arrived"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7a8cab931f73bbff",
+    "type": "split",
+    "children": [
+      {
+        "id": "90aaa0b7ad6297a9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e72173aca7999b98",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "6167c41352ea3969",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "9c2c61149d0ee446",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 236.5
+  },
+  "right": {
+    "id": "7f42608727ce2220",
+    "type": "split",
+    "children": [
+      {
+        "id": "6a93d4de535f5fbe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b47e46e5a89dddeb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "carrie overview.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for carrie overview"
+            }
+          },
+          {
+            "id": "bee880d73f992857",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "carrie overview.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from carrie overview"
+            }
+          },
+          {
+            "id": "3bb7cf9609166943",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c36545926fa8d80c",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "972156173fb55086",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "carrie overview.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of carrie overview"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "ad92ae7a9d2be98e",
+  "lastOpenFiles": [
+    "Materials/BMS/Battery - Arrived.md",
+    "Technical overview.canvas",
+    "software/firmware/GPIO Read Mechanism.md",
+    "Materials/LCD Display (Touchscreen) - Arrived.md",
+    "Bill of Materials.md",
+    "Planning before 6-7.md",
+    "Materials/POGO Pin - Arrived.md",
+    "Materials/Microphone - Arrived.md",
+    "software/firmware/Display Driver.md",
+    "Fabrication.md",
+    "Carrie Construction.md",
+    "Materials/BMS/Battery Management System.canvas",
+    "Materials/BMS/MCP73831.md",
+    "Materials/USBC Male head.md",
+    "Materials/images/Pasted image 20260605001627.png",
+    "Materials/images/Pasted image 20260605000559.png",
+    "Materials/BMS/FS8205A.md",
+    "Materials/BMS/DW01A.md",
+    "Materials/BMS/TP4056.md",
+    "Materials/images/Pasted image 20260604234836.png",
+    "Materials/images/Pasted image 20260604235253.png",
+    "Materials/images/Pasted image 20260604235230.png",
+    "PCBs/Untitled.canvas",
+    "PCBs/Untitled.md",
+    "PCBs",
+    "Untitled.md",
+    "Materials/images/Pasted image 20260604230423.png",
+    "Materials/BMS/Battery Management System.md",
+    "Materials/BMS",
+    "software/firmware",
+    "software",
+    "software/web platform",
+    "Materials/ESP32 - Arrived.md",
+    "Materials/images/Pasted image 20260603162729.png",
+    "software/firmware/Recording mechanism.md",
+    "software/web platform/Backend Flow.md",
+    "Materials/images/Pasted image 20260603163029.png",
+    "Materials/images/Pasted image 20260603162734.png",
+    "Materials/images/Pasted image 20260603162429.png",
+    "Materials/POGO pins.md",
+    "Materials/images",
+    "create a link.md",
+    "Materials",
+    "Welcome.md",
+    "Frontend Flow.md"
+  ]
+}
