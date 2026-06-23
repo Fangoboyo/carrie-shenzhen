@@ -1,6 +1,9 @@
 # Carrie 🥕 — Embedded Audio/Video Recording Smart Pen
 
+
 An embedded audio-recording smart pen shaped like a carrot, featuring a custom pot docking station for charging and data transfer. Powered by the Luckfox Pico Mini B (RV1103).
+
+<img width="2000" height="3066" alt="image" src="https://github.com/user-attachments/assets/3c9100ee-462e-49ab-9793-df682ab1e724" />
 
 ---
 
@@ -24,8 +27,6 @@ All 4 of the team members of this project are High School seniors. At the end of
 ---
 
 ## Directory Structure
-
-The repository is organized into a clean, modular structure:
 
 ```
 ├── docs/                           # Project documentation, Zines, and planning
