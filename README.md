@@ -11,13 +11,6 @@ An embedded audio-recording smart pen shaped like a carrot, featuring a custom p
 
 A personal carry device in the shape of a carrot, Carrie is an interpretation of the carrot pen used by Judy Hopps in Zootopia. It's built with a microphone and a camera, integrated into the tiny form factor of a pen, and powered by an embedded Linux microcontroller (Luckfox Pico Mini B) on a custom PCB. With the click of a button, Carrie records 1080p footage at 30 FPS with audio, making sure you never forget to record those memorable moments. Then, simply take off the cap and plug the pen into the pot docking station to transfer your video files to a host computer and charge Carrie's battery.
 
-### Web Platform Dashboard
-The website displays uploaded videos in a clean and modern "scrapbook" style feed. The frontend dashboard is built with React, and a PocketBase backend running on Bun handles session data and pipes incoming video streams directly to the Google Drive API.
-
-<img width="800" style="max-width: 100%; height: auto;" alt="Web Platform Dashboard Mockup" src="https://github.com/user-attachments/assets/b4aa056f-c928-4af2-94ae-6bbb59a2d7f5" />
-
-*Figure 1: React-based web dashboard displaying scrapbook video feeds synced from the carrot pen.*
-
 ---
 
 ## Why?
@@ -230,5 +223,11 @@ The pen runs Buildroot Linux. Its C firmware is compiled inside a Docker Dev Con
 4.  **Full Loop Recording:** Tap the physical button on the carrot casing. The indicator LED flashes to signal recording. Push the button again to stop.
 5.  **Docking & Transfer:** Dock the pen in the Pot. The LCD screen should light up, showing connection telemetry. The PC will recognize a USB mass storage device or an ADB network interface. 
 6.  **Web Dashboard Sync:** Start the React platform. Use the dashboard to fetch files from the docked pen and stream them directly onto Google Drive.
+### Web Platform Dashboard
+Okay I'm going to cut the formal documentation-speech for this part because im genuinely so proud of this website, it lets you plug your pot directly into your computer, and the browser is able to take the datastream from the USB and directly upload it to youtube for infinite free storage. All of the components are super animated like the books float and flip on their own, they rotate, they blur, all done with just tailwind. It genuinely took such a long time but adds an incredibly integrated aspect of the project that just brings everything together.
 
-For more details on the design, code operations, and custom hardware modules, see the docs folder.
+<img width="800" style="max-width: 100%; height: auto;" alt="Web Platform Dashboard Mockup" src="https://github.com/user-attachments/assets/b4aa056f-c928-4af2-94ae-6bbb59a2d7f5" />
+
+*Figure 1: React-based web dashboard displaying scrapbook video feeds synced from the carrot pen.*
+
+For more details on the design, code operations, and custom hardware modules, see the docs folder, where obsidian canvases draw out everything overviewing the project.
