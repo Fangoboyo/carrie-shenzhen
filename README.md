@@ -3,6 +3,8 @@
 
 An embedded audio-recording smart pen shaped like a carrot, featuring a custom pot docking station for charging and data transfer. Powered by the Luckfox Pico Mini B (RV1103).
 
+BILL OF MATERIALS IS IN [docs](/docs)
+
 <img width="2000" height="3066" alt="image" src="https://github.com/user-attachments/assets/3c9100ee-462e-49ab-9793-df682ab1e724" />
 
 ---
