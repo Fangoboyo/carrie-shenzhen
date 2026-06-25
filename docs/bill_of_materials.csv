@@ -1,6 +1,6 @@
 Part Name,Unit Part Price ($),Unit Part Count     ,Part Cost Total ($),Description,Part Link,Total: 
-RV1103 Pico Mini Linux SBC,15,1,15,Linux-based microcontroller board used as the main processing unit for dealing with audo/video recording and handles data,Amazon.com: LuckFox Pico Mini Linux RV1103 Rockchip AI Board ARM Luckfox-Pico-Mini-B,98.65
-SPH0655 Digital MEMS Microphone,1.69,1,1.69,High-sensitivity digital MEMS microphone used for capturing voice an audio,SPH0655LM4H-1-8 Syntiant | Microphones | DigiKey,
+RV1103 Pico Mini Linux SBC,15,1,15,Linux-based microcontroller board used as the main processing unit for dealing with audo/video recording and handles data,https://www.amazon.com/dp/B0CSSZFRR3,98.65
+SPH0655 Digital MEMS Microphone,1.69,1,1.69,High-sensitivity digital MEMS microphone used for capturing voice an audio,https://www.digikey.com/en/products/detail/syntiant/SPH0655LM4H-1-8/11506911,
 SC3336 3MP Camera Module,12.89,1,12.89,3MP compact camera module for capturing images and video footage,https://osoyoo.store/products/osoyoo-basic-starter-kit-with-uno-board-for-arduino-electronic-projects?variant=19254802120822&_gsid=uJdiy8kzx5nV,
 MCP73831T-2ACI/OT,0.76,1,0.76,Charger IC Lithium Ion/Polymer SOT-23-5,https://www.digikey.com/en/products/detail/microchip-technology/MCP73831T-2ACI-OT/964301,
 SunLED XZVGMDK53W-9,0.35,1,0.35,"Green, Red 570nm Green, 630nm Red LED Indication - Discrete 2.1V Green, 1.95V Red 0603 (1608 Metric)",https://www.digikey.com/en/products/detail/sunled/XZVGMDK53W-9/8259057,
