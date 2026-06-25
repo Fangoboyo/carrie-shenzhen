@@ -1,5 +1,4 @@
-import React from "react";
-import { Search, Mail, Bell } from "lucide-react";
+import { Search } from "lucide-react";
 
 interface TopbarProps {
   searchQuery: string;
@@ -40,12 +39,6 @@ export const Topbar: React.FC<TopbarProps> = ({
 
       {/* Actions */}
       <div className="flex items-center gap-4">
-        <button className="bg-transparent border-none text-db-text cursor-pointer p-2 rounded-full flex items-center justify-center transition-colors duration-200 hover:bg-black/5">
-          <Mail size={18} />
-        </button>
-        <button className="bg-transparent border-none text-db-text cursor-pointer p-2 rounded-full flex items-center justify-center transition-colors duration-200 hover:bg-black/5">
-          <Bell size={18} />
-        </button>
         <div
           className="w-9 h-9 rounded-full bg-[#cbd0d6] border-2 border-db-border flex items-center justify-center font-bold text-[0.9rem] text-db-text overflow-hidden"
           title={userEmail}

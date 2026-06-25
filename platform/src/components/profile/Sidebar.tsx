@@ -1,5 +1,5 @@
 import React from "react";
-import { Home, Upload, BookOpen, Tag, Settings, LogOut } from "lucide-react";
+import { Home, Upload, LogOut } from "lucide-react";
 
 interface SidebarProps {
   activeTab: "home" | "upload";
@@ -50,7 +50,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         <NavBtn tab="home"   icon={<Home size={20} />}     title="Dashboard" />
         <NavBtn tab="upload" icon={<Upload size={20} />}   title="Upload Memory" />
-        <NavBtn tab="home"   icon={<BookOpen size={20} />} title="Memories Grid" />
       </div>
 
       <button
