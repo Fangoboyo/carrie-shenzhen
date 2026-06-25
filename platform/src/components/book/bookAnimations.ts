@@ -20,7 +20,7 @@ export const PAGE_STATIC_OPEN = { rotateY: -1, z: 1 };
 
 // ─── Infinite page-turn loop keyframes ───────────────────────────────────────
 //
-//  Symmetric timing model from AI_MEMORY.md (fraction of LOOP_DURATION):
+//  symmetric timing model (fraction of loop_duration):
 //    0.00 – 0.10 : Page rests on the right (rotateY: 0, opacity: 1)
 //    0.10 – 0.50 : THE FLIP — rotateY sweeps 0 → -150 (easeInOut)
 //    0.50 – 0.80 : Page rests on the left (rotateY: -150, opacity: 1)

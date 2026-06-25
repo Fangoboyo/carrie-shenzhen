@@ -1,24 +1,6 @@
 /*
  * camera_recorder.c — RKMPI CSI camera recording implementation
  *                     for Luckfox Pico Mini B (RV1103)
- *
- * Pipeline:
- *   VI (ISP, NV12) ──RK_MPI_SYS_Bind──> VENC (H.264/H.265)
- *                                              │
- *                                     writer thread (this file)
- *                                              │
- *                                        output .h264 file
- *
- * The writer thread calls RK_MPI_VENC_GetStream() in a tight loop,
- * writes each NAL unit to the output file, releases the stream buffer,
- * and exits cleanly when g_running is cleared by recorder_stop().
- */
-
-/*
- * Project Abbreviations:
- * - RKMPI: Rockchip Media Process Interface. An API used for multimedia processing (e.g., video encoding/decoding) on Rockchip processors.
- * - RKAIQ: Rockchip AI Image Quality. An Image Signal Processing (ISP) framework for tuning and image enhancement on Rockchip camera platforms.
- * - RV1103: A low-power, high-performance Vision SoC (System-on-Chip) from Rockchip designed for IP cameras, featuring an integrated NPU and ISP.
  */
 
 #include "camera_recorder.h"
@@ -65,12 +47,7 @@ static RecorderConfig g_cfg;
 
 /* ── Writer thread ───────────────────────────────────────────────── */
 
-/*
- * Each iteration of the loop dequeues one encoded stream packet from
- * the VENC channel, writes it to disk, then releases the buffer back
- * to the codec.  RK_MPI_VENC_GetStream() blocks up to `timeout_ms`
- * milliseconds, so the thread is never busy-spinning.
- */
+// Writer thread fetches encoded stream packets and writes them to disk
 static void *writer_thread(void *arg)
 {
     (void)arg;
@@ -86,7 +63,7 @@ static void *writer_thread(void *arg)
 
         RK_S32 ret = RK_MPI_VENC_GetStream(g_cfg.venc_chn, &stream, timeout_ms);
         if (ret == RK_ERR_VENC_BUF_EMPTY) {
-            /* No frame ready yet — loop and try again */
+            /* No frame ready yet */
             continue;
         }
         if (ret != RK_SUCCESS) {
@@ -94,23 +71,19 @@ static void *writer_thread(void *arg)
             break;
         }
 
-        /* Write all NAL units in this stream packet to the output file */
+        /* Write all NAL units in this stream packet */
         for (RK_U32 i = 0; i < stream.u32PackCount; i++) {
             VENC_PACK_S *pack = &stream.pstPack[i];
             void *data = RK_MPI_MB_Handle2VirAddr(pack->pMbBlk);
             printf("[recorder] packet %d: pMbBlk=%p, data=%p, offset=%u, len=%u\n", 
                    i, pack->pMbBlk, data, pack->u32Offset, pack->u32Len);
             if (pack->u32Len > 0 && data != NULL) {
-                /* 
-                 * Rockchip's RKMPI driver uses IOMMU to map the ring buffer contiguously 
-                 * in virtual memory, so wrap-around handling is NOT needed.
-                 * `data` is already offset to the correct packet payload!
-                 */
+                // Write the contiguous packet payload
                 fwrite(data, 1, pack->u32Len, g_out_file);
             }
         }
 
-        /* Release the stream buffer back to the codec — MANDATORY */
+        // Release stream buffer
         RK_MPI_VENC_ReleaseStream(g_cfg.venc_chn, &stream);
     }
 

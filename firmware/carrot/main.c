@@ -12,23 +12,14 @@ static void on_signal(int sig) { (void)sig; g_quit = 1; }
 
 int main() {
 
-  /* 
-  --------------------------
-  ctrl c graceful exit
-  --------------------------
-  */
+  // Set up signal handlers for graceful shutdown
   const char *output  = "/mnt/sdcard/DCIM/Development/recording.h264";
   signal(SIGINT,  on_signal);
   signal(SIGTERM, on_signal);
   RecorderConfig cfg = RECORDER_CONFIG_DEFAULT;
 
 
-  /*
-  --------------------------
-  Click detection constants
-  Pin: 42 (pin 4 on board)
-  --------------------------
-  */
+  // Configure button GPIO (Physical Header Pin 4 / GPIO 42)
   printf("Starting record detection...\n");
   int POLL_MS = 80;
   int button_gpio = 42;
